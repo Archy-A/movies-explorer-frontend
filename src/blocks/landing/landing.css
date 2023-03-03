@@ -1,0 +1,20 @@
+.landing {
+  margin: 0;
+  padding: 0;
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  background-color: #073042;
+
+  }
+
+@media screen and (max-width: 700px) {
+    .landing {
+      flex-direction: column;
+      margin-top: 42px;
+    }
+}

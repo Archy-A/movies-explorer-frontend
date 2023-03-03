@@ -1,0 +1,14 @@
+.wrapper {
+  max-width: 1280px;
+  min-width: 320px;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #000000;
+  padding: 0;
+  height: 100vh;
+  color: #A9A9A9;
+  margin-top: 0;
+
+  border: 1px rgb(235, 14, 14) solid;
+  }

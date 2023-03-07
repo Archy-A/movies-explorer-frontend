@@ -1,0 +1,18 @@
+.proj__1nedelja{
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    white-space: pre-wrap;
+    background: #3DDC84;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* border: 1px rgb(235, 14, 14) solid; */
+    }
+
+
+

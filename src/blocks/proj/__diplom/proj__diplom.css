@@ -1,0 +1,16 @@
+.proj__diplom{
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+    
+    /* border: 2px rgb(235, 220, 14) solid; */
+    }
+
+    /* @media screen and (max-width: 768px) {
+        .proj__diplom {
+            flex-direction: column-reverse;
+            justify-content: center;
+        }
+      } */

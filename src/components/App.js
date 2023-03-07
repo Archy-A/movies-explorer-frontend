@@ -16,14 +16,14 @@ function App() {
                 <Header
                 />
 
-                {/* <Switch>
+                <Switch>
                   <Route exact path="/" component={Landing}
                   />
 
                   <Route exact path="/movies" component={Movies}
                   />
 
-                </Switch> */}
+                </Switch>
 
                 {/* <Footer /> */}
 

@@ -1,0 +1,11 @@
+.proj__ribbon {
+        margin: 0;
+        padding: 0;
+        margin-top: 110px; 
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+        grid-auto-rows: 36px;
+        grid-gap: 0px;
+
+        /* border: 2px rgb(14, 80, 235) solid; */
+    }

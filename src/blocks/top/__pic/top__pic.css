@@ -1,0 +1,27 @@
+.top__pic{
+    min-height: 304px;
+    min-width: 310px;
+    background-image: url("../../../images/webpic.svg");
+    background-repeat: no-repeat;
+
+    /* border: 2px rgb(235, 55, 14) solid; */
+    }
+
+    @media screen and (max-width: 768px) {
+        .top__pic {
+            justify-self: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+      }
+
+    @media screen and (max-width: 360px) {
+        .top__pic {
+            min-height: 206px;
+            min-width: 210px;
+            justify-self: center;
+            margin-left: auto;
+            margin-right: auto;
+            background-size: cover;
+        }
+      }     

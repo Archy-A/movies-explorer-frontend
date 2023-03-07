@@ -1,0 +1,49 @@
+.top__learn {
+    all: unset;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #ffffff;
+    margin: 0;
+    padding-top: 0;
+    max-width: 129px;
+    min-height: 36px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    background: #073042;
+    justify-self: center;
+    margin-top: 84px;
+    margin-bottom: 85px;
+    align-content: center;
+    border: 1px rgb(255, 255, 255, 0.6) solid;
+    }
+
+.top__learn:hover {
+    opacity: 0.6;
+      }
+  
+      @media screen and (max-width: 768px) {
+        .top__learn {
+            justify-self: center;
+            min-width: 129px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 92px;
+            margin-bottom: 76px;
+        }
+      }
+
+      @media screen and (max-width: 320px) {
+        .top__learn {
+            margin-top: 80px;
+            margin-bottom: 30px;
+        }
+      }

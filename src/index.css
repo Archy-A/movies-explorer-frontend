@@ -10,4 +10,25 @@
 @import url(../src/blocks/header/__container/header__container.css);
 @import url(../src/blocks/header/__login/header__login.css);
 
-@import url(../src/blocks/landing/landing.css);
+@import url(../src/blocks/top/top.css);
+@import url(../src/blocks/top/__wrapper/top__wrapper.css);
+@import url(../src/blocks/top/__container/top__container.css);
+@import url(../src/blocks/top/__colum1/top__colum1.css);
+@import url(../src/blocks/top/__text/top__text.css);
+@import url(../src/blocks/top/__title/top__title.css);
+@import url(../src/blocks/top/__pic/top__pic.css);
+@import url(../src/blocks/top/__learn/top__learn.css);
+
+@import url(../src/blocks/proj/proj.css);
+@import url(../src/blocks/proj/__wrapper/proj__wrapper.css);
+@import url(../src/blocks/proj/__about/proj__about.css);
+@import url(../src/blocks/proj/__under/proj__under.css);
+@import url(../src/blocks/proj/__plan/proj__plan.css);
+@import url(../src/blocks/proj/__colum/proj__colum.css);
+@import url(../src/blocks/proj/__diplom/proj__diplom.css);
+@import url(../src/blocks/proj/__details/proj__details.css);
+@import url(../src/blocks/proj/__ribbon/proj__ribbon.css);
+@import url(../src/blocks/proj/__1nedelja/proj__1nedelja.css);
+@import url(../src/blocks/proj/__4nedeli/proj__4nedeli.css);
+@import url(../src/blocks/proj/__back/proj__back.css);
+@import url(../src/blocks/proj/__front/proj__front.css);

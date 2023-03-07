@@ -1,0 +1,17 @@
+.proj__details{
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    margin-top: 26px;
+    margin-right: 40px;
+
+    /* border: 2px rgb(14, 80, 235) solid; */
+    }
+
+    /* @media screen and (max-width: 768px) {
+        .proj__details {
+            flex-direction: column-reverse;
+            justify-content: center;
+        }
+      } */

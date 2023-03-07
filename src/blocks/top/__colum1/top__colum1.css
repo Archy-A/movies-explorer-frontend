@@ -1,0 +1,10 @@
+.top__colum1{
+    /* border: 2px rgb(224, 14, 235) solid; */
+    }
+
+    @media screen and (max-width: 768px) {
+        .top__colum1 {
+            flex-direction: column-reverse;
+            justify-content: center;
+        }
+      }

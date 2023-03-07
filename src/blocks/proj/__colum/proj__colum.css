@@ -1,0 +1,11 @@
+.proj__colum{
+    /* max-height: 114px; */
+    border: 2px rgb(224, 235, 14) solid;
+    }
+
+    /* @media screen and (max-width: 768px) {
+        .top__colum {
+            flex-direction: column-reverse;
+            justify-content: center;
+        }
+      } */

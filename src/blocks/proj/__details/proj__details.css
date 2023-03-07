@@ -1,4 +1,4 @@
-.proj__details{
+.proj__details {
     font-size: 14px;
     line-height: 20px;
     margin: 0;
@@ -9,9 +9,19 @@
     /* border: 2px rgb(14, 80, 235) solid; */
     }
 
-    /* @media screen and (max-width: 768px) {
+    @media screen and (max-width: 768px) {
         .proj__details {
-            flex-direction: column-reverse;
-            justify-content: center;
+          margin-top: 22px;
+          font-size: 12px;
+          line-height: 18px;
         }
-      } */
+      }
+
+    @media screen and (max-width: 320px) {
+        .proj__details {
+            margin-top: 16px;
+            font-size: 11px;
+            line-height: 16px;
+            margin-right: 0px;
+        }
+      }

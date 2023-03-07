@@ -1,4 +1,4 @@
-.proj__diplom{
+.proj__consume{
     margin: 0;
     padding: 0;
     font-size: 20px;
@@ -8,10 +8,11 @@
     /* border: 2px rgb(235, 220, 14) solid; */
     }
 
-    @media screen and (max-width: 320x) {
-        .proj__diplom {
+    @media screen and (max-width: 320px) {
+        .proj__consume {
             font-size: 18px;
             line-height: 22px;
             letter-spacing: -0.04em;
+            margin-top: 56px;
           }
       }

@@ -9,3 +9,19 @@
 
         /* border: 2px rgb(14, 80, 235) solid; */
     }
+
+    @media screen and (max-width: 768px) {
+        .proj__ribbon {
+            margin-top: 93px; 
+        }
+      }
+
+    @media screen and (max-width: 320px) {
+        .proj__ribbon {
+            margin-top: 60px; 
+            grid-template-columns: 1.087fr 2fr;
+            grid-template-rows: 35px 30px;
+
+            /* border: 2px rgb(14, 80, 235) solid; */
+        }
+      }

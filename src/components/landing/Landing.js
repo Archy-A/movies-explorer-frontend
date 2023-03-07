@@ -25,7 +25,7 @@ function Main({
       <div className="proj">
         <div className="proj__wrapper">
 
-          <div className="proj__column">
+          <div className="proj__colum">
 
             <p className="proj__about">О проекте</p>
             <div className="proj__under"></div>
@@ -36,7 +36,7 @@ function Main({
                 <p className="proj__details">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
               </div>
               <div className="proj__column">
-                <p className="proj__diplom">На выполнение диплома ушло 5 недель</p>
+                <p className="proj__consume">На выполнение диплома ушло 5 недель</p>
                 <p className="proj__details">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
               </div>
             </div>

@@ -1,8 +1,14 @@
 .proj__under{
     border-bottom: 1px solid #DADADA;
-    min-width: 320px;
+    min-width: 150px;
     margin-top: 23px;
 
     /* border: 2px rgb(14, 235, 206) solid; */
     }
+
+    @media screen and (max-width: 320px) {
+        .proj__under {
+            margin-top: 28px;
+        }
+      }
 

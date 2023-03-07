@@ -16,8 +16,8 @@
         background: #202020;
         max-width: 1280px;
         min-width: 320px;
-        min-height: 524px;
         margin-top: 110px;
+        padding-bottom: 110px;
     
         /* border: 2px rgb(77, 14, 235) solid; */
       }
@@ -25,10 +25,10 @@
     
     @media screen and (max-width: 768px) {
       .proj__wrapper {
-        max-width: 768px;
-        min-width: 74px;
-        padding-left: 30px;
-        padding-right: 30px;
+        margin-top: 90px;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom: 90px;
       }
     }
 
@@ -36,8 +36,9 @@
       .proj__wrapper {
         max-width: 320px;
         min-width: 74px;
-        padding-left: 10px;
-        padding-right: 10px;
-        /* max-height: 636px; */
+        padding-left: 18px;
+        padding-right: 18px;
+        margin-top: 70px;
+        padding-bottom: 70px;
       }
     }

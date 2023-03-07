@@ -24,12 +24,9 @@ function Main({
 
       <div className="proj">
         <div className="proj__wrapper">
-
           <div className="proj__colum">
-
             <p className="proj__about">О проекте</p>
-            <div className="proj__under"></div>
-
+            <div className="under"></div>
             <div className="proj__plan">
               <div className="proj__column">
                 <p className="proj__diplom">Дипломный проект включал 5 этапов</p>
@@ -40,18 +37,40 @@ function Main({
                 <p className="proj__details">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
               </div>
             </div>
-
-            <div className="proj__ribbon">
-                <p className="proj__1nedelja">1 неделя</p>
-                <p className="proj__4nedeli">4 недели</p>
-                <p className="proj__back">Back-end</p>
-                <p className="proj__front">Front-end</p>  
-            </div>
-
+            <table className="proj__ribbon">
+                <tr className="proj__1nedelja">1 неделя</tr>
+                <tr className="proj__4nedeli">4 недели</tr>
+                <tr className="proj__back">Back-end</tr>
+                <tr className="proj__front">Front-end</tr>  
+            </table>
           </div>
-
         </div>
       </div>
+
+    <div className="tech">
+      <div className="tech__wrapper">
+
+        <div className="tech__column">
+          <p className="tech__about">Технологии</p>
+          <div className="under"></div>
+        </div>
+
+        <div className="tech__description">
+          <div className="tech__7techs">7 технологий</div>
+          <div className="tech__details">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</div>
+          <table className="tech__icons">
+            <tr className="tech__elements">HTML</tr> 
+            <tr className="tech__elements">CSS</tr>
+            <tr className="tech__elements">JS </tr>
+            <tr className="tech__elements">React </tr>
+            <tr className="tech__elements">Git</tr> 
+            <tr className="tech__elements">Express.js</tr> 
+            <tr className="tech__elements">mongoDB</tr>
+          </table>
+        </div>
+
+      </div>
+    </div>
 
     </main>
   );

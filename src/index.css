@@ -19,10 +19,12 @@
 @import url(../src/blocks/top/__pic/top__pic.css);
 @import url(../src/blocks/top/__learn/top__learn.css);
 
+@import url(../src/blocks/under/under.css);
+@import url(../src/blocks/under/under_black/under_black.css);
+
 @import url(../src/blocks/proj/proj.css);
 @import url(../src/blocks/proj/__wrapper/proj__wrapper.css);
 @import url(../src/blocks/proj/__about/proj__about.css);
-@import url(../src/blocks/proj/__under/proj__under.css);
 @import url(../src/blocks/proj/__plan/proj__plan.css);
 @import url(../src/blocks/proj/__colum/proj__colum.css);
 @import url(../src/blocks/proj/__diplom/proj__diplom.css);
@@ -33,3 +35,13 @@
 @import url(../src/blocks/proj/__4nedeli/proj__4nedeli.css);
 @import url(../src/blocks/proj/__back/proj__back.css);
 @import url(../src/blocks/proj/__front/proj__front.css);
+
+@import url(../src/blocks/tech/tech.css);
+@import url(../src/blocks/tech/__wrapper/tech__wrapper.css);
+@import url(../src/blocks/tech/__column/tech__column.css);
+@import url(../src/blocks/tech/__about/tech__about.css);
+@import url(../src/blocks/tech/__description/tech__description.css);
+@import url(../src/blocks/tech/__7techs/proj__7techs.css);
+@import url(../src/blocks/tech/__details/tech__details.css);
+@import url(../src/blocks/tech/__icons/tech__icons.css);
+@import url(../src/blocks/tech/__elements/tech__elements.css);

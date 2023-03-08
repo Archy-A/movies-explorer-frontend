@@ -1,0 +1,28 @@
+.portfolio__description{
+    margin: 0;
+    padding: 0;
+    max-width: 600px;
+    min-height: 27px;
+    font-size: 14px;
+    line-height: 22px;
+    white-space: pre-wrap;
+    
+
+    /* border: 1px rgb(44, 14, 235) solid; */
+    }
+
+    @media screen and (max-width: 768px) {
+        .portfolio__description {
+            font-size: 12px;
+            line-height: 18px;
+            overflow: hidden;
+        }
+      }
+
+    @media screen and (max-width: 320px) {
+        .portfolio__description {
+            font-size: 11px;
+            line-height: 16px;
+            max-height: 100%;
+        }
+      }

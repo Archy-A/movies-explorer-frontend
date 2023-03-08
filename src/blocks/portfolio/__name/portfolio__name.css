@@ -1,0 +1,30 @@
+.portfolio__name{
+    margin: 0;
+    padding: 0;
+    max-width: 600px;
+    font-weight: 400;
+    max-height: 58px;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+    padding-bottom: 18px;
+
+    /* border: 1px rgb(80, 235, 14) solid; */
+    }
+
+    @media screen and (max-width: 768px) {
+        .portfolio__name {
+            font-size: 20px;
+            line-height: 24px;
+            padding-bottom: 16px;
+        }
+      }
+
+    @media screen and (max-width: 320px) {
+        .portfolio__name {
+            font-size: 30px;
+            line-height: 36px;
+            padding-bottom: 20px;
+            padding-top: 40px;
+        }
+      }

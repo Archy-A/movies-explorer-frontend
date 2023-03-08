@@ -45,3 +45,23 @@
 @import url(../src/blocks/tech/__details/tech__details.css);
 @import url(../src/blocks/tech/__icons/tech__icons.css);
 @import url(../src/blocks/tech/__elements/tech__elements.css);
+
+@import url(../src/blocks/portfolio/portfolio.css);
+@import url(../src/blocks/portfolio/__student/portfolio__student.css);
+@import url(../src/blocks/portfolio/__about/portfolio__about.css);
+@import url(../src/blocks/portfolio/__column1/portfolio__column1.css);
+@import url(../src/blocks/portfolio/__description/portfolio__description.css);
+@import url(../src/blocks/portfolio/__details/portfolio__details.css);
+@import url(../src/blocks/portfolio/__pic/portfolio__pic.css);
+@import url(../src/blocks/portfolio/__wrapper/portfolio__wrapper.css);
+@import url(../src/blocks/portfolio/__container/portfolio__container.css);
+@import url(../src/blocks/portfolio/__group/portfolio__group.css);
+@import url(../src/blocks/portfolio/__name/portfolio__name.css);
+@import url(../src/blocks/portfolio/__speciality/portfolio__speciality.css);
+@import url(../src/blocks/portfolio/__description/portfolio__description.css);
+@import url(../src/blocks/portfolio/__github/portfolio__github.css);
+@import url(../src/blocks/portfolio/__portfolio/portfolio__portfolio.css);
+@import url(../src/blocks/portfolio/__arrow/portfolio__arrow.css);
+@import url(../src/blocks/portfolio/__under/portfolio__under.css);
+@import url(../src/blocks/portfolio/__sites/portfolio__sites.css);
+@import url(../src/blocks/portfolio/__container2/portfolio__container2.css);

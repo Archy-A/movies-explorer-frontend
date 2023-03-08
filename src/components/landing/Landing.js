@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useHistory, Route, Switch, Link } from "react-router-dom";
 
 function Main({
   onEditProfile,
@@ -49,12 +50,10 @@ function Main({
 
     <div className="tech">
       <div className="tech__wrapper">
-
         <div className="tech__column">
           <p className="tech__about">Технологии</p>
           <div className="under"></div>
         </div>
-
         <div className="tech__description">
           <div className="tech__7techs">7 технологий</div>
           <div className="tech__details">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</div>
@@ -67,6 +66,49 @@ function Main({
             <tr className="tech__elements">Express.js</tr> 
             <tr className="tech__elements">mongoDB</tr>
           </table>
+        </div>
+      </div>
+    </div>
+
+    <div className="portfolio">
+      <div className="portfolio__wrapper">
+
+        <div className="portfolio__student">Студент</div>
+        <div className="under"></div>
+
+        <div className="portfolio__container">
+          <div className="portfolio__column1">
+            <div className="portfolio__group">
+              <div className="portfolio__name">Артур</div>
+              <div className="portfolio__speciality">Фронт-енд разработчик, 36 лет</div>
+              <div className="portfolio__description">Я родился в Тюмени, закончил факультет информационных технологий ТюмГНГУ. 
+                Я люблю слушать музыку, а ещё увлекаюсь горными лыжами и командными видами спорта (футбол). Начал кодить с университета, но была пауза 
+                из-за работы в сфере геофизики. Работаю в компании «Geomage» - разработка ПО для обработки и интерпретации сейсмических данных.</div>
+            </div>  
+            <a className="portfolio__github" href="https://github.com/Archy-A/">Github</a>
+          </div>
+          <div className="portfolio__column2">
+            <div className="portfolio__pic"></div>
+          </div>
+        </div>
+
+        <div className="portfolio__portfolio">Портфолио</div>
+
+        <div className="portfolio__container2">
+            <a className="portfolio__sites" href="https://github.com/Archy-A/">Статичный сайт</a>
+            <div className="portfolio__arrow"></div> 
+        </div>
+        <div className="portfolio__under"></div> 
+
+        <div className="portfolio__container2">
+            <a className="portfolio__sites" href="https://github.com/Archy-A/">Адаптивный сайт</a>
+            <div className="portfolio__arrow"></div> 
+        </div>
+        <div className="portfolio__under"></div> 
+
+        <div className="portfolio__container2">
+            <a className="portfolio__sites" href="https://github.com/Archy-A/">Одностраничное приложение</a>
+            <div className="portfolio__arrow"></div> 
         </div>
 
       </div>

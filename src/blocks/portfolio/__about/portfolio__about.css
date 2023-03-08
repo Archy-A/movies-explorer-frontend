@@ -1,0 +1,26 @@
+.portfolio__about{
+    margin: 0;
+    padding: 0;
+    max-width: 600px;
+    min-height: 27px;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    white-space: pre-wrap;
+
+    /* border: 1px rgb(80, 235, 14) solid; */
+    }
+
+    @media screen and (max-width: 768px) {
+        .portfolio__about {
+            font-size: 20px;
+            line-height: 24px;
+        }
+      }
+
+    @media screen and (max-width: 320px) {
+        .portfolio__about {
+            font-size: 18px;
+            line-height: 22px;
+        }
+      }

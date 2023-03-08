@@ -10,7 +10,7 @@
     /* border: 1px rgb(14, 235, 224) solid; */
     }
 
-    @media screen and (max-width: 320px) {
+    @media screen and (max-width: 590px) {
         .tech {
             background: #202020;
           }

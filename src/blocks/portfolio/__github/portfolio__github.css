@@ -16,7 +16,7 @@
           }
     
 
-    @media screen and (max-width: 320px) {
+    @media screen and (max-width: 590px) {
         .portfolio__github {
             margin-bottom: 0;
             margin-top: 40px;

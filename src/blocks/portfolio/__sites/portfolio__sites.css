@@ -30,7 +30,7 @@
           }
       }
 
-    @media screen and (max-width: 320px) {
+    @media screen and (max-width: 590px) {
         .portfolio__sites {
             font-size: 18px;
             line-height: 28px;

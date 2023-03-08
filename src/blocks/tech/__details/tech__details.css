@@ -23,7 +23,7 @@
       }
 
 
-    @media screen and (max-width: 320px) {
+    @media screen and (max-width: 590px) {
         .tech__details {
             font-size: 11px;
             line-height: 16px;

@@ -17,7 +17,7 @@
         }
       }
 
-    @media screen and (max-width: 320px) {
+    @media screen and (max-width: 590px) {
         .proj__details {
             margin-top: 16px;
             font-size: 11px;

@@ -13,7 +13,7 @@
     /* border: 1px rgb(235, 14, 14) solid; */
     }
 
-    @media screen and (max-width: 320px) {
+    @media screen and (max-width: 590px) {
         .proj__front {
             font-size: 11px;
             line-height: 13px;

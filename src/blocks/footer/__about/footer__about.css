@@ -1,4 +1,4 @@
-.proj__about{
+.footer__about{
     margin: 0;
     padding: 0;
     max-width: 600px;
@@ -11,8 +11,15 @@
     /* border: 1px rgb(80, 235, 14) solid; */
     }
 
+    @media screen and (max-width: 768px) {
+        .footer__about {
+            font-size: 20px;
+            line-height: 24px;
+        }
+      }
+
     @media screen and (max-width: 590px) {
-        .proj__about {
+        .footer__about {
             font-size: 18px;
             line-height: 22px;
         }

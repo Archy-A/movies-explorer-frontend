@@ -4,9 +4,16 @@
     font-size: 20px;
     line-height: 24px;
     letter-spacing: -0.04em;
+    margin-left: 42px;
     
     /* border: 2px rgb(235, 220, 14) solid; */
     }
+
+    @media screen and (max-width: 768px) {
+        .proj__consume {
+          margin-left: 26px;
+        }
+      }
 
     @media screen and (max-width: 590px) {
         .proj__consume {
@@ -14,5 +21,6 @@
             line-height: 22px;
             letter-spacing: -0.04em;
             margin-top: 56px;
+            margin-left: 0;
           }
       }

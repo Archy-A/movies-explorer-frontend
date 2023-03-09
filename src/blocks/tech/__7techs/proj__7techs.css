@@ -6,13 +6,20 @@
     line-height: 58px;
     margin-bottom: 26px;
     text-align: center;
+    letter-spacing: -0.04em;
     
     /* border: 2px rgb(235, 220, 14) solid; */
     }
 
-    @media screen and (max-width: 590px) {
+    @media screen and (max-width: 768px) {
         .tech__7techs {
             margin-bottom: 22px;
+          }
+      }
+
+    @media screen and (max-width: 590px) {
+        .tech__7techs {
+            margin-bottom: 24px;
             font-size: 30px;
             line-height: 36px;
             text-align: center;

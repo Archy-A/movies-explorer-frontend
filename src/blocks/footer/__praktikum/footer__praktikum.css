@@ -1,0 +1,19 @@
+.footer__praktikum{
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 16px;
+    padding-right: 20px;
+
+    /* border: 1px rgb(80, 235, 14) solid; */
+    }
+
+
+    @media screen and (max-width: 590px) {
+        .footer__praktikum {
+            font-size: 12px;
+            line-height: 15px;
+            text-align: center;
+            padding-right: 0;
+        }
+      }

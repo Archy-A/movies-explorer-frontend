@@ -20,7 +20,7 @@
 @import url(../src/blocks/top/__learn/top__learn.css);
 
 @import url(../src/blocks/under/under.css);
-@import url(../src/blocks/under/under_black/under_black.css);
+@import url(../src/blocks/under/under_white/under_white.css);
 
 @import url(../src/blocks/proj/proj.css);
 @import url(../src/blocks/proj/__wrapper/proj__wrapper.css);
@@ -30,11 +30,13 @@
 @import url(../src/blocks/proj/__diplom/proj__diplom.css);
 @import url(../src/blocks/proj/__consume/proj__consume.css);
 @import url(../src/blocks/proj/__details/proj__details.css);
+@import url(../src/blocks/proj/__detailed/proj__detailed.css);
 @import url(../src/blocks/proj/__ribbon/proj__ribbon.css);
 @import url(../src/blocks/proj/__1nedelja/proj__1nedelja.css);
 @import url(../src/blocks/proj/__4nedeli/proj__4nedeli.css);
 @import url(../src/blocks/proj/__back/proj__back.css);
 @import url(../src/blocks/proj/__front/proj__front.css);
+@import url(../src/blocks/proj/__under/proj__under.css);
 
 @import url(../src/blocks/tech/tech.css);
 @import url(../src/blocks/tech/__wrapper/tech__wrapper.css);
@@ -45,6 +47,7 @@
 @import url(../src/blocks/tech/__details/tech__details.css);
 @import url(../src/blocks/tech/__icons/tech__icons.css);
 @import url(../src/blocks/tech/__elements/tech__elements.css);
+@import url(../src/blocks/tech/__under/tech__under.css);
 
 @import url(../src/blocks/portfolio/portfolio.css);
 @import url(../src/blocks/portfolio/__student/portfolio__student.css);
@@ -65,3 +68,13 @@
 @import url(../src/blocks/portfolio/__under/portfolio__under.css);
 @import url(../src/blocks/portfolio/__sites/portfolio__sites.css);
 @import url(../src/blocks/portfolio/__container2/portfolio__container2.css);
+
+@import url(../src/blocks/footer/footer.css);
+@import url(../src/blocks/footer/__wrapper/footer__wrapper.css);
+@import url(../src/blocks/footer/__column/footer__column.css);
+@import url(../src/blocks/footer/__container/footer__container.css);
+@import url(../src/blocks/footer/__yandex/footer__yandex.css);
+@import url(../src/blocks/footer/__under/footer__under.css);
+@import url(../src/blocks/footer/__year/footer__year.css);
+@import url(../src/blocks/footer/__praktikum/footer__praktikum.css);
+@import url(../src/blocks/footer/__github/footer__github.css);

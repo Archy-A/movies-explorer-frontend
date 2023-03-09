@@ -14,8 +14,8 @@
 
     @media screen and (max-width: 768px) {
         .portfolio__name {
-            font-size: 20px;
-            line-height: 24px;
+            font-size: 40px;
+            line-height: 40px;
             padding-bottom: 16px;
         }
       }

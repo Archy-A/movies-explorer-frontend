@@ -17,7 +17,7 @@
         max-width: 1280px;
         min-width: 320px;
         padding-top: 100px;
-        padding-bottom: 110px;
+        padding-bottom: 100px;
     
         /* border: 2px rgb(77, 14, 235) solid; */
       }
@@ -26,8 +26,8 @@
     @media screen and (max-width: 768px) {
       .tech__wrapper {
         padding-top: 90px;
-        padding-left: 60px;
-        padding-right: 60px;
+        padding-left: 50px;
+        padding-right: 50px;
         padding-bottom: 90px;
       }
     }
@@ -38,7 +38,7 @@
         min-width: 74px;
         padding-left: 18px;
         padding-right: 18px;
-        padding-top: 70px;
+        padding-top: 64px;
         padding-bottom: 70px;
         background: #202020;
       }

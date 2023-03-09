@@ -13,6 +13,7 @@
     @media screen and (max-width: 768px) {
         .proj__ribbon {
             margin-top: 93px; 
+            grid-template-columns: 1.05fr 4fr;
         }
       }
 

@@ -27,9 +27,14 @@
         .tech__details {
             font-size: 11px;
             line-height: 16px;
-            min-width: 292px;
-            margin-left: auto;
-            margin-right: auto;
+            width: 200px;
+            margin: 0;
+            padding: 0;
             margin-bottom: 50px;
+
+            position: relative;
+            left: -5px;
+
+            /* border: 1px rgb(235, 220, 14) solid; */
           }
       }

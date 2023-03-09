@@ -1,0 +1,16 @@
+.footer__under{
+    border-bottom: 1px solid #424242;
+    min-width: 150px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    /* border: 2px rgb(14, 235, 206) solid; */
+    }
+
+@media screen and (max-width: 590px) {
+        .footer__under {
+            margin-top: 21px;
+            margin-bottom: 30px;
+        }
+      }
+

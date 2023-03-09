@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Header from "./header/Header";
 import Landing from "./landing/Landing";
 import Movies from "./movies/Movies";
-// import Footer from "./footer/Footer";
+import Footer from "./footer/Footer";
 
 function App() {
   return (
@@ -25,7 +25,8 @@ function App() {
 
                 </Switch>
 
-                {/* <Footer /> */}
+                <Footer 
+                />
 
         {/* </div> */}
       </div>

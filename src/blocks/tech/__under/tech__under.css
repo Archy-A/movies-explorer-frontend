@@ -1,4 +1,4 @@
-.under{
+.tech__under{
     border-bottom: 1px solid #DADADA;
     min-width: 150px;
     margin-top: 23px;
@@ -7,14 +7,15 @@
     }
 
     @media screen and (max-width: 768px) {
-        .under {
+        .tech__under {
             margin-top: 21px;
         }
       }
 
     @media screen and (max-width: 590px) {
-        .under {
-            margin-top: 28px;
+        .tech__under {
+            margin-top: 22px;
+            border-bottom: 1px solid #000000;
         }
       }
 

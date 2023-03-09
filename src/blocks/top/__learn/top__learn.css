@@ -21,7 +21,7 @@
     background: #073042;
     justify-self: center;
     margin-top: 84px;
-    margin-bottom: 85px;
+    /* margin-bottom: 85px; */
     align-content: center;
     border: 1px rgb(255, 255, 255, 0.6) solid;
     }

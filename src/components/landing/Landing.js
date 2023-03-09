@@ -27,11 +27,11 @@ function Main({
         <div className="proj__wrapper">
           <div className="proj__colum">
             <p className="proj__about">О проекте</p>
-            <div className="under"></div>
+            <div className="proj__under"></div>
             <div className="proj__plan">
               <div className="proj__column">
                 <p className="proj__diplom">Дипломный проект включал 5 этапов</p>
-                <p className="proj__details">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
+                <p className="proj__detailed">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
               </div>
               <div className="proj__column">
                 <p className="proj__consume">На выполнение диплома ушло 5 недель</p>
@@ -52,7 +52,7 @@ function Main({
       <div className="tech__wrapper">
         <div className="tech__column">
           <p className="tech__about">Технологии</p>
-          <div className="under"></div>
+          <div className="tech__under"></div>
         </div>
         <div className="tech__description">
           <div className="tech__7techs">7 технологий</div>
@@ -80,7 +80,7 @@ function Main({
           <div className="portfolio__column1">
             <div className="portfolio__group">
               <div className="portfolio__name">Артур</div>
-              <div className="portfolio__speciality">Фронт-енд разработчик, 36 лет</div>
+              <div className="portfolio__speciality">Full-stack разработчик, 36 лет</div>
               <div className="portfolio__description">Я родился в Тюмени, закончил факультет информационных технологий ТюмГНГУ. 
                 Я люблю слушать музыку, а ещё увлекаюсь горными лыжами и командными видами спорта (футбол). Начал кодить с университета, но была пауза 
                 из-за работы в сфере геофизики. Работаю в компании «Geomage» - разработка ПО для обработки сейсмических данных.</div>
@@ -98,13 +98,13 @@ function Main({
             <a className="portfolio__sites" href="https://github.com/Archy-A/">Статичный сайт</a>
             <div className="portfolio__arrow"></div> 
         </div>
-        <div className="portfolio__under"></div> 
+        <div className="under_white"></div> 
 
         <div className="portfolio__container2">
             <a className="portfolio__sites" href="https://github.com/Archy-A/">Адаптивный сайт</a>
             <div className="portfolio__arrow"></div> 
         </div>
-        <div className="portfolio__under"></div> 
+        <div className="under_white"></div> 
 
         <div className="portfolio__container2">
             <a className="portfolio__sites" href="https://github.com/Archy-A/">Одностраничное приложение</a>

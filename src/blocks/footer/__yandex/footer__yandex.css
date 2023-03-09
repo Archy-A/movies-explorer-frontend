@@ -1,0 +1,17 @@
+.footer__yandex{
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #8B8B8B;
+
+    /* border: 1px rgb(80, 235, 14) solid; */
+    }
+
+    @media screen and (max-width: 590px) {
+        .footer__yandex {
+            font-size: 12px;
+            line-height: 15px;
+        }
+      }

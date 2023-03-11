@@ -17,3 +17,10 @@
       gap: 30px 30px;
     }
   }
+
+  @media screen and (max-width: 590px) {
+    .elements {
+      margin-top: 50px;
+      gap: 14px 30px;
+    }
+  }

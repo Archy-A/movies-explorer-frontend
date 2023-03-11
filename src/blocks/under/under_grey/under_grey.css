@@ -18,7 +18,9 @@
 
     @media screen and (max-width: 590px) {
         .under_grey {
-            margin-top: 28px;
+            margin-top: 3px;
+            margin-left: 14px;
+            margin-right: 14px;
         }
       }
 

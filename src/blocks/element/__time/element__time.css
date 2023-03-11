@@ -17,3 +17,11 @@
     margin-bottom: 13px;
   }
 }
+
+@media screen and (max-width: 590px) {
+  .element__time {
+    font-size: 10px;
+    line-height: 12px;
+    margin-bottom: 14px;
+  }
+}

@@ -23,3 +23,9 @@
       transition: .4s;
       border-radius: 50%;
   } 
+
+  @media screen and (max-width: 590px) {
+    .search__slider {
+      min-width: 20px;
+    }
+  }

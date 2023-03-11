@@ -25,9 +25,9 @@
 
 @media screen and (max-width: 590px) {
   .element__picture {
-    max-width: 339px;
-    min-width: 339px;
-    max-height: 190px;
-    min-height: 190px;
+    max-width: 300px;
+    min-width: 300px;
+    max-height: 168px;
+    min-height: 168px;
   }
 }

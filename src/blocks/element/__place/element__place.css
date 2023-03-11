@@ -18,3 +18,9 @@
     max-width: 339px;
   }
 }
+
+@media screen and (max-width: 590px) {
+  .element__place {
+    padding-bottom: 7px;
+  }
+}

@@ -21,3 +21,10 @@
     margin-left: 14px;
   }
 }
+
+@media screen and (max-width: 590px) {
+  .element__name {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

@@ -21,3 +21,12 @@
     margin-right: 10px;
     }
   
+    @media screen and (max-width: 590px) {
+        .search__input {
+            min-height: 44px;
+            max-height: 44px;
+            padding-left: 15.9px;
+            font-size: 12px;
+            line-height: 18px;
+        }
+      }

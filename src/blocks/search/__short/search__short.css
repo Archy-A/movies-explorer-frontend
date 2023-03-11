@@ -9,3 +9,11 @@
     /* border: 2px rgb(235, 220, 14) solid; */
     }
 
+    @media screen and (max-width: 590px) {
+        .search__short {
+            margin-left: 4px;
+            padding-left: 10px;
+            font-size: 11px;
+            line-height: 18px;
+        }
+      }

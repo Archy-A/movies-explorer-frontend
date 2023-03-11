@@ -19,3 +19,9 @@
 .element__like:hover {
   opacity: 0.5;
 }
+
+@media screen and (max-width: 590px) {
+  .element__like {
+    margin-right: 15px;
+  }
+}

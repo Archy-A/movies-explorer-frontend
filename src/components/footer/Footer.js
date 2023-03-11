@@ -12,7 +12,7 @@ function Footer({ loggedIn, email, setLoggedIn }) {
           <p className="footer__year">&#169; 2020</p>
           <div className="footer__column">
             <p className="footer__praktikum">Яндекс.Практикум</p>
-            <a className="footer__github" href="https://github.com/Archy-A/">Github</a>
+            <a className="footer__github" href="https://github.com/Archy-A/" target="_blank">Github</a>
           </div>
         </div>
       </div>

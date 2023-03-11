@@ -85,7 +85,7 @@ function Main({
                 Я люблю слушать музыку, а ещё увлекаюсь горными лыжами и командными видами спорта (футбол). Начал кодить с университета, но была пауза 
                 из-за работы в сфере геофизики. Работаю в компании «Geomage» - разработка ПО для обработки сейсмических данных.</div>
             </div>  
-            <a className="portfolio__github" href="https://github.com/Archy-A/">Github</a>
+            <a className="portfolio__github" href="https://github.com/Archy-A/" target="_blank">Github</a>
           </div>
           <div className="portfolio__column2">
             <div className="portfolio__pic"></div>
@@ -95,19 +95,19 @@ function Main({
         <div className="portfolio__portfolio">Портфолио</div>
 
         <div className="portfolio__container2">
-            <a className="portfolio__sites" href="https://github.com/Archy-A/">Статичный сайт</a>
+            <a className="portfolio__sites" href="https://github.com/Archy-A/" target="_blank">Статичный сайт</a>
             <div className="portfolio__arrow"></div> 
         </div>
         <div className="under_white"></div> 
 
         <div className="portfolio__container2">
-            <a className="portfolio__sites" href="https://github.com/Archy-A/">Адаптивный сайт</a>
+            <a className="portfolio__sites" href="https://github.com/Archy-A/" target="_blank">Адаптивный сайт</a>
             <div className="portfolio__arrow"></div> 
         </div>
         <div className="under_white"></div> 
 
         <div className="portfolio__container2">
-            <a className="portfolio__sites" href="https://github.com/Archy-A/">Одностраничное приложение</a>
+            <a className="portfolio__sites" href="https://github.com/Archy-A/" target="_blank">Одностраничное приложение</a>
             <div className="portfolio__arrow"></div> 
         </div>
 

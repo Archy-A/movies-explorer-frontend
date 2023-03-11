@@ -1,0 +1,41 @@
+.search__button {
+    all: unset;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: #ffffff;
+    margin: 0;
+    padding-top: 0;
+    min-width: 70px;
+    max-width: 70px;
+    min-height: 44px;
+    max-height: 44px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    background: #4285F4;
+    justify-self: center;
+    align-content: center;
+    }
+
+.search__button:hover {
+    opacity: 0.6;
+      }
+  
+      @media screen and (max-width: 320px) {
+        .search__button {
+          min-width: 54px;
+          min-height: 26px;
+          margin-top: 24px;
+          margin-bottom: 24px;
+          font-size: 10px;
+          line-height: 16px;
+        }
+      }

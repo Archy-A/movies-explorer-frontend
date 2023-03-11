@@ -20,6 +20,7 @@
 @import url(../src/blocks/top/__learn/top__learn.css);
 
 @import url(../src/blocks/under/under.css);
+@import url(../src/blocks/under/under_grey/under_grey.css);
 @import url(../src/blocks/under/under_white/under_white.css);
 
 @import url(../src/blocks/proj/proj.css);
@@ -78,3 +79,25 @@
 @import url(../src/blocks/footer/__year/footer__year.css);
 @import url(../src/blocks/footer/__praktikum/footer__praktikum.css);
 @import url(../src/blocks/footer/__github/footer__github.css);
+
+@import url(../src/blocks/search/search.css);
+@import url(../src/blocks/search/__wrapper/search__wrapper.css);
+@import url(../src/blocks/search/__input/search__input.css);
+@import url(../src/blocks/search/__container/search__container.css);
+@import url(../src/blocks/search/__button/search__button.css);
+@import url(../src/blocks/search/__switch/search__switch.css);
+@import url(../src/blocks/search/__checkbox/search__checkbox.css);
+@import url(../src/blocks/search/__slider/search__slider.css);
+@import url(../src/blocks/search/__switcher/search__switcher.css);
+@import url(../src/blocks/search/__short/search__short.css);
+
+@import url(../src/blocks/elements/elements.css);
+@import url(../src/blocks/element/element.css);
+@import url(../src/blocks/element/__wrapper/element__wrapper.css);
+@import url(../src/blocks/element/__time/element__time.css);
+@import url(../src/blocks/element/__container/element__container.css);
+@import url(../src/blocks/element/__like/element__like.css);
+@import url(../src/blocks/element/__like/_pressed/element__like_pressed.css);
+@import url(../src/blocks/element/__name/element__name.css);
+@import url(../src/blocks/element/__picture/element__picture.css);
+@import url(../src/blocks/element/__place/element__place.css);

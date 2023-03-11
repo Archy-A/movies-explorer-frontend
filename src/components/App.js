@@ -7,6 +7,7 @@ import Landing from "./landing/Landing";
 import Movies from "./movies/Movies";
 import Footer from "./footer/Footer";
 
+
 function App() {
   return (
     <div className="App">

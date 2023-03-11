@@ -1,0 +1,15 @@
+.element__picture {
+  margin: 0;
+  padding: 0;
+  max-width: 364px;
+  min-width: 364px;
+  max-height: 203px;
+  min-height: 203px;
+  box-sizing: border-box;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.element__picture:hover {
+  opacity: 0.7;
+}

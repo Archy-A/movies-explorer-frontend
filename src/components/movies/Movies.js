@@ -1,18 +1,26 @@
 import React, { useContext } from "react";
 
+import SearchForm from "../SearchForm/SearchForm";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
+
 function Movies({
   onEditProfile,
 }) {
 
   return (
     <main>
-      <section className="profile">
-        <div className="profile__info">
-          <div className="profile__group">
-            <h1 className="profile__name">компонент страницы с поиском по фильмам.</h1>
 
-          </div>
-        </div>
+      <section className="movies">
+
+      <SearchForm
+       />   
+
+    <div className="under_grey"></div>
+
+     <div className="element__wrapper">
+      <MoviesCardList
+       />
+     </div>
       </section>
 
     </main>

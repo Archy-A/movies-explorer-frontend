@@ -1,0 +1,10 @@
+.under_grey{
+    border-bottom: 1px solid #424242;
+    min-width: 150px;
+    margin: 0;
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-bottom: 10px;
+
+    /* border: 2px rgb(14, 235, 206) solid; */
+    }

@@ -68,7 +68,7 @@ function MoviesCard(props) {
       <p className="element__time">1ч 44м</p>
     </article>
 
-    <article key="1" className="element">
+    {/* <article key="1" className="element">
       <img className="element__picture" src={picKnigotvor} alt="Книготорговцы"></img>      <div className="element__place">
         <h2 className="element__name">Книготорговцы</h2>
         <div className="element__container">
@@ -96,7 +96,7 @@ function MoviesCard(props) {
         </div>
       </div>
       <p className="element__time">1ч 59м</p>
-    </article>
+    </article> */}
 
     {/* <article key="1" className="element">
       <img className="element__picture" src={picDjenis} alt="Дженис: Маленькая девочка грустит"></img>      <div className="element__place">

@@ -8,3 +8,17 @@
 
     /* border: 2px rgb(14, 235, 206) solid; */
     }
+
+    @media screen and (max-width: 768px) {
+        .under_grey {
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+      }
+
+    @media screen and (max-width: 590px) {
+        .under_grey {
+            margin-top: 28px;
+        }
+      }
+

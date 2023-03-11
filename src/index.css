@@ -101,3 +101,9 @@
 @import url(../src/blocks/element/__name/element__name.css);
 @import url(../src/blocks/element/__picture/element__picture.css);
 @import url(../src/blocks/element/__place/element__place.css);
+
+@import url(../src/blocks/movies/movies.css);
+
+@import url(../src/blocks/preloader/preloader.css);
+@import url(../src/blocks/preloader/__wrapper/preloader__wrapper.css);
+@import url(../src/blocks/preloader/__button/preloader__button.css);

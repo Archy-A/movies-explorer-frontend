@@ -6,8 +6,9 @@
     justify-self: center;
     max-width: 100%;
     box-sizing: content-box;
-    border-radius: 2%;
     overflow: hidden;
     position: relative;
     background: #222222;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
   }

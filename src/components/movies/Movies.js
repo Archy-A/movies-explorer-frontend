@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import Preloader from "../Preloader/Preloader.js";
 
 function Movies({
   onEditProfile,
@@ -9,20 +10,22 @@ function Movies({
 
   return (
     <main>
-
       <section className="movies">
 
-      <SearchForm
-       />   
+        <SearchForm
+        />   
 
-    <div className="under_grey"></div>
+        <div className="under_grey"></div>
 
-     <div className="element__wrapper">
-      <MoviesCardList
-       />
-     </div>
+        <div className="element__wrapper">
+          <MoviesCardList
+          />
+        </div>
+
+        <Preloader
+        />  
+
       </section>
-
     </main>
   );
 }

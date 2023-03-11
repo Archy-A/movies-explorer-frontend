@@ -1,4 +1,4 @@
-.search__button {
+.preloader__button {
     all: unset;
     font-family: 'Inter';
     font-style: normal;
@@ -9,10 +9,8 @@
     color: #ffffff;
     margin: 0;
     padding-top: 0;
-    min-width: 70px;
-    max-width: 70px;
-    min-height: 44px;
-    max-height: 44px;
+    min-height: 36px;
+    max-height: 36px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -20,17 +18,17 @@
     border: none;
     outline: none;
     border-radius: 3px;
-    background: #4285F4;
+    background:  #2F2F2F;
     justify-self: center;
     align-content: center;
     }
 
-.search__button:hover {
+.preloader__button:hover {
     opacity: 0.6;
       }
   
       @media screen and (max-width: 320px) {
-        .search__button {
+        .preloader__button {
           min-width: 54px;
           min-height: 26px;
           margin-top: 24px;

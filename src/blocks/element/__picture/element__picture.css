@@ -13,3 +13,21 @@
 .element__picture:hover {
   opacity: 0.7;
 }
+
+@media screen and (max-width: 768px) {
+  .element__picture {
+    max-width: 339px;
+    min-width: 339px;
+    max-height: 190px;
+    min-height: 190px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .element__picture {
+    max-width: 339px;
+    min-width: 339px;
+    max-height: 190px;
+    min-height: 190px;
+  }
+}

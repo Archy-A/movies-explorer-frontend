@@ -11,3 +11,9 @@
   margin-left: auto;
   margin-right: auto;
   }
+
+  @media screen and (max-width: 768px) {
+    .elements {
+      gap: 30px 30px;
+    }
+  }

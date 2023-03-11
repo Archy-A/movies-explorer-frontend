@@ -10,3 +10,11 @@
   padding-bottom: 11px;
   max-width: 364px;
 }
+
+@media screen and (max-width: 768px) {
+  .element__place {
+    padding-top: 14px;
+    padding-bottom: 10px;
+    max-width: 339px;
+  }
+}

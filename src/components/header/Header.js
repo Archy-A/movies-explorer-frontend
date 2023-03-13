@@ -18,7 +18,6 @@ function Header({ loggedIn, email, setLoggedIn }) {
     <header className={`header ${currentPath === '/' ? "" : "header_colored"} `}>
       <div className={`header__wrapper ${currentPath === '/' ? "" : "header__wrapper_colored" } `}>
 
-
           <Switch>
 
             <Route exact path="/">
@@ -35,7 +34,7 @@ function Header({ loggedIn, email, setLoggedIn }) {
               </div>
             </Route>
 
-            <Route exact path="/saved-movies">
+            <Route exact path={["/profile", "/movies", "/saved-movies"]}>
               <div className="header__logo"></div>
               <Link className="header__films" to="/movies">
                   Фильмы

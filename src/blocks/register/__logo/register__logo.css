@@ -1,0 +1,22 @@
+.register__logo {
+  box-sizing: content-box;
+  margin: 0;
+  padding-top: 0;
+  width: 38px;
+  height: 38px;
+  background-image: url("../../../images/logo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* transform: scale(1.08); */
+  margin-bottom: 40px;
+
+  /* border: 1px rgb(235, 14, 14) solid; */
+  }
+
+@media screen and (max-width: 768px) {
+  .register__logo {
+      /* margin-left: 30px; */
+      margin-top: 18px;
+      margin-bottom: 18px;
+    }
+  }

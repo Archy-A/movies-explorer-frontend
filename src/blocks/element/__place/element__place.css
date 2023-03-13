@@ -14,13 +14,13 @@
 @media screen and (max-width: 768px) {
   .element__place {
     padding-top: 14px;
-    padding-bottom: 10px;
+    padding-bottom: 16px;
     max-width: 339px;
   }
 }
 
 @media screen and (max-width: 590px) {
   .element__place {
-    padding-bottom: 7px;
+    padding-bottom: 13px;
   }
 }

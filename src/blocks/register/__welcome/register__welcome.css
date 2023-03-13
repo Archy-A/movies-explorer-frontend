@@ -1,0 +1,14 @@
+.register__welcome {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
+    margin-bottom: 40px;
+
+      /* border: 1px rgb(235, 14, 14) solid; */
+  }
+  

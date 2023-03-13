@@ -34,7 +34,13 @@
     opacity: 0.6;
       }
 
-      @media screen and (max-width: 320px) {
+      @media screen and (max-width: 768px) {
+        .header__films {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width: 590px) {
         .header__films {
             font-size: 10px;
             margin-right: 14px;

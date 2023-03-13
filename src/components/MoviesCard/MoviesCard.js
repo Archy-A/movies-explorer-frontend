@@ -64,7 +64,7 @@ function MoviesCard(props) {
       <p className="element__time">1ч 47м</p>
     </article>
 
-    <article key="3" className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
+    {/* <article key="3" className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
     >
       <img className="element__picture" src={picBenksi} alt="В погоне за Бенкси"></img>      <div className="element__place">
         <h2 className="element__name">В погоне за Бенкси</h2>
@@ -73,7 +73,7 @@ function MoviesCard(props) {
         </div>
       </div>
       <p className="element__time">1ч 42м</p>
-    </article>
+    </article> */}
 
     {/* <article key="4" className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
     >

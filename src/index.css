@@ -119,3 +119,17 @@
 @import url(../src/blocks/preloader/preloader.css);
 @import url(../src/blocks/preloader/__wrapper/preloader__wrapper.css);
 @import url(../src/blocks/preloader/__button/preloader__button.css);
+
+@import url(../src/blocks/register/register.css);
+@import url(../src/blocks/register/__container/register__container.css);
+@import url(../src/blocks/register/__wrapper/register__wrapper.css);
+@import url(../src/blocks/register/__email/register__email.css);
+@import url(../src/blocks/register/__line/register__line.css);
+@import url(../src/blocks/register/__logo/register__logo.css);
+@import url(../src/blocks/register/__password/register__password.css);
+@import url(../src/blocks/register/__redirect/register__redirect.css);
+@import url(../src/blocks/register/__register/register__register.css);
+@import url(../src/blocks/register/__title/register__title.css);
+@import url(../src/blocks/register/__form/register__form.css);
+@import url(../src/blocks/register/__welcome/register__welcome.css);
+@import url(../src/blocks/register/__name/register__name.css);

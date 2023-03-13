@@ -33,6 +33,12 @@
     opacity: 0.6;
       }
 
+      @media screen and (max-width: 768px) {
+        .header__films_saved {
+          display: none;
+        }
+      }
+
       @media screen and (max-width: 320px) {
         .header__films_saved {
             font-size: 10px;

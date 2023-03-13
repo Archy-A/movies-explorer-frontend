@@ -2,9 +2,8 @@ import React, { useContext } from "react";
 
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import Preloader from "../Preloader/Preloader.js";
 
-function Movies({
+function SavedMovies({
   onEditProfile,
 }) {
 
@@ -23,14 +22,11 @@ function Movies({
           />
         </div>
 
-        <div className="preloader__wrapper">
-          <Preloader
-          />  
-        </div>
-      
+        <div className="movies__saved"></div>
+
       </section>
     </main>
   );
 }
 
-export default Movies;
+export default SavedMovies;

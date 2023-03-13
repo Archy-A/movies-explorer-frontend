@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Header from "./header/Header";
 import Landing from "./landing/Landing";
 import Movies from "./movies/Movies";
+import SavedMovies from "./SavedMovies/SavedMovies";
 import Footer from "./footer/Footer";
 
 
@@ -22,6 +23,9 @@ function App() {
                   />
 
                   <Route exact path="/movies" component={Movies}
+                  />
+
+                  <Route exact path="/saved-movies" component={SavedMovies}
                   />
 
                 </Switch>

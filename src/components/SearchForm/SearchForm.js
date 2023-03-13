@@ -1,11 +1,9 @@
 import React from "react";
-import { useHistory, Route, Switch, Link } from "react-router-dom";
 
 function SearchForm({ loggedIn, email, setLoggedIn }) {
  
   return (
     <div className="search">
-      <div className="search__wrapper">
         <div className="search__container">
           <input className="search__input" placeholder="Фильм"></input>
           <button className="search__button">Найти</button>
@@ -20,7 +18,6 @@ function SearchForm({ loggedIn, email, setLoggedIn }) {
           <p className="search__short">Короткометражки</p>
         </div>
         <div className="search__under"></div>
-      </div>
     </div>
   );
 }

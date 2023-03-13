@@ -4,11 +4,18 @@
 @import url(../src/blocks/wrapper/wrapper.css);
 
 @import url(../src/blocks/header/header.css);
+@import url(../src/blocks/header/__films/header__films.css);
+@import url(../src/blocks/header/__films_saved/header__films_saved.css);
 @import url(../src/blocks/header/__wrapper/header__wrapper.css);
 @import url(../src/blocks/header/__logo/header__logo.css);
 @import url(../src/blocks/header/__signup/header__signup.css);
 @import url(../src/blocks/header/__container/header__container.css);
 @import url(../src/blocks/header/__login/header__login.css);
+@import url(../src/blocks/header/__profile/header__profile.css);
+@import url(../src/blocks/header/__icon/header__icon.css);
+@import url(../src/blocks/header/__frame/__frame.css);
+@import url(../src/blocks/header/_colored/header_colored.css);
+@import url(../src/blocks/header/__wrapper_colored/header__wrapper_colored.css);
 
 @import url(../src/blocks/top/top.css);
 @import url(../src/blocks/top/__wrapper/top__wrapper.css);
@@ -98,11 +105,16 @@
 @import url(../src/blocks/element/__container/element__container.css);
 @import url(../src/blocks/element/__like/element__like.css);
 @import url(../src/blocks/element/__like/_pressed/element__like_pressed.css);
+@import url(../src/blocks/element/__remove/element__remove.css);
 @import url(../src/blocks/element/__name/element__name.css);
 @import url(../src/blocks/element/__picture/element__picture.css);
 @import url(../src/blocks/element/__place/element__place.css);
+@import url(../src/blocks/element/_saved/element_saved.css);
+@import url(../src/blocks/element/__remove/__remove_showed/element__remove_showed.css);
 
 @import url(../src/blocks/movies/movies.css);
+@import url(../src/blocks/movies/__saved/movies__saved.css);
+@import url(../src/blocks/movies/__wrapper/movies__wrapper.css);
 
 @import url(../src/blocks/preloader/preloader.css);
 @import url(../src/blocks/preloader/__wrapper/preloader__wrapper.css);

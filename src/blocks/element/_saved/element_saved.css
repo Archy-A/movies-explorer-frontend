@@ -1,4 +1,4 @@
-.element {
+.element_saved {
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,6 +11,12 @@
     background: #222222;
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
     border-radius: 6px;
+
+    /* border: 1px rgb(235, 14, 14) solid; */
   }
 
-  
+  .element_saved:hover .element__remove {
+    display: block;
+
+    /* border: 1px rgb(14, 235, 110) solid; */
+  }

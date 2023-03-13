@@ -2,9 +2,7 @@
     border-bottom: 1px solid #424242;
     min-width: 150px;
     margin: 0;
-    margin-left: 70px;
-    margin-right: 70px;
-    margin-bottom: 10px;
+    margin-bottom: 1px;
 
     /* border: 2px rgb(14, 235, 206) solid; */
     }
@@ -18,9 +16,9 @@
 
     @media screen and (max-width: 590px) {
         .under_grey {
-            margin-top: 3px;
-            margin-left: 14px;
-            margin-right: 14px;
+            margin-top: 4px;
+            margin-left: 0;
+            margin-right: 0;
         }
       }
 

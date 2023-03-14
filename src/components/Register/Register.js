@@ -13,7 +13,7 @@ function Register({
   }
 
   return (
-    <main>
+    <>
       <section className="register">
         <div className="register__wrapper">
 
@@ -30,68 +30,73 @@ function Register({
             >
               <p className="register__title">Имя</p>
 
-              <input
-                id="register__email"
-                type="text"
-                value="Виталий"
-                // onChange={props.handleOnChange}
-                name="emailReg"
-                placeholder="Name"
-                className="register__name"
-                minLength="2"
-                maxLength="40"
-                required
-              ></input>
-
-              <div className="register__line" />
+              <div className="register__box">
+                <input
+                  id="register__email"
+                  type="text"
+                  //value="Виталий"
+                  // onChange={props.handleOnChange}
+                  name="emailReg"
+                  placeholder=""
+                  className="register__name"
+                  minLength="2"
+                  maxLength="40"
+                  required
+                ></input>
+                <div className="register__line" />
+              </div>
 
               <p className="register__title">E-mail</p>
 
-              <input
-                id="register__email"
-                type="text"
-                value="11111"
-                // onChange={props.handleOnChange}
-                name="emailReg"
-                placeholder="Email"
-                className="register__email"
-                minLength="2"
-                maxLength="40"
-                required
-              ></input>
+              <div className="register__box">
+                <input
+                  id="register__email"
+                  type="text"
+                  //value="pochta@yandex.ru"
+                  // onChange={props.handleOnChange}
+                  name="emailReg"
+                  placeholder=""
+                  className="register__email"
+                  minLength="2"
+                  maxLength="40"
+                  required
+                ></input>
+                <div className="register__line" />
+              </div>
 
               <p className="register__title">Пароль</p>
 
-              <input
-                id="login__password"
-                type="password"
-                value= "pochta@yandex.ru"
-                onChange={onSubmit}
-                name="passwordReg"
-                placeholder="Password"
-                className="register__password"
-                minLength="2"
-                maxLength="200"
-                required
-              ></input>
-
-              <div className="register__line" />
-
+              <div className="register__box">
+                <input
+                  id="login__password"
+                  type="password"
+                  //value= "pochta@yandex.ru"
+                  onChange={onSubmit}
+                  name="passwordReg"
+                  placeholder=""
+                  className="register__password"
+                  minLength="2"
+                  maxLength="200"
+                  required
+                ></input>
+                <div className="register__line" />
+              </div>
               
               <button type="submit" className="register__register">
                 Зарегистрироваться
               </button>
 
               <div className="register__framer">
+                 Уже зарегистрированы? 
                 <NavLink to="/sign-in" className="register__redirect">
-                  Уже зарегистрированы? Войти
+                  Войти
                 </NavLink>
               </div>
             </form>
 
        </div>
       </section>
-    </main>
+    </>
   );
 }
 

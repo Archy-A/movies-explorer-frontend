@@ -18,3 +18,7 @@
     color: #CCCCCC;
     opacity: 1; /* Firefox */
   }
+
+  .register__name:invalid {
+    color: #EE3465;
+  }

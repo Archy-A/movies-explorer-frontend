@@ -1,6 +1,7 @@
 @import url(../src/vendor/normalize.css);
 @import url(../src/vendor/fonts/fonts.css);
 @import url(../src/blocks/root/root.css);
+@import url(../src/blocks/app/app.css);
 @import url(../src/blocks/wrapper/wrapper.css);
 
 @import url(../src/blocks/header/header.css);
@@ -133,3 +134,5 @@
 @import url(../src/blocks/register/__form/register__form.css);
 @import url(../src/blocks/register/__welcome/register__welcome.css);
 @import url(../src/blocks/register/__name/register__name.css);
+@import url(../src/blocks/register/__framer/register__framer.css);
+@import url(../src/blocks/register/__box/register__box.css);

@@ -18,22 +18,23 @@
            
         /* border: 1px rgb(235, 14, 14) solid; */
       }
-
+/* 
     html {
         min-height: 100%;
         overflow-y: scroll;
     }    
     body {
          min-height: 100%;
-    }
+    } */
     
     
     @media screen and (max-width: 768px) {
       .register__wrapper {
+        padding-top: 213px;
         max-width: 768px;
         min-width: 74px;
-        padding-left: 30px;
-        padding-right: 30px;
+        padding-left: 186px;
+        padding-right: 186px;
       }
     }
 
@@ -42,8 +43,9 @@
         max-width: 320px;
         min-width: 74px;
         min-height: 74px;
-        padding-left: 14px;
-        padding-right: 14px;
-        padding-top: 81px;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 56px;
+        /* height: 100vh; */
       }
     }

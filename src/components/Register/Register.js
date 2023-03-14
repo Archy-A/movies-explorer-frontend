@@ -83,7 +83,9 @@ function Register({
               </div>
               
               <button type="submit" className="register__register">
-                Зарегистрироваться
+                <p className="register__label">
+                  Зарегистрироваться
+                </p>
               </button>
 
               <div className="register__framer">

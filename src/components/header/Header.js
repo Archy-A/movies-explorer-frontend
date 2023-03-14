@@ -15,10 +15,10 @@ function Header({ loggedIn, email, setLoggedIn }) {
   }, [url]);
  
   return (
-    <header className={`header ${currentPath === '/' ? "" : "header_colored"} `}>
-      <div className={`header__wrapper ${currentPath === '/' ? "" : "header__wrapper_colored" } `}>
-
-          <Switch>
+    <Switch>
+     <Route exact path={["/", "/profile", "/movies", "/saved-movies"]}>
+        <header className={`header ${currentPath === '/' ? "" : "header_colored"} `}>
+          <div className={`header__wrapper ${currentPath === '/' ? "" : "header__wrapper_colored" } `}>
 
             <Route exact path="/">
               <div className="header__logo"></div>
@@ -52,11 +52,12 @@ function Header({ loggedIn, email, setLoggedIn }) {
                 </Link>
               </div> 
             </Route>
-
-          </Switch>
+     
 
       </div>
     </header>
+    </Route>
+    </Switch>
   );
 }
 

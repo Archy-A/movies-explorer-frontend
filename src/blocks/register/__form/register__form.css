@@ -14,5 +14,9 @@
   justify-self: center;
   align-self: center;
   display: flex;
+  align-items: center;
+  align-content: center;
+
+   border: 2px rgb(235, 14, 14) solid;
 }
 

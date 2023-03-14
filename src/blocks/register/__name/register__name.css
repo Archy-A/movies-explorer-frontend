@@ -22,3 +22,12 @@
   .register__name:invalid {
     color: #EE3465;
   }
+
+  @media screen and (max-width: 590px) {
+    .register__name {
+        margin-left: auto;
+        margin-right: auto;
+        width: 260px;
+        height: 17px;
+      }
+    }

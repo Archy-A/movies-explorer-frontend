@@ -41,8 +41,7 @@ function App() {
                   <Route exact path="/signin" component={Login}
                   />
 
-                  <Route exact path="/404" component={NotFound}
-                  />
+                  <Route path='*' component={NotFound}/>
 
                 </Switch>
 

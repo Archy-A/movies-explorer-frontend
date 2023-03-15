@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import { NavLink, useHistory  } from "react-router-dom";
 
 import SearchForm from "../SearchForm/SearchForm";
 
@@ -12,6 +11,9 @@ function NotFound({
     console.log('ssssss')
   }
 
+  let history = useHistory()
+
+
   return (
     <>
       <section className="notfound">
@@ -21,10 +23,18 @@ function NotFound({
               <p className="notfound__title">Страница не найдена</p>
             
               <div className="notfound__framer">
+                <button
+                    className="notfound__redirect" onClick={() => history.goBack()}
+                  >
+                    Назад
+                </button>
+              </div> 
+
+              {/* <div className="notfound__framer">
                 <NavLink to="/" className="notfound__redirect">
                   Назад
                 </NavLink>
-              </div>
+              </div> */}
 
        </div>
       </section>

@@ -1,4 +1,6 @@
 .notfound__redirect{
+    all: unset;
+    cursor: pointer;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;

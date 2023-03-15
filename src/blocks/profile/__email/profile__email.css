@@ -24,13 +24,4 @@
     color: #EE3465;
   }
 
-  @media screen and (max-width: 590px) {
-    .profile__email {
-        margin-left: auto;
-        margin-right: auto;
-        width: 260px;
-        height: 17px;
-        margin-top: 0px; 
-      }
-    }
   

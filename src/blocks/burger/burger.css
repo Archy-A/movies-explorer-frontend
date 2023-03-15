@@ -4,13 +4,14 @@
     z-index: 50;
     align-items: center;
     justify-content: flex-end;
-    width: 24px;
-    height: 18px;
-    margin-top: 22px;
+    width: 28px;
+    height: 22px;
+    margin-top: 25px;
+    margin-right: 8px;
 }
 
 .burger span {
-    height: 2px;
+    height: 3px;
     width: 100%;
     transform: scale(1);
     background-color: azure;
@@ -19,7 +20,7 @@
 .burger::before, .burger::after {
     content: '';
     position: absolute;
-    height: 2px;
+    height: 3px;
     width: 100%;
     background-color: azure;
     transition: all 0.3s ease 0s;
@@ -34,11 +35,15 @@
 .burger.active::before {
     top: 45%;
     transform: rotate(-45deg) translate(0, -50%);
+    left: 17px;
+    width: 22px;
 }
 
 .burger.active::after {
     bottom: 50%;
     transform: rotate(45deg) translate(0, 50%);
+    left: 17px;
+    width: 22px;
 }
 
 @media screen and (max-width: 768px) {

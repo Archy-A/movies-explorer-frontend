@@ -80,7 +80,7 @@ function Header({ loggedIn, email, setLoggedIn }) {
                   </div>
                 </div>
 
-                <div className="burger" onClick={handleToggle}>
+                <div className={`burger ${isActive ? "" : "active"}`} onClick={handleToggle}>
                   <span></span>
                 </div>
 

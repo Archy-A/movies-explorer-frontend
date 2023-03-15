@@ -172,3 +172,10 @@
 @import url(../src/blocks/profile/__box/profile__box.css);
 @import url(../src/blocks/profile/__label/profile__label.css);
 @import url(../src/blocks/profile/__out/profile__out.css);
+
+@import url(../src/blocks/notfound/notfound.css);
+@import url(../src/blocks/notfound/__framer/notfound__framer.css);
+@import url(../src/blocks/notfound/__redirect/notfound__redirect.css);
+@import url(../src/blocks/notfound/__title/notfound__title.css);
+@import url(../src/blocks/notfound/__wrapper/notfound__wrapper.css);
+@import url(../src/blocks/notfound/__404/notfound__404.css);

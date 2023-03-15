@@ -10,6 +10,7 @@ import Footer from "./footer/Footer";
 import Register from "./Register/Register";
 import Login from "./Login/Login";
 import Profile from "./Profile/Profile";
+import NotFound from "./NotFound/NotFound";
 
 
 function App() {
@@ -38,6 +39,9 @@ function App() {
                   />
 
                   <Route exact path="/signin" component={Login}
+                  />
+
+                  <Route exact path="/404" component={NotFound}
                   />
 
                 </Switch>

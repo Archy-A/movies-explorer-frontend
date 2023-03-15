@@ -1,4 +1,4 @@
-.register__redirect{
+.login__redirect{
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -12,13 +12,13 @@
     text-decoration: none;
   }
 
-  .register__redirect:hover {
+  .login__redirect:hover {
     opacity: 0.8;
     cursor: pointer;
   }
   
   @media screen and (max-width: 590px) {
-    .register__redirect {
+    .login__redirect {
       font-weight: 400;
       font-size: 12px;
       line-height: 15px;

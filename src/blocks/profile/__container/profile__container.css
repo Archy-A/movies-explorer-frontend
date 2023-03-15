@@ -1,0 +1,20 @@
+.profile__container {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;
+        align-items: center;
+        margin-top: 0px;
+        background-color: #202020;
+        margin-bottom: 15px;
+    
+        /* border: 1px rgb(235, 14, 14) solid; */
+      }
+  
+      @media screen and (max-width: 590px) {
+        .profile__container {
+           margin-bottom: 44px;
+        }
+      }

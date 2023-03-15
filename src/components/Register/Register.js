@@ -1,15 +1,18 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import SearchForm from "../SearchForm/SearchForm";
 
 function Register({
   onEditProfile,
 }) {
+  
+  let history = useHistory()
 
-  function onSubmit() {
-    console.log('ssssss')
+  function mySubmitFunction(e) {
+    e.preventDefault();
+    return false;
   }
 
   return (
@@ -23,7 +26,7 @@ function Register({
         </div>
 
         <form
-              onSubmit={onSubmit}
+              onSubmit={mySubmitFunction}
               className="register_form"
               method="post"
               name="login"
@@ -71,7 +74,7 @@ function Register({
                   id="login__password"
                   type="password"
                   //value= "pochta@yandex.ru"
-                  onChange={onSubmit}
+                  onChange="event.preventDefault()"
                   name="passwordReg"
                   placeholder=""
                   className="register__password"
@@ -90,7 +93,7 @@ function Register({
 
               <div className="register__framer">
                  Уже зарегистрированы? 
-                <NavLink to="/sign-in" className="register__redirect">
+                <NavLink to="/signin" className="register__redirect">
                   Войти
                 </NavLink>
               </div>

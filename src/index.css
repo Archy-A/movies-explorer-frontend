@@ -17,6 +17,10 @@
 @import url(../src/blocks/header/__frame/__frame.css);
 @import url(../src/blocks/header/_colored/header_colored.css);
 @import url(../src/blocks/header/__wrapper_colored/header__wrapper_colored.css);
+@import url(../src/blocks/header/__nav/header__nav.css);
+@import url(../src/blocks/header/__nav/_layered/header__nav_layered.css);
+@import url(../src/blocks/header/__nav/header__nav-opened.css);
+@import url(../src/blocks/header/__nav/_open/header_open.css);
 
 @import url(../src/blocks/top/top.css);
 @import url(../src/blocks/top/__wrapper/top__wrapper.css);
@@ -179,3 +183,6 @@
 @import url(../src/blocks/notfound/__title/notfound__title.css);
 @import url(../src/blocks/notfound/__wrapper/notfound__wrapper.css);
 @import url(../src/blocks/notfound/__404/notfound__404.css);
+
+@import url(../src/blocks/burger/burger.css);
+

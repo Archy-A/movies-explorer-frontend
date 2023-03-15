@@ -1,0 +1,23 @@
+.header__nav {
+    margin: 0;
+    padding: 0;
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 248px;
+    right: 0;
+    z-index: 50;
+    overflow-y: auto;
+    padding: 50px 40px;
+    background-color: #202020;
+    /* animation: burgerAmination 0.4s; */
+
+
+    /* border: 1px rgb(235, 14, 184) solid; */
+    }
+  
+    

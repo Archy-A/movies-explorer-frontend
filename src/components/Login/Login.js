@@ -8,8 +8,9 @@ function Login({
   onEditProfile,
 }) {
 
-  function onSubmit() {
-    console.log('ssssss')
+  function mySubmitFunction(e) {
+    e.preventDefault();
+    return false;
   }
 
   return (
@@ -23,7 +24,7 @@ function Login({
         </div>
 
         <form
-              onSubmit={onSubmit}
+              onSubmit={mySubmitFunction}
               className="login_form"
               method="post"
               name="login"
@@ -54,7 +55,7 @@ function Login({
                   id="login__password"
                   type="password"
                   //value= "pochta@yandex.ru"
-                  onChange={onSubmit}
+                  // onChange={onSubmit}
                   name="passwordReg"
                   placeholder=""
                   className="register__password"
@@ -73,7 +74,7 @@ function Login({
 
               <div className="login__framer">
                  Еще не зарегистрированы? 
-                <NavLink to="/sign-in" className="login__redirect">
+                <NavLink to="/signup" className="login__redirect">
                   Регистрация
                 </NavLink>
               </div>

@@ -1,8 +1,10 @@
 import React from "react";
-import { useHistory, Route, Switch, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useLocation, Route, Switch, Link } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
 
 function Header({ loggedIn, email, setLoggedIn }) {
+
+  const location = useLocation();
 
   function getCurrentURL () {
     return window.location.pathname
@@ -10,10 +12,15 @@ function Header({ loggedIn, email, setLoggedIn }) {
   const url = getCurrentURL()
   const [currentPath, setCurrentPath] = useState(url);
 
+  const [isActive, setActive] = useState("false");
+  const handleToggle = () => {
+    setActive(!isActive);
+  };
+
   useEffect(() => {
     setCurrentPath(url)
-  }, [url]);
- 
+  }, [url, currentPath, location]);
+
   return (
     <Switch>
      <Route exact path={["/", "/profile", "/movies", "/saved-movies"]}>
@@ -21,7 +28,12 @@ function Header({ loggedIn, email, setLoggedIn }) {
           <div className={`header__wrapper ${currentPath === '/' ? "" : "header__wrapper_colored" } `}>
 
             <Route exact path="/">
-              <div className="header__logo"></div>
+
+              <div className="header__logo">
+              </div> 
+
+
+
               <div className="header__container">
                 <Link className="header__signup" to="/signup">
                   Регистрация
@@ -35,22 +47,43 @@ function Header({ loggedIn, email, setLoggedIn }) {
             </Route>
 
             <Route exact path={["/profile", "/movies", "/saved-movies"]}>
-              <div className="header__logo"></div>
-              <Link className="header__films" to="/movies">
-                  Фильмы
-              </Link>
 
-              <Link className="header__films_saved" to="/saved-movies">
-                 Сохранённые фильмы
+              <div className="header__logo">
+              <Link className="header__films_saved" to="/">
+                 Главнаяerfere
               </Link>
-              <div className="header__container">
-                <Link className="header__profile" to="/profile">
-                  Аккаунт
-                  <div className="header__frame" >
-                    <div className="header__icon" ></div>
-                  </div>
+              </div>
+
+
+                <Link className="header__films" to="/movies">
+                  Фильмы
                 </Link>
-              </div> 
+
+                <Link className="header__films_saved" to="/saved-movies">
+                  Сохранённые фильмы
+                </Link>
+
+                <div className="header__container">
+                  <Link className="header__profile" to="/profile">
+                    Аккаунт
+                    <div className="header__frame" >
+                      <div className="header__icon" ></div>
+                    </div>
+                  </Link>
+                </div> 
+
+                <div className={`header__nav_layered ${isActive ? "" : "header__open"}`}>
+                <div className={`header__nav ${isActive ? "" : "header__nav-opened"}`}>
+                      <Link>Фильмы</Link>
+                      <Link>Сохранённые фильмы</Link>
+                      <Link>Аккаунт</Link>
+                  </div>
+                </div>
+
+                <div className="burger" onClick={handleToggle}>
+                  <span></span>
+                </div>
+
             </Route>
      
 

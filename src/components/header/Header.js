@@ -44,8 +44,9 @@ function Header({ loggedIn, email, setLoggedIn }) {
   }
 
   useEffect(() => {
-    setCurrentPath(url)
-  }, [url, currentPath, location]);
+    setCurrentPath(url);
+    document.body.style.overflow = !isActive? "hidden" : "scroll";
+  }, [url, currentPath, location, isActive]);
 
   return (
     <Switch>
@@ -96,11 +97,11 @@ function Header({ loggedIn, email, setLoggedIn }) {
                   </Link>
                 </div> 
 
-                {/* <div className={`header__nav_layered ${isActive ? "" : "header__open"}`}>
-                  <div className={`header__nav ${isActive ? "" : "header__nav-opened"}`}> */}
+                <div className={`header__nav_layered ${isActive ? "" : "header__open"}`}>
+                  <div className={`header__nav ${isActive ? "" : "header__nav-opened"}`}>
 
-                <div className="header__nav_layered header__open">
-                  <div className="header__nav header__nav-opened">
+                {/* <div className="header__nav_layered header__open"> */}
+                  {/* <div className="header__nav header__nav-opened"> */}
 
                     <div className="burger__container">
 
@@ -111,7 +112,6 @@ function Header({ loggedIn, email, setLoggedIn }) {
                       </div>
 
                       <div className="burger__account">
-                        <div></div>
                         <button className={`burger__profile ${currentPath === '/profile' ? "burger__profile_active" : ""} `} onClick={handleBurgerGoProfile}>Аккаунт</button>
                         <div className="burger__frame2" >
                           <div className="burger__icon" onClick={handleBurgerGoProfile}></div>

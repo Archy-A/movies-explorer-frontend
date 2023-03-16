@@ -1,4 +1,5 @@
 .burger__account {
+    all: unset;
     margin: 0;
     padding: 0;
     display: flex;
@@ -6,6 +7,9 @@
     padding-top: 0;
     height: 30px;
     justify-content: center;
+    cursor: pointer;
+    border: none;
+    outline: none;
 
     /* border: 1px rgb(235, 14, 184) solid; */
     }

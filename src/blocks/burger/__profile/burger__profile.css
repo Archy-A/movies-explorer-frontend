@@ -9,19 +9,19 @@
     color: #ffffff;
     margin: 0;
     padding-top: 0;
-    min-width: 100px;
+    /* min-width: 100px; */
     cursor: pointer;
     border: none;
     outline: none;
-    border-radius: 2px;
-    margin-bottom: 29px;
+    /* border-radius: 2px; */
+    /* margin-bottom: 29px; */
     padding-top: 13px;
 
     /* border: 1px rgb(69, 14, 235) solid; */
     }
 
 .burger__profile_active {
-      border-bottom: #ffffff 3px solid;
+      border-bottom: #ffffff 2px solid;
     }
 
 .burger__profile:hover {

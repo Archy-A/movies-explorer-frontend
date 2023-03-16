@@ -8,17 +8,13 @@
     text-align: right;
     color: #ffffff;
     margin: 0;
-    padding-top: 3px;
     min-width: 54px;
     cursor: pointer;
     border: none;
     outline: none;
     border-radius: 2px;
-    margin-bottom: 21px;
-    min-height: 30px;
-    max-height: 30px;
-
-    /* margin-left: 183px; */
+    margin-bottom: 22px;
+    margin-top: 5px;
 
 
     /* border: 1px rgb(14, 235, 51) solid; */
@@ -29,7 +25,7 @@
       }
 
 .burger__films_active {
-        border-bottom: #ffffff 0.125em solid;
+        border-bottom: #ffffff 2px solid;
       }
 
       @media screen and (max-width: 320px) {

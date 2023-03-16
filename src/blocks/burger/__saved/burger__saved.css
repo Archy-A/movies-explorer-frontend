@@ -8,13 +8,13 @@
     text-align: right;
     color: #ffffff;
     margin: 0;
-    padding-top: 2px;
     min-width: 54px;
     cursor: pointer;
     border: none;
     outline: none;
     border-radius: 2px;
     margin-bottom: 29px;
+    margin-top: 2px;
 
     /* border: 1px rgb(14, 235, 51) solid; */
     }
@@ -24,7 +24,7 @@
       }
 
 .burger__saved_active {
-        border-bottom: #ffffff 0.125em solid;
+        border-bottom: #ffffff 2px solid;
       }
 
 

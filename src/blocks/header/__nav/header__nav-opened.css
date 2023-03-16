@@ -6,6 +6,7 @@
     justify-content: center;
     position: fixed;
     height: 100%;
+    overflow-y: hidden;
     /* width: 520px; */
     /* overflow-y: hidden;
     top: 0;

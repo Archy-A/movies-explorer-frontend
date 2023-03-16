@@ -96,11 +96,11 @@ function Header({ loggedIn, email, setLoggedIn }) {
                   </Link>
                 </div> 
 
-                <div className={`header__nav_layered ${isActive ? "" : "header__open"}`}>
-                  <div className={`header__nav ${isActive ? "" : "header__nav-opened"}`}>
+                {/* <div className={`header__nav_layered ${isActive ? "" : "header__open"}`}>
+                  <div className={`header__nav ${isActive ? "" : "header__nav-opened"}`}> */}
 
-                {/* <div className="header__nav_layered header__open">
-                  <div className="header__nav header__nav-opened"> */}
+                <div className="header__nav_layered header__open">
+                  <div className="header__nav header__nav-opened">
 
                     <div className="burger__container">
 

@@ -15,11 +15,30 @@
     border: none;
     outline: none;
     border-radius: 3px;
-    justify-content: center;
-    display: flex;
     flex-direction: column;
     border-radius: 6px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    max-width: 100%;
+    box-sizing: content-box;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 157px;
 
-    /* border: 1px rgb(235, 14, 14) solid; */
+    /* border: 1px rgb(14, 29, 235) solid; */
     }
   
+    @media screen and (max-width: 320px) {
+        .burger__frame {
+          padding-top: 142px;
+        }
+      }

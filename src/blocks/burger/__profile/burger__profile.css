@@ -22,14 +22,33 @@
     /* border: 1px rgb(69, 14, 235) solid; */
     }
 
+.burger__profile_active {
+      border-bottom: #ffffff 3px solid;
+    }
+
 .burger__profile:hover {
     opacity: 0.6;
       }
 
-
-      @media screen and (max-width: 320px) {
+      @media screen and (max-width: 768px) {
         .burger__profile {
-            font-size: 10px;
-            margin-right: 14px;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 16px;
+          margin-right: 14px;
+          padding-left: 0;
+          min-width: 40px;
+
+             /* border: 1px rgb(69, 14, 235) solid; */
+        }
+      }
+
+      @media screen and (max-width: 590px) {
+        .burger__profile {
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 16px;
+          margin-right: 14px;
+          padding-left: 10px;
         }
       }

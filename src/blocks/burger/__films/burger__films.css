@@ -33,10 +33,15 @@
     opacity: 0.6;
       }
 
+.burger__films_active {
+        border-bottom: #ffffff 0.125em solid;
+      }
+
 
       @media screen and (max-width: 590px) {
         .burger__films {
-            font-size: 10px;
-            margin-right: 14px;
+          margin-right: 0px;
+          margin-left: 123px;
+          margin-bottom: 15px;
         }
       }

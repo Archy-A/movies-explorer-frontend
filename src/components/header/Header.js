@@ -1,6 +1,6 @@
 import React from "react";
-import { useLocation, Route, Switch, Link } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useLocation, Route, Switch, Link, useHistory } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function Header({ loggedIn, email, setLoggedIn }) {
 
@@ -16,6 +16,32 @@ function Header({ loggedIn, email, setLoggedIn }) {
   const handleToggle = () => {
     setActive(!isActive);
   };
+
+  let history = useHistory()
+
+  function handleBurgerGoSaved() {
+    history.push("/saved-movies");
+    handleToggle();
+  }
+
+  function handleBurgerGoFilms() {
+    history.push("/movies");
+    handleToggle();
+  }
+
+  function handleBurgerGoProfile() {
+    history.push("/profile");
+    handleToggle();
+  }
+
+  function handleBurgerGoMain() {
+    history.push("/");
+    handleToggle();
+  }
+
+  function handleHeaderGoLogin() {
+    history.push("/signin");
+  }
 
   useEffect(() => {
     setCurrentPath(url)
@@ -40,6 +66,7 @@ function Header({ loggedIn, email, setLoggedIn }) {
                 </Link>
                 <button
                   className={`header__login ${loggedIn ? "" : "element-hidden"} `}
+                  onClick={handleHeaderGoLogin}
                 >
                   Войти
                 </button>
@@ -49,9 +76,6 @@ function Header({ loggedIn, email, setLoggedIn }) {
             <Route exact path={["/profile", "/movies", "/saved-movies"]}>
 
               <div className="header__logo">
-              <Link className="header__films_saved" to="/">
-                 Главнаяerfere
-              </Link>
               </div>
 
 
@@ -72,26 +96,25 @@ function Header({ loggedIn, email, setLoggedIn }) {
                   </Link>
                 </div> 
 
-                {/* <div className={`header__nav_layered ${isActive ? "" : "header__open"}`}>
-                  <div className={`header__nav ${isActive ? "" : "header__nav-opened"}`}> */}
+                <div className={`header__nav_layered ${isActive ? "" : "header__open"}`}>
+                  <div className={`header__nav ${isActive ? "" : "header__nav-opened"}`}>
 
-                <div className="header__nav_layered header__open">
-                  <div className="header__nav header__nav-opened">
+                {/* <div className="header__nav_layered header__open">
+                  <div className="header__nav header__nav-opened"> */}
 
                     <div className="burger__container">
 
                       <div className="burger__frame">
-                        <Link className="burger__main">Главная</Link>
-                        <Link className="burger__films">Фильмы</Link>
-                        <Link className="burger__saved">Сохранённые фильмы</Link>
+                        <button className={`burger__main ${currentPath === '/' ? "burger__main_active" : ""} `} onClick={handleBurgerGoMain}>Главная</button>
+                        <button className={`burger__films ${currentPath === '/movies' ? "burger__films_active" : ""} `} onClick={handleBurgerGoFilms}>Фильмы</button>
+                        <button className={`burger__saved ${currentPath === '/saved-movies' ? "burger__saved_active" : ""} `} onClick={handleBurgerGoSaved}>Сохранённые фильмы</button>
                       </div>
 
                       <div className="burger__account">
-                        <Link className="burger__profile" to="/profile">
-                          Аккаунт
-                        </Link>
+                        <div></div>
+                        <button className={`burger__profile ${currentPath === '/profile' ? "burger__profile_active" : ""} `} onClick={handleBurgerGoProfile}>Аккаунт</button>
                         <div className="burger__frame2" >
-                          <div className="burger__icon" ></div>
+                          <div className="burger__icon" onClick={handleBurgerGoProfile}></div>
                         </div>
                       </div> 
 
@@ -115,28 +138,3 @@ function Header({ loggedIn, email, setLoggedIn }) {
 }
 
 export default Header;
-
-//////////////////////////////////////////////////
-  // <Route exact path="/">
-  // <div className={`header__email ${loggedIn ? "" : "element-hidden"} `}>{email}</div>
-  //   <button
-  //     onClick={handleSubmmit}
-  //     className={`header__exit ${loggedIn ? "" : "element-hidden"} `}
-  //   >
-  //     Выйти
-  //   </button>
-  // </Route>
-
-  // <Route exact path="/sign-in">
-  //   <Link className="header__login" to="/sign-up">
-  //     Регистрация
-  //   </Link>
-  // </Route>
-
-  // <Route exact path="/sign-up">
-  //   <Link className="header__login" to="/sign-in">
-  //     Войти
-  //   </Link>
-  // </Route>
-
-

@@ -13,3 +13,9 @@
     /* border: 1px rgb(235, 14, 184) solid; */
     }
   
+    @media screen and (max-width: 590px) {
+        .burger__container {
+            padding-top: 132px;
+            max-width: 100%;
+        }
+      }

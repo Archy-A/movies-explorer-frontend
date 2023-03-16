@@ -20,5 +20,20 @@
 
     /* border: 1px rgb(235, 14, 184) solid; */
     }
+
+    @media screen and (max-width: 768px) {
+        .header__nav-opened {
+          height: 100%;
+          padding-bottom: 80px;
+          margin-bottom: 80px;
+
+          /* border: 1px rgb(235, 14, 184) solid; */
+        }
+      }
   
-    
+    @media screen and (max-width: 590px) {
+        .header__nav-opened {
+            left: 0px;
+            padding: 0;
+        }
+      }

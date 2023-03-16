@@ -31,10 +31,15 @@
     opacity: 0.6;
       }
 
+.burger__saved_active {
+        border-bottom: #ffffff 0.125em solid;
+      }
+
 
       @media screen and (max-width: 590px) {
         .burger__saved {
-            font-size: 10px;
-            margin-right: 14px;
+            margin-right: 0px;
+            margin-left: 61px;
+            margin-bottom: 14px;
         }
       }

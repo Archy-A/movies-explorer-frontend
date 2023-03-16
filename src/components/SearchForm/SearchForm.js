@@ -11,7 +11,7 @@ function SearchForm({ loggedIn, email, setLoggedIn }) {
         <div className="search__switcher">
 
           <label class="search__switch">
-            <input class="search__checkbox" type="checkbox" checked></input>
+            <input class="search__checkbox" type="checkbox"></input>
             <span class="search__slider"></span>
           </label>
 

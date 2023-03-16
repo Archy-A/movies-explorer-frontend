@@ -1,9 +1,23 @@
-import React, { useContext } from "react";
+import React, { useRef  } from "react";
 import { useHistory, Route, Switch, Link } from "react-router-dom";
 
 function Main({
   onEditProfile,
 }) {
+
+  const anchor = useRef();
+
+  function handleButtonClick() {
+    console.log(' anchor = ', anchor)
+  //   anchor.scrollIntoView({
+  //     behavior: 'smooth',
+  //     block: 'start'
+  // });
+  window.scrollBy({
+    top: 600,
+    behavior: 'smooth'
+});
+ }
 
   return (
     <main className="landing">
@@ -17,7 +31,7 @@ function Main({
             </div>
             <div className="top__pic"></div>
           </div>
-            <button className="top__learn">
+            <button className="top__learn" onClick={handleButtonClick}>
                   Узнать больше
             </button>
         </div>
@@ -48,7 +62,7 @@ function Main({
         </div>
       </div>
 
-    <div className="tech">
+    <div className="tech" ref={anchor}>
       <div className="tech__wrapper">
         <div className="tech__column">
           <p className="tech__about">Технологии</p>

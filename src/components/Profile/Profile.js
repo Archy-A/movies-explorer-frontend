@@ -68,11 +68,11 @@ function Profile({
         
 
               <div className="profile__framer">
-                <NavLink to="/sign-in" className="profile__redirect">
+                <NavLink to="/" className="profile__redirect">
                   Редактировать
                 </NavLink>
 
-                <NavLink to="/sign-in" className="profile__out">
+                <NavLink to="/" className="profile__out">
                   Выйти из аккаунта
                 </NavLink>
               </div>

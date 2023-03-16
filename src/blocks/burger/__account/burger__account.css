@@ -14,3 +14,22 @@
     /* border: 1px rgb(235, 14, 184) solid; */
     }
   
+.burger__account_active {
+        border-bottom: #ffffff 1px solid;
+      }
+
+    @media screen and (max-width: 768px) {
+        .burger__account {
+          margin-right: 0px;
+          margin-left: 80px;
+          margin-bottom: 187px;
+        }
+      }
+
+    @media screen and (max-width: 590px) {
+        .burger__account {
+          margin-right: 0px;
+          margin-left: 42px;
+          margin-bottom: 125px;
+        }
+      }

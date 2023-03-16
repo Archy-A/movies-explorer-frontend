@@ -22,3 +22,11 @@
       margin-bottom: 18px;
     }
   }
+
+  @media screen and (max-width: 590px) {
+    .burger__icon {
+      width: 13px;
+      height: 12px;
+      padding-bottom: 1px;
+      }
+    }

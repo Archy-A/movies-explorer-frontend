@@ -1,5 +1,7 @@
 # Movies-explorer-frontend: поиск фильмов
 
+Сслыка на дизайн https://disk.yandex.ru/d/Y79-g7yNkNKMYQ
+
 Представлены несколько блоков информации:
 
 - Фильмы в базе;

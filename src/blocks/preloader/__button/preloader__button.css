@@ -21,6 +21,9 @@
     background:  #2F2F2F;
     justify-self: center;
     align-content: center;
+    min-width: 100%;
+
+    /* border: 1px rgb(235, 14, 14) solid; */
     }
 
 .preloader__button:hover {
@@ -29,7 +32,6 @@
   
       @media screen and (max-width: 590px) {
         .preloader__button {
-          min-width: 54px;
           min-height: 36px;
           margin-top: 16px;
           margin-bottom: 24px;
@@ -38,5 +40,8 @@
           border-radius: 6px;
           font-size: 12px;
           line-height: 15px;
+          min-width: 100%;
+
+          /* border: 1px rgb(235, 14, 14) solid; */
         }
       }

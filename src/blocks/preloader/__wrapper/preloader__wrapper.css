@@ -7,16 +7,14 @@
         justify-content: space-between;
         margin-left: auto;
         margin-right: auto;
-        max-width: 100%;
         box-sizing: content-box;
-        padding-left: 70px;
-        padding-right: 70px;
-        padding-top: 40px;
+        padding-top: 52px;
         padding-bottom: 80px;
         background-color: #202020;
-        max-width: 1280px;
-           
-        /* border: 1px rgb(235, 14, 14) solid; */
+        padding-left: 70px;
+        padding-right: 70px;
+        
+        /* border: 1px rgb(36, 235, 14) solid; */
       }
     
     
@@ -40,5 +38,7 @@
         padding-right: 10px;
         padding-top: 40px;
         padding-bottom: 57px;
+
+        /* border: 1px rgb(36, 235, 14) solid; */
       }
     }

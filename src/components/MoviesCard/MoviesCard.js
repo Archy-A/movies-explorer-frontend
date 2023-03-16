@@ -75,15 +75,114 @@ function MoviesCard(props) {
       <p className="element__time">1ч 42м</p>
     </article>
 
-    <article key="4" className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
-    >
-      <img className="element__picture" src={picBaskia} alt="Баския: Взрыв реальности"></img>      <div className="element__place">
-        <h2 className="element__name">Баския: Взрыв реальности</h2>
+    <article key="1" className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
+   >
+      <img className="element__picture" src={picTri} alt="33 слова о дизайне"></img>      <div className="element__place">
+        <h2 className="element__name">33 слова о дизайне</h2>
         <div className="element__container">
-          <button style={{ display: "none" }} type="button" className={`element__like ${currentPath === '/saved-movies' ? "element__remove" : "" } `} aria-label="Сердечко, поставить лайк"></button>
+          <button  type="button" className={`element__like ${currentPath === '/saved-movies' ? "element__remove" : "" } `} aria-label="Сердечко, поставить лайк"></button>
         </div>
       </div>
-      <p className="element__time">1ч 21м</p>
+      <p className="element__time">1ч 47м</p>
+    </article>
+
+    <article key="2" className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
+    >
+      <img className="element__picture" src={picStoLet} alt="Киноальманах «100 лет дизайна»"></img>      <div className="element__place">
+        <h2 className="element__name">Киноальманах «100 лет дизайна»</h2>
+        <div className="element__container">
+        <button type="button" className={`element__like ${currentPath === '/saved-movies' ? "element__remove" : "" } `} aria-label="Сердечко, поставить лайк"></button>
+        </div>
+      </div>
+      <p className="element__time">1ч 47м</p>
+    </article>
+
+    <article key="3" className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
+    >
+      <img className="element__picture" src={picBenksi} alt="В погоне за Бенкси"></img>      <div className="element__place">
+        <h2 className="element__name">В погоне за Бенкси</h2>
+        <div className="element__container">
+          <button type="button" className={`element__like ${currentPath === '/saved-movies' ? "element__remove" : "" } `} aria-label="Сердечко, поставить лайк"></button>
+        </div>
+      </div>
+      <p className="element__time">1ч 42м</p>
+    </article>
+
+    <article key="1" className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
+   >
+      <img className="element__picture" src={picTri} alt="33 слова о дизайне"></img>      <div className="element__place">
+        <h2 className="element__name">33 слова о дизайне</h2>
+        <div className="element__container">
+          <button  type="button" className={`element__like ${currentPath === '/saved-movies' ? "element__remove" : "" } `} aria-label="Сердечко, поставить лайк"></button>
+        </div>
+      </div>
+      <p className="element__time">1ч 47м</p>
+    </article>
+
+    <article key="2" className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
+    >
+      <img className="element__picture" src={picStoLet} alt="Киноальманах «100 лет дизайна»"></img>      <div className="element__place">
+        <h2 className="element__name">Киноальманах «100 лет дизайна»</h2>
+        <div className="element__container">
+        <button type="button" className={`element__like ${currentPath === '/saved-movies' ? "element__remove" : "" } `} aria-label="Сердечко, поставить лайк"></button>
+        </div>
+      </div>
+      <p className="element__time">1ч 47м</p>
+    </article>
+
+    <article key="3" className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
+    >
+      <img className="element__picture" src={picBenksi} alt="В погоне за Бенкси"></img>      <div className="element__place">
+        <h2 className="element__name">В погоне за Бенкси</h2>
+        <div className="element__container">
+          <button type="button" className={`element__like ${currentPath === '/saved-movies' ? "element__remove" : "" } `} aria-label="Сердечко, поставить лайк"></button>
+        </div>
+      </div>
+      <p className="element__time">1ч 42м</p>
+    </article>
+
+    <article key="1" className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
+   >
+      <img className="element__picture" src={picTri} alt="33 слова о дизайне"></img>      <div className="element__place">
+        <h2 className="element__name">33 слова о дизайне</h2>
+        <div className="element__container">
+          <button  type="button" className={`element__like ${currentPath === '/saved-movies' ? "element__remove" : "" } `} aria-label="Сердечко, поставить лайк"></button>
+        </div>
+      </div>
+      <p className="element__time">1ч 47м</p>
+    </article>
+
+    <article key="2" className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
+    >
+      <img className="element__picture" src={picStoLet} alt="Киноальманах «100 лет дизайна»"></img>      <div className="element__place">
+        <h2 className="element__name">Киноальманах «100 лет дизайна»</h2>
+        <div className="element__container">
+        <button type="button" className={`element__like ${currentPath === '/saved-movies' ? "element__remove" : "" } `} aria-label="Сердечко, поставить лайк"></button>
+        </div>
+      </div>
+      <p className="element__time">1ч 47м</p>
+    </article>
+
+    <article key="3" className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
+    >
+      <img className="element__picture" src={picBenksi} alt="В погоне за Бенкси"></img>      <div className="element__place">
+        <h2 className="element__name">В погоне за Бенкси</h2>
+        <div className="element__container">
+          <button type="button" className={`element__like ${currentPath === '/saved-movies' ? "element__remove" : "" } `} aria-label="Сердечко, поставить лайк"></button>
+        </div>
+      </div>
+      <p className="element__time">1ч 42м</p>
+    </article>
+
+    {/* <article key="4" className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
+   >
+      <img className="element__picture" src={picTri} alt="33 слова о дизайне"></img>      <div className="element__place">
+        <h2 className="element__name">33 слова о дизайне</h2>
+        <div className="element__container">
+          <button  type="button" className={`element__like ${currentPath === '/saved-movies' ? "element__remove" : "" } `} aria-label="Сердечко, поставить лайк"></button>
+        </div>
+      </div>
+      <p className="element__time">1ч 47м</p>
     </article>
 
     <article key="5" className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
@@ -127,7 +226,7 @@ function MoviesCard(props) {
       <p className="element__time">1ч 59м</p>
     </article>
 
-    {/* <article key="1" className="element">
+    <article key="1" className="element">
       <img className="element__picture" src={picDjenis} alt="Дженис: Маленькая девочка грустит"></img>      <div className="element__place">
         <h2 className="element__name">Дженис: Маленькая девочка грустит</h2>
         <div className="element__container">
@@ -145,9 +244,9 @@ function MoviesCard(props) {
         </div>
       </div>
       <p className="element__time">1ч 10м</p>
-    </article> */}
+    </article>
 
-    {/* <article key="1" className="element">
+    <article key="1" className="element">
       <img className="element__picture" src={picPi} alt="Пи Джей Харви: A dog called money"></img>      <div className="element__place">
         <h2 className="element__name">Пи Джей Харви: A dog called money</h2>
         <div className="element__container">

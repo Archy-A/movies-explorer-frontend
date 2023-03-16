@@ -1,0 +1,15 @@
+.burger__container{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+    justify-content: space-between;
+    justify-items: flex-start;
+    max-height: 100%;
+    padding-top: 102px;
+    height: 81vh;
+
+    /* border: 1px rgb(235, 14, 184) solid; */
+    }
+  

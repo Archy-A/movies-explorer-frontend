@@ -1,0 +1,25 @@
+.burger__frame{
+    all: unset;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: #ffffff;
+    margin: 0;
+    padding-top: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+
+    /* border: 1px rgb(235, 14, 14) solid; */
+    }
+  

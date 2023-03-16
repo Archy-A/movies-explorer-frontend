@@ -185,4 +185,12 @@
 @import url(../src/blocks/notfound/__404/notfound__404.css);
 
 @import url(../src/blocks/burger/burger.css);
-
+@import url(../src/blocks/burger/__container/burger__container.css);
+@import url(../src/blocks/burger/__films/burger__films.css);
+@import url(../src/blocks/burger/__frame/burger__frame.css);
+@import url(../src/blocks/burger/__frame2/burger__frame2.css);
+@import url(../src/blocks/burger/__profile/burger__profile.css);
+@import url(../src/blocks/burger/__saved/burger__saved.css);
+@import url(../src/blocks/burger/__main/burger__main.css);
+@import url(../src/blocks/burger/__account/burger__account.css);
+@import url(../src/blocks/burger/__icon/burger__icon.css);

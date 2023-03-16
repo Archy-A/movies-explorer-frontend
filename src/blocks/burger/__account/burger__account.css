@@ -1,0 +1,16 @@
+.burger__account {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    max-width: 60%;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    justify-self: center;
+    margin-left: 59px;
+    padding-top: 0;
+    height: 30px;
+    /* border: 1px rgb(235, 14, 184) solid; */
+    }
+  

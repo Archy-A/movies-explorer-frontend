@@ -6,6 +6,7 @@
     position: fixed;
     height: 100%;
     width: 100%;
+    overflow-y: hidden;
     top: 0;
     bottom: 0;
     left: 0;
@@ -17,7 +18,7 @@
     animation: burgerAmination 0.4s;
     
     
-        /* border: 1px rgb(235, 14, 184) solid; */
+        /* border: 1px rgb(14, 235, 47) solid; */
         }
       
         @keyframes burgerAmination {

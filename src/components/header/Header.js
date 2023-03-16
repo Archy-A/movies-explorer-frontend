@@ -72,11 +72,31 @@ function Header({ loggedIn, email, setLoggedIn }) {
                   </Link>
                 </div> 
 
-                <div className={`header__nav_layered ${isActive ? "" : "header__open"}`}>
-                <div className={`header__nav ${isActive ? "" : "header__nav-opened"}`}>
-                      <Link>Фильмы</Link>
-                      <Link>Сохранённые фильмы</Link>
-                      <Link>Аккаунт</Link>
+                {/* <div className={`header__nav_layered ${isActive ? "" : "header__open"}`}>
+                  <div className={`header__nav ${isActive ? "" : "header__nav-opened"}`}> */}
+
+                <div className="header__nav_layered header__open">
+                  <div className="header__nav header__nav-opened">
+
+                    <div className="burger__container">
+
+                      <div className="burger__frame">
+                        <Link className="burger__main">Главная</Link>
+                        <Link className="burger__films">Фильмы</Link>
+                        <Link className="burger__saved">Сохранённые фильмы</Link>
+                      </div>
+
+                      <div className="burger__account">
+                        <Link className="burger__profile" to="/profile">
+                          Аккаунт
+                        </Link>
+                        <div className="burger__frame2" >
+                          <div className="burger__icon" ></div>
+                        </div>
+                      </div> 
+
+                    </div>
+
                   </div>
                 </div>
 

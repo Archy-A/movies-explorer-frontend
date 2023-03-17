@@ -8,9 +8,14 @@
     height: 22px;
     margin-top: 25px;
     margin-right: 8px;
+    cursor: pointer;
 
     /* border: 1px rgb(235, 14, 184) solid; */
 }
+
+.burger:hover {
+    opacity: 0.6;
+      }
 
 .burger span {
     height: 3px;

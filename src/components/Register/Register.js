@@ -15,13 +15,17 @@ function Register({
     return false;
   }
 
+  function handleGoMain() {
+    history.push("/");
+  }
+
   return (
     <>
       <section className="register">
         <div className="register__wrapper">
 
        <div className="register_title">
-           <div className="register__logo"></div>
+           <div className="register__logo" onClick={handleGoMain}></div>
            <h1 className="register__welcome">Добро пожаловать!</h1>
         </div>
 

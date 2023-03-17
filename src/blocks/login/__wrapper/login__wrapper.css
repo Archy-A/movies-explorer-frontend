@@ -14,8 +14,7 @@
         background-color: #202020;
         max-width: 396px;
         min-width: 396px;
-        max-height: 100%;
-           
+        overflow-y: auto;
         /* border: 1px rgb(235, 14, 14) solid; */
       }
 /* 

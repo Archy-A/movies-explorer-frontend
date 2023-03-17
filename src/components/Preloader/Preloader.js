@@ -3,11 +3,9 @@ import React from "react";
 function Preloader(props) {
  
   return (
-    <div className="preloader">
-      {/* <div className="preloader__wrapper"> */}
+    <section className="preloader">
         <button className="preloader__button">Ещё</button>
-      {/* </div> */}
-    </div>
+    </section>
   );
 }
 

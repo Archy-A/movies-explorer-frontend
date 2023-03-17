@@ -18,10 +18,8 @@ function NotFound({
     <>
       <section className="notfound">
         <div className="notfound__wrapper">
-
               <p className="notfound__404">404</p>
               <p className="notfound__title">Страница не найдена</p>
-            
               <div className="notfound__framer">
                 <button
                     className="notfound__redirect" onClick={() => history.goBack()}
@@ -29,13 +27,6 @@ function NotFound({
                     Назад
                 </button>
               </div> 
-
-              {/* <div className="notfound__framer">
-                <NavLink to="/" className="notfound__redirect">
-                  Назад
-                </NavLink>
-              </div> */}
-
        </div>
       </section>
     </>

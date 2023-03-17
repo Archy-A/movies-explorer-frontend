@@ -15,6 +15,7 @@
     cursor: pointer;
     border: none;
     outline: none;
+    list-style-type: none;
     
     /* border: 2px rgb(235, 220, 14) solid; */
     }

@@ -7,10 +7,8 @@ function MoviesCardList(props) {
  
   return (
     <section className="elements">
-
         <MoviesCard
         />
-
    </section>
   );
 }

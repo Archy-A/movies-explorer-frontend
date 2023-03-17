@@ -19,7 +19,16 @@
     background: #2F2F2F;
     width: 100%;
     margin-right: 10px;
+    cursor: pointer;
     }
+
+    .search__input:hover {
+        opacity: 0.6;
+          }
+
+    .search__input:invalid {
+        color: #EE3465;
+          }
   
     @media screen and (max-width: 590px) {
         .search__input {

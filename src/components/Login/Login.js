@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
 import SearchForm from "../SearchForm/SearchForm";
@@ -8,9 +8,15 @@ function Login({
   onEditProfile,
 }) {
 
+  let history = useHistory()
+
   function mySubmitFunction(e) {
     e.preventDefault();
     return false;
+  }
+
+  function handleGoMain() {
+    history.push("/");
   }
 
   return (
@@ -19,7 +25,7 @@ function Login({
         <div className="login__wrapper">
 
        <div className="login_title">
-           <div className="login__logo"></div>
+           <div className="login__logo" onClick={handleGoMain}></div>
            <h1 className="login__welcome">Рады видеть!</h1>
         </div>
 

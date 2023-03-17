@@ -19,6 +19,10 @@ function Header({ loggedIn, email, setLoggedIn }) {
 
   let history = useHistory()
 
+  function handleLogoGoMain() {
+    history.push("/");
+  }
+
   function handleBurgerGoSaved() {
     history.push("/saved-movies");
     handleToggle();
@@ -56,10 +60,8 @@ function Header({ loggedIn, email, setLoggedIn }) {
 
             <Route exact path="/">
 
-              <div className="header__logo">
+              <div className="header__logo" onClick={handleLogoGoMain}>
               </div> 
-
-
 
               <div className="header__container">
                 <Link className="header__signup" to="/signup">
@@ -76,7 +78,7 @@ function Header({ loggedIn, email, setLoggedIn }) {
 
             <Route exact path={["/profile", "/movies", "/saved-movies"]}>
 
-              <div className="header__logo">
+              <div className="header__logo" onClick={handleLogoGoMain}>
               </div>
 
 
@@ -97,7 +99,7 @@ function Header({ loggedIn, email, setLoggedIn }) {
                   </Link>
                 </div> 
 
-                <div className={`header__nav_layered ${isActive ? "" : "header__open"}`}>
+                <section className={`header__nav_layered ${isActive ? "" : "header__open"}`}>
                   <div className={`header__nav ${isActive ? "" : "header__nav-opened"}`}>
 
                 {/* <div className="header__nav_layered header__open"> */}
@@ -121,7 +123,7 @@ function Header({ loggedIn, email, setLoggedIn }) {
                     </div>
 
                   </div>
-                </div>
+                </section>
 
                 <div className={`burger ${isActive ? "" : "active"}`} onClick={handleToggle}>
                   <span></span>

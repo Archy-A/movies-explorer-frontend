@@ -1,3 +1,8 @@
+html, body {
+  height: 100%;
+  background-color: #202020;
+}
+
 .login {
   margin: 0;
   margin-left: auto;
@@ -5,9 +10,11 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  background: #202020;
-  height: 100vh;
+  background-color: #202020;
+  /* height: 100vh; */
   /* height: fit-content; */
+
+  min-height: 100%;
 }
 
 /* .register:hover .register__register {

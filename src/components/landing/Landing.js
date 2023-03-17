@@ -1,11 +1,13 @@
 import React, { useRef  } from "react";
-import { useHistory, Route, Switch, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function Main({
   onEditProfile,
 }) {
 
   const anchor = useRef();
+
+  let history = useHistory()
 
   function handleButtonClick() {
     console.log(' anchor = ', anchor)
@@ -16,13 +18,17 @@ function Main({
   window.scrollBy({
     top: 600,
     behavior: 'smooth'
-});
+  });
  }
+
+ function handleGoMySites() {
+  window.location.href = 'https://chat.openai.com/chat';
+}
 
   return (
     <main className="landing">
 
-      <div className="top">
+      <section className="top">
         <div className="top__wrapper">
           <div className="top__container">
             <div className="top__colum1">
@@ -35,9 +41,9 @@ function Main({
                   Узнать больше
             </button>
         </div>
-      </div>
+      </section>
 
-      <div className="proj">
+      <section className="proj">
         <div className="proj__wrapper">
           <div className="proj__colum">
             <p className="proj__about">О проекте</p>
@@ -60,9 +66,9 @@ function Main({
             </table>
           </div>
         </div>
-      </div>
+      </section>
 
-    <div className="tech" ref={anchor}>
+    <section className="tech" ref={anchor}>
       <div className="tech__wrapper">
         <div className="tech__column">
           <p className="tech__about">Технологии</p>
@@ -82,21 +88,19 @@ function Main({
           </table>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div className="portfolio">
+    <section className="portfolio">
       <div className="portfolio__wrapper">
-
         <div className="portfolio__student">Студент</div>
         <div className="under"></div>
-
         <div className="portfolio__container">
           <div className="portfolio__column1">
             <div className="portfolio__group">
               <div className="portfolio__name">Артур</div>
               <div className="portfolio__speciality">Full-stack разработчик, 36 лет</div>
               <div className="portfolio__description">Я родился в Тюмени, закончил факультет информационных технологий ТюмГНГУ. 
-                Я люблю слушать музыку, а ещё увлекаюсь горными лыжами и командными видами спорта (футбол). Начал кодить с университета, но была пауза 
+                Я люблю слушать музыку, а ещё увлекаюсь горными лыжами. Начал кодить с университета, но была пауза 
                 из-за работы в сфере геофизики. Работаю в компании «Geomage» - разработка ПО для обработки сейсмических данных.</div>
             </div>  
             <a className="portfolio__github" href="https://github.com/Archy-A/" target="_blank">Github</a>
@@ -105,28 +109,23 @@ function Main({
             <div className="portfolio__pic"></div>
           </div>
         </div>
-
         <div className="portfolio__portfolio">Портфолио</div>
-
-        <div className="portfolio__container2">
-            <a className="portfolio__sites" href="https://github.com/Archy-A/" target="_blank">Статичный сайт</a>
-            <div className="portfolio__arrow"></div> 
-        </div>
+        <ul className="portfolio__container2" onClick={handleGoMySites}>
+            <li className="portfolio__sites">Статичный сайт</li>
+            <li className="portfolio__arrow"></li> 
+        </ul>
         <div className="under_white"></div> 
-
-        <div className="portfolio__container2">
-            <a className="portfolio__sites" href="https://github.com/Archy-A/" target="_blank">Адаптивный сайт</a>
-            <div className="portfolio__arrow"></div> 
-        </div>
+        <ul className="portfolio__container2" onClick={handleGoMySites}>
+            <li className="portfolio__sites">Адаптивный сайт</li>
+            <li className="portfolio__arrow"></li> 
+        </ul>
         <div className="under_white"></div> 
-
-        <div className="portfolio__container2">
-            <a className="portfolio__sites" href="https://github.com/Archy-A/" target="_blank">Одностраничное приложение</a>
-            <div className="portfolio__arrow"></div> 
-        </div>
-
+        <ul className="portfolio__container2" onClick={handleGoMySites}>
+            <li className="portfolio__sites">Одностраничное приложение</li>
+            <li className="portfolio__arrow"></li> 
+        </ul>
       </div>
-    </div>
+    </section>
 
     </main>
   );

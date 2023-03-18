@@ -24,6 +24,10 @@
       border-radius: 50%;
   } 
 
+  .search__slider:hover {
+    opacity: 0.6;
+      }
+
   @media screen and (max-width: 590px) {
     .search__slider {
       min-width: 20px;

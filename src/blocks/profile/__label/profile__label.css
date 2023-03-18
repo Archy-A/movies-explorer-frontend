@@ -3,7 +3,7 @@
     padding: 0;
     min-width: 146px;
     min-height: 17px;
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -22,7 +22,7 @@
         margin-left: auto;
         margin-right: auto;
         width: 125px;
-        font-family: 'Inter';
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
         font-style: normal;
         font-weight: 500;
         font-size: 12px;

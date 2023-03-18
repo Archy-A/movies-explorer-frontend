@@ -22,7 +22,7 @@ function Main({
  }
 
  function handleGoMySites() {
-  window.location.href = 'https://chat.openai.com/chat';
+  window.open('https://chat.openai.com/chat', '_blank');
 }
 
   return (

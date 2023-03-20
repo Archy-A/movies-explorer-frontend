@@ -1,0 +1,21 @@
+.tech__under{
+    border-bottom: 1px solid #DADADA;
+    min-width: 150px;
+    margin-top: 23px;
+
+    /* border: 2px rgb(14, 235, 206) solid; */
+    }
+
+    @media screen and (max-width: 768px) {
+        .tech__under {
+            margin-top: 21px;
+        }
+      }
+
+    @media screen and (max-width: 590px) {
+        .tech__under {
+            margin-top: 22px;
+            border-bottom: 1px solid #000000;
+        }
+      }
+

@@ -1,0 +1,24 @@
+.notfound__title {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    margin-top: 0;
+
+      /* border: 1px rgb(235, 14, 14) solid; */
+  }
+  
+
+  @media screen and (max-width: 590px) {
+    .notfound__title {
+      font-size: 12px;
+      line-height: 15px;
+      margin-top: 5px;
+      margin-bottom: 103px;
+      }
+    }

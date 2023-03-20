@@ -1,0 +1,34 @@
+.header__nav {
+    margin: 0;
+    padding: 0;
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    overflow-y: hidden;
+    top: 0;
+    bottom: 0;
+    width:67.6%;
+    right: 0;
+    z-index: 50;
+    overflow-y: auto;
+    padding: 50px 40px;
+    background-color: #202020;
+    animation: burgerAmination 0.4s;
+
+
+    /* border: 1px rgb(21, 235, 14) solid; */
+    }
+  
+    @keyframes burgerAmination {
+        from {opacity: 0}
+        to {opacity: 1}
+    } 
+
+    @media screen and (max-width: 320px) {
+        .header__nav{
+            width:100%;
+          /* border: 1px rgb(235, 14, 184) solid; */
+        }
+      }

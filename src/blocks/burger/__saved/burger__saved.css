@@ -1,0 +1,35 @@
+.burger__saved {
+    all: unset;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+    color: #ffffff;
+    margin: 0;
+    min-width: 54px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    margin-bottom: 29px;
+    margin-top: 2px;
+
+    /* border: 1px rgb(14, 235, 51) solid; */
+    }
+
+.burger__saved:hover {
+    opacity: 0.6;
+      }
+
+.burger__saved_active {
+        border-bottom: #ffffff 2px solid;
+      }
+
+
+      @media screen and (max-width: 320px) {
+        .burger__saved {
+            padding-top: 0px;
+        }
+      }

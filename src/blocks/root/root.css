@@ -1,0 +1,21 @@
+html, body {
+  height: 100%;
+}
+
+.root {
+    max-width: 100%;
+    background: #202020;
+    box-sizing: border-box;
+    margin-top: 0;
+    color: #ffffff;
+    border: 1px solid transparent;
+    height: 100%;
+
+    /* border: 1px rgb(235, 14, 14) solid; */
+  }
+
+@media screen and (max-width: 700px) {
+  .root {
+      padding: 0;
+    }
+  }

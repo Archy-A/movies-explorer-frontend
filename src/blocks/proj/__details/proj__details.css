@@ -1,0 +1,29 @@
+.proj__details {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    margin-top: 26px;
+    margin-left: 42px;
+
+    /* border: 2px rgb(14, 80, 235) solid; */
+    }
+
+    @media screen and (max-width: 768px) {
+        .proj__details {
+          margin-top: 22px;
+          font-size: 12px;
+          line-height: 18px;
+          margin-left: 26px;
+        }
+      }
+
+    @media screen and (max-width: 590px) {
+        .proj__details {
+            margin-top: 16px;
+            font-size: 11px;
+            line-height: 16px;
+            margin-right: 0px;
+            margin-left: 0;
+        }
+      }

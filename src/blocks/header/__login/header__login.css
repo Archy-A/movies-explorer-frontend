@@ -1,0 +1,41 @@
+.header__login {
+    all: unset;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #000000;
+    margin: 0;
+    padding-top: 0;
+    min-width: 76px;
+    min-height: 32px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /* overflow: hidden; */
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    background: #3DDC84;
+    justify-self: center;
+    margin-top: 21px;
+    margin-bottom: 21px;
+    align-content: center;
+    }
+
+.header__login:hover {
+    opacity: 0.6;
+      }
+  
+      @media screen and (max-width: 320px) {
+        .header__login {
+          min-width: 54px;
+          min-height: 26px;
+          margin-top: 24px;
+          margin-bottom: 24px;
+          font-size: 10px;
+          line-height: 16px;
+        }
+      }

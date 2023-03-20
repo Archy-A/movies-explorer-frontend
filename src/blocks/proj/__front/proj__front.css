@@ -1,0 +1,23 @@
+.proj__front {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 17px;
+    color: #8B8B8B;
+    white-space: pre-wrap;
+    background: #202020;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+
+    /* border: 1px rgb(235, 14, 14) solid; */
+    }
+
+    @media screen and (max-width: 590px) {
+        .proj__front {
+            font-size: 11px;
+            line-height: 13px;
+            margin-top: 3px;
+        }
+      }

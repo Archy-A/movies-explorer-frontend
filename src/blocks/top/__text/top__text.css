@@ -1,0 +1,33 @@
+.top__text{
+    margin: 0;
+    padding: 0;
+    max-width: 310px;
+    min-height: 32px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+    mix-blend-mode: normal;
+    opacity: 0.5;
+    margin-top: 36px;
+
+    /* border: 2px rgb(14, 235, 206) solid; */
+    }
+
+    @media screen and (max-width: 768px) {
+        .top__text {
+            justify-self: center;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 260px;
+            margin-top: 22px;
+        }
+      }
+
+    @media screen and (max-width: 320px) {
+        .top__text {
+            margin-top: 24px;
+        }
+      }

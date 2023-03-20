@@ -1,0 +1,30 @@
+.element__name {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  margin: 0;
+  padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 290px;
+  margin-left: 16px;
+  min-height: 16px;
+  max-height: 16px;
+  
+}
+
+@media screen and (max-width: 768px) {
+  .element__name {
+    margin-left: 14px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .element__name {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

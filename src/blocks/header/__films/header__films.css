@@ -1,0 +1,48 @@
+.header__films {
+    all: unset;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: right;
+    color: #ffffff;
+    margin: 0;
+    padding-top: 2px;
+    min-width: 54px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    margin-top: 20px;
+    margin-bottom: 29px;
+    justify-self: start;
+    align-items: center;
+    align-self: flex-start;
+    display: flex;
+
+    min-height: 30px;
+    max-height: 30px;
+
+    margin-left: 44px;
+
+
+    /* border: 1px rgb(14, 235, 51) solid; */
+    }
+
+.header__films:hover {
+    opacity: 0.6;
+      }
+
+      @media screen and (max-width: 768px) {
+        .header__films {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width: 590px) {
+        .header__films {
+            font-size: 10px;
+            margin-right: 14px;
+        }
+      }

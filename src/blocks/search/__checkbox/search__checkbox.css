@@ -1,0 +1,17 @@
+.search__checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+    }
+
+    .search__checkbox:checked + .search__slider {
+      background-color: #3DDC84;
+
+    }
+    
+    
+    .search__checkbox:checked + .search__slider:before {
+      -webkit-transform: translateX(20px);
+      -ms-transform: translateX(20px);
+      transform: translateX(20px);
+    } 

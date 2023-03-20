@@ -1,0 +1,20 @@
+.footer__container {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: start;
+        margin-top: 0px;
+        background-color: #202020;
+    
+        /* border: 1px rgb(235, 14, 14) solid; */
+      }
+    
+  
+
+    @media screen and (max-width: 590px) {
+      .footer__container {
+        flex-direction: column-reverse;
+      }
+    }

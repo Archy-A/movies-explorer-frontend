@@ -1,0 +1,47 @@
+.preloader__button {
+    all: unset;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: #ffffff;
+    margin: 0;
+    padding-top: 0;
+    min-height: 36px;
+    max-height: 36px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    background:  #2F2F2F;
+    justify-self: center;
+    align-content: center;
+    min-width: 100%;
+
+    /* border: 1px rgb(235, 14, 14) solid; */
+    }
+
+.preloader__button:hover {
+    opacity: 0.6;
+      }
+  
+      @media screen and (max-width: 590px) {
+        .preloader__button {
+          min-height: 36px;
+          margin-top: 16px;
+          margin-bottom: 24px;
+          font-size: 10px;
+          line-height: 16px;
+          border-radius: 6px;
+          font-size: 12px;
+          line-height: 15px;
+          min-width: 100%;
+
+          /* border: 1px rgb(235, 14, 14) solid; */
+        }
+      }

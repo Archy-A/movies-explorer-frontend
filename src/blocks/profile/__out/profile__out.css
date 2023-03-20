@@ -1,0 +1,32 @@
+.profile__out {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #EE3465;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    margin-top: 15px;
+  }
+
+  .profile__out:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 768px) {
+    .profile__out {
+      margin-top: 16px;
+      }
+    }
+  
+  @media screen and (max-width: 590px) {
+    .profile__out {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 15px;
+      }
+    }

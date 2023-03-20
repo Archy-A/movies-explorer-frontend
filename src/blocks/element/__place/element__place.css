@@ -1,0 +1,26 @@
+.element__place {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  justify-items: center;
+  position: relative;
+  padding-top: 16px;
+  padding-bottom: 12px;
+  max-width: 364px;
+}
+
+@media screen and (max-width: 768px) {
+  .element__place {
+    padding-top: 14px;
+    padding-bottom: 16px;
+    max-width: 339px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .element__place {
+    padding-bottom: 13px;
+  }
+}

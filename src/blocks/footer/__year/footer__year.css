@@ -1,0 +1,31 @@
+.footer__year{
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 16px;
+    white-space: pre-wrap;
+    min-width: 48px;
+    max-width: 48px;
+    min-height: 16px;
+    max-height: 16px;
+
+    /* border: 1px rgb(80, 235, 14) solid; */
+    }
+
+
+    @media screen and (max-width: 590px) {
+        .footer__year {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 15px;
+            color: #8B8B8B;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            min-width: 41px;
+            max-width: 44px;
+            min-height: 15px;
+            max-height: 15px;
+        }
+      }
+

@@ -1,0 +1,15 @@
+.top {
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #073042;
+  padding-bottom: 50px;
+
+  /* border: 1px rgb(14, 235, 224) solid; */
+  }
+
+  @media screen and (max-width: 768px) {
+    .top {
+      padding-bottom: 0;
+    }
+  }

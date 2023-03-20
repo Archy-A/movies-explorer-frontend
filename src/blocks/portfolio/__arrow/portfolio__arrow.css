@@ -1,0 +1,23 @@
+.portfolio__arrow{
+    min-height: 60px;
+    min-width: 29px;
+    background-image: url("../../../images/arrow.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:contain;
+    list-style-type: none;
+
+    /* border: 2px rgb(235, 55, 14) solid; */
+    }
+
+
+
+    @media screen and (max-width: 590px) {
+        .portfolio__arrow {
+            min-height: 11px;
+            min-width: 11px;
+            margin-right: 4px;
+
+            /* border: 2px rgb(235, 55, 14) solid; */
+        }
+      }     

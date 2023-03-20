@@ -1,0 +1,26 @@
+.portfolio__github{
+    all: unset;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 17px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    
+    /* border: 2px rgb(235, 220, 14) solid; */
+    }
+
+    .portfolio__github:hover {
+        opacity: 0.6;
+          }
+    
+
+    @media screen and (max-width: 590px) {
+        .portfolio__github {
+            margin-bottom: 0;
+            margin-top: 40px;
+            font-size: 14px;
+            line-height: 17px;
+          }
+      }

@@ -1,0 +1,35 @@
+.register__welcome {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
+    margin-bottom: 15px;
+
+      /* border: 1px rgb(235, 14, 14) solid; */
+  }
+  
+  @media screen and (max-width: 768px) {
+    .register__welcome {
+        /* margin-left: 30px; */
+        margin-top: 18px;
+        margin-bottom: 17px;
+
+        /* border: 1px rgb(235, 14, 14) solid; */
+      }
+    }
+
+    @media screen and (max-width: 590px) {
+      .register__welcome {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        margin-bottom: 56.4px;
+        padding-top: 9px;
+/*   
+          border: 1px rgb(235, 14, 14) solid; */
+        }
+      }

@@ -1,0 +1,13 @@
+.profile__title {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+
+      /* border: 1px rgb(235, 14, 14) solid; */
+  }
+  

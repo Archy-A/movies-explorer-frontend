@@ -1,0 +1,17 @@
+.register {
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  background: #202020;
+  height: 100vh;
+  /* height: fit-content; */
+}
+
+/* .register:hover .register__register {
+  background: #4285F4;
+  
+  border: 1px rgb(14, 235, 73) solid;
+} */

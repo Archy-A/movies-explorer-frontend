@@ -1,0 +1,24 @@
+.portfolio__column1{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    justify-content: space-between;
+    max-width: 100%;
+
+    /* border: 1px rgb(51, 14, 235) solid; */
+    }
+
+    @media screen and (max-width: 768px) {
+        .portfolio__column1 {
+            max-height: 307px;
+        }
+      }
+
+
+      @media screen and (max-width: 590px) {
+        .portfolio__column1 {
+            max-height: 355px;
+        }
+      }

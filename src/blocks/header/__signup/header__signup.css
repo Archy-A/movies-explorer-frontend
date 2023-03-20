@@ -1,0 +1,39 @@
+.header__signup {
+    all: unset;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: right;
+    color: #ffffff;
+    margin: 0;
+    padding-top: 0;
+    max-width: 120px;
+    max-height: 22px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left: 25px;
+    margin-right: 30px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    margin-top: 29px;
+    margin-bottom: 29px;
+    justify-self: center;
+
+    /* border: 1px rgb(14, 235, 51) solid; */
+    }
+
+.header__signup:hover {
+    opacity: 0.6;
+      }
+
+      @media screen and (max-width: 320px) {
+        .header__signup {
+            font-size: 10px;
+            margin-right: 14px;
+        }
+      }

@@ -1,0 +1,32 @@
+.header__frame{
+    all: unset;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: #ffffff;
+    margin: 0;
+    padding-top: 0;
+    min-width: 30px;
+    max-width: 30px;
+    min-height: 30px;
+    max-height: 30px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    background: #313131;  
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    border-radius: 6px;
+
+    /* border: 1px rgb(235, 14, 14) solid; */
+    }
+  

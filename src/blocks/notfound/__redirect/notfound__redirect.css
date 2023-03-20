@@ -1,0 +1,28 @@
+.notfound__redirect{
+    all: unset;
+    cursor: pointer;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #4285F4;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    margin-top: 168px;
+  }
+
+  .notfound__redirect:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+  
+  @media screen and (max-width: 590px) {
+    .notfound__redirect {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 15px;
+      }
+    }

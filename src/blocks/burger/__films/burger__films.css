@@ -1,0 +1,36 @@
+.burger__films {
+    all: unset;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+    color: #ffffff;
+    margin: 0;
+    min-width: 54px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    margin-bottom: 22px;
+    margin-top: 5px;
+
+
+    /* border: 1px rgb(14, 235, 51) solid; */
+    }
+
+.burger__films:hover {
+    opacity: 0.6;
+      }
+
+.burger__films_active {
+        border-bottom: #ffffff 2px solid;
+      }
+
+      @media screen and (max-width: 320px) {
+        .burger__films {
+            padding-top: 1px;
+            margin-bottom: 19px;
+        }
+      }

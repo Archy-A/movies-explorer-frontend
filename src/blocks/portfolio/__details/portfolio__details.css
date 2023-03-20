@@ -1,0 +1,35 @@
+.tech__details{
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+    max-width: 460px;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 100px;
+    
+    /* border: 2px rgb(235, 220, 14) solid; */
+    }
+
+    @media screen and (max-width: 768px) {
+        .tech__details {
+            font-size: 12px;
+            line-height: 18px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 83px;
+          }
+      }
+
+
+    @media screen and (max-width: 590px) {
+        .tech__details {
+            font-size: 11px;
+            line-height: 16px;
+            min-width: 292px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 50px;
+          }
+      }

@@ -1,0 +1,16 @@
+.portfolio__student{
+    margin: 0;
+    padding: 0;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    
+    /* border: 2px rgb(235, 220, 14) solid; */
+    }
+
+    @media screen and (max-width: 590px) {
+        .portfolio__student {
+            font-size: 18px;
+            line-height: 22px;
+          }
+      }

@@ -1,0 +1,9 @@
+.search__switch { 
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 14px;
+
+  /* border: 1px rgb(80, 235, 14) solid; */
+
+}

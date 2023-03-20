@@ -1,0 +1,31 @@
+.burger__main {
+    all: unset;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+    color: #ffffff;
+    margin: 0;
+    padding-top: 2px;
+    min-width: 54px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    justify-self: start;
+    align-items: center;
+
+    /* border: 1px rgb(14, 235, 51) solid; */
+    }
+
+.burger__main:hover {
+    opacity: 0.6;
+      }
+
+.burger__main_active {
+  border-bottom: #ffffff 0.125em solid;
+}
+

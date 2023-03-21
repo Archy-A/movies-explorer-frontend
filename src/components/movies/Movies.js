@@ -4,9 +4,9 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader.js";
 
-function Movies({
-  onEditProfile,
-}) {
+function Movies(props) {
+
+
 
   return (
     <main>
@@ -14,12 +14,15 @@ function Movies({
 
         <div className="search__wrapper">
           <SearchForm
+             getCardsFromServer={props.getCardsFromServer}
+             setFind={props.setFind}
           />   
           <div className="under_grey"></div>
         </div>
 
         <div className="movies__wrapper">
           <MoviesCardList
+             cards={props.cards}
           />
         </div>
 

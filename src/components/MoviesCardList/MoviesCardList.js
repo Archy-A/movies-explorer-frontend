@@ -3,12 +3,22 @@ import { useHistory, Route, Switch, Link } from "react-router-dom";
 
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-function MoviesCardList(props) {
+function MoviesCardList({
+  cards,
+}) {
  
   return (
     <section className="elements">
-        <MoviesCard
-        />
+        {/* <MoviesCard
+        /> */}
+        {cards.map((card) => (
+          <MoviesCard
+            key={card._id}
+            link={card.link}
+            name={card.name}
+            card={card}
+          />
+        ))}
    </section>
   );
 }

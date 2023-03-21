@@ -1,5 +1,6 @@
 import "../index.css";
 
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import Header from "./header/Header";
@@ -12,8 +13,30 @@ import Login from "./Login/Login";
 import Profile from "./Profile/Profile";
 import NotFound from "./NotFound/NotFound";
 
+import api from "../utils/MoviesApi";
+
 
 function App() {
+
+  const [cards, setCards] = useState([]);
+  const [find, setFind] = useState([]);
+
+  function getCardsFromServer(e) {
+    e.preventDefault();
+
+    return api
+      .getInitialCards()
+      .then((arrayFilms) => {
+        let findInput = find.toLowerCase()
+        let result = arrayFilms.filter(film => film.nameRU.toLowerCase().includes(findInput));
+        console.log('>>>>>>>>>> find : ', find)
+        setCards(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   return (
     <div className="App">
       <div className="root">
@@ -26,8 +49,13 @@ function App() {
                   <Route exact path="/" component={Landing}
                   />
 
-                  <Route exact path="/movies" component={Movies}
-                  />
+                  <Route exact path="/movies">
+                    <Movies 
+                         cards={cards}
+                         getCardsFromServer={getCardsFromServer}
+                         setFind={setFind}
+                    />
+                  </Route>
 
                   <Route exact path="/saved-movies" component={SavedMovies}
                   />

@@ -1,19 +1,45 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 
-function SearchForm({ loggedIn, email, setLoggedIn }) {
+function SearchForm(props) {
+
+ const inputFindRef = useRef();
+
+//  console.log('inputFindRef >>>>>>>>>', inputFindRef.current.value)
+
+  // useEffect(() => {
+  //   props.setFind(inputFindRef.current.value);
+  // }, [inputFindRef.current.value]);
+
+  const [userSearch, setUserSearch] = useState("");
+
+  function handleChangeName(e) {
+    setUserSearch(e.target.value);
+    props.setFind(e.target.value)
+  }
  
+
   return (
     <section className="search">
 
-        <form className="search__container">
+        <form
+          className="search__container"
+          onSubmit={props.getCardsFromServer}
+          method="get"
+          name="search_form"
+        >
           <input 
+            ref={inputFindRef}
             className="search__input" 
             placeholder="Фильм"
+            id="search_input"
+            type="text"
+            value={userSearch || ""}
+            onChange={handleChangeName}
             minLength="1"
             maxLength="99"
             required
           ></input>
-          <button className="search__button">Найти</button>
+          <button type="submit" className="search__button">Найти</button>
         </form>
         <div className="search__switcher">
 

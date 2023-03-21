@@ -9,12 +9,7 @@ function Main({
 
   let history = useHistory()
 
-  function handleButtonClick() {
-    console.log(' anchor = ', anchor)
-  //   anchor.scrollIntoView({
-  //     behavior: 'smooth',
-  //     block: 'start'
-  // });
+function handleButtonClick() {
   window.scrollBy({
     top: 600,
     behavior: 'smooth'

@@ -21,6 +21,8 @@ function Movies(props) {
              seachResult={props.seachResult}
              searchResultFromLocalStorage={props.searchResultFromLocalStorage}
              setSearchResultFromLocalStorage={props.setSearchResultFromLocalStorage}
+             setChecked={props.setChecked}
+             checked={props.checked}
           />   
           <div className="under_grey"></div>
         </div>

@@ -21,9 +21,10 @@ function App() {
   const [cards, setCards] = useState(JSON.parse(localStorage.getItem("cards") || "[]"));
   const [find, setFind] = useState([]);
   const [seachResult, setSeachResult] = useState(''); 
-  const [onShortFilms, setOnShortFilms] = useState('1');
+  const [onShortFilms, setOnShortFilms] = useState(localStorage.getItem("onShortFilms") || "1");
+  const [checked, setChecked] = useState(localStorage.getItem("checked") || "");
   const [searchResultFromLocalStorage, setSearchResultFromLocalStorage] = useState(localStorage.getItem("seachResult"));
-  
+ 
   let isChecked = false;
 
   function getCardsFromServer(e) {
@@ -37,10 +38,13 @@ function App() {
             result = result.filter(film => film.duration < 41);
           }
           setCards(result);
+          console.log('onShortFilms = ', onShortFilms)
           localStorage.removeItem("cards");
           localStorage.removeItem("seachResult");
+          localStorage.removeItem("shortFilms");
           localStorage.setItem("cards", JSON.stringify(result));
           localStorage.setItem("seachResult", seachResult);
+          localStorage.setItem("onShortFilms", onShortFilms);
       })
       .catch((err) => {
         console.log(err);
@@ -71,6 +75,8 @@ function App() {
                          seachResult={seachResult}
                          searchResultFromLocalStorage={searchResultFromLocalStorage}
                          setSearchResultFromLocalStorage={setSearchResultFromLocalStorage}
+                         checked={checked}
+                         setChecked={setChecked}
                     />
                   </Route>
 

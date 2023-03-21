@@ -38,7 +38,6 @@ function App() {
             result = result.filter(film => film.duration < 41);
           }
           setCards(result);
-          console.log('onShortFilms = ', onShortFilms)
           localStorage.removeItem("cards");
           localStorage.removeItem("seachResult");
           localStorage.removeItem("shortFilms");

@@ -16,8 +16,6 @@ function SearchForm(props) {
 
   }
 
-  console.log(' props.onShortFilms = ', props.onShortFilms)
-
   function handleChangeBox() {
     if (props.onShortFilms === '1') {
       props.setOnShortFilms('2')
@@ -68,6 +66,7 @@ function SearchForm(props) {
               className="search__checkbox"
               type="checkbox"
               checked={props.onShortFilms == 2 ? true : false}
+              readOnly
               >
             </input>
             <span className="search__slider"></span>

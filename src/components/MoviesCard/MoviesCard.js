@@ -1,19 +1,6 @@
 import React, { useContext } from 'react';
 import { useEffect, useState } from "react";
 
-import picGermany from '../../images/cardPic.jpg';
-import picTri from '../../images/33.jpg';
-import picStoLet from '../../images/100let.jpg';
-import picBenksi from '../../images/benksi.jpg';
-import picBaskia from '../../images/baskia.jpg';
-import picBeg from  '../../images/beg.jpg';
-import picKnigotvor from  '../../images/knigotvor.jpg';
-import picGimme from '../../images/gimme.jpg';
-import picDjenis from '../../images/djenis.jpg';
-import picProgok from '../../images/progok.jpg';
-import picPi from '../../images/pi.jpg';
-import picPovolnam from '../../images/povolnam.jpg';
-
 function MoviesCard(props) {
 
   function getCurrentURL () {
@@ -35,9 +22,6 @@ function MoviesCard(props) {
   const hideRemove = (e) => {
     setShow("none");
   };
-
-  console.log('=====================',)
-
 
   return (
    <article key={props.card.id} className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}

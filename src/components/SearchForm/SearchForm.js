@@ -1,14 +1,19 @@
-import React, { useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { useLocation } from "react-router-dom";
 
 function SearchForm(props) {
 
  const inputFindRef = useRef();
+ const location = useLocation();
 
   const [userSearch, setUserSearch] = useState("");
 
   function handleChangeName(e) {
     setUserSearch(e.target.value);
-    props.setFind(e.target.value)
+    props.setFind(e.target.value);
+    props.setSeachResult(e.target.value);
+    props.setSearchResultFromLocalStorage('');
+
   }
 
   function handleChangeBox() {
@@ -18,6 +23,11 @@ function SearchForm(props) {
       props.setOnShortFilms('1')
     }
   }
+
+  useEffect(() => {
+    props.setSeachResult(inputFindRef.current.value);
+    props.setFind(inputFindRef.current.value);
+  }, [location, inputFindRef]);
  
 
   return (
@@ -35,7 +45,7 @@ function SearchForm(props) {
             placeholder="Фильм"
             id="search_input"
             type="text"
-            value={userSearch || ""}
+            value={props.searchResultFromLocalStorage ? props.searchResultFromLocalStorage : userSearch || ""}
             onChange={handleChangeName}
             minLength="1"
             maxLength="99"
@@ -46,16 +56,14 @@ function SearchForm(props) {
         <div className="search__switcher">
 
           <label
-            class="search__switch"
+            className="search__switch"
             onChange={handleChangeBox}
             >
-
             <input
-              class="search__checkbox"
+              className="search__checkbox"
               type="checkbox">
             </input>
-
-            <span class="search__slider"></span>
+            <span className="search__slider"></span>
           </label>
 
           <p className="search__short">Короткометражки</p>

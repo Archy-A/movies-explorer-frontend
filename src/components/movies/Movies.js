@@ -6,8 +6,6 @@ import Preloader from "../Preloader/Preloader.js";
 
 function Movies(props) {
 
-
-
   return (
     <main>
       <section className="movies">
@@ -19,6 +17,10 @@ function Movies(props) {
              setOnShortFilms={props.setOnShortFilms}
              onShortFilms={props.onShortFilms}
              isChecked={props.isChecked}
+             setSeachResult={props.setSeachResult}
+             seachResult={props.seachResult}
+             searchResultFromLocalStorage={props.searchResultFromLocalStorage}
+             setSearchResultFromLocalStorage={props.setSearchResultFromLocalStorage}
           />   
           <div className="under_grey"></div>
         </div>

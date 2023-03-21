@@ -9,8 +9,6 @@ function MoviesCardList({
  
   return (
     <section className="elements">
-        {/* <MoviesCard
-        /> */}
         {cards.map((card) => (
           <MoviesCard
             key={card.id}

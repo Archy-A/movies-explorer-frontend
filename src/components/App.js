@@ -18,25 +18,29 @@ import api from "../utils/MoviesApi";
 
 function App() {
 
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState(JSON.parse(localStorage.getItem("cards") || "[]"));
   const [find, setFind] = useState([]);
+  const [seachResult, setSeachResult] = useState(''); 
   const [onShortFilms, setOnShortFilms] = useState('1');
-
+  const [searchResultFromLocalStorage, setSearchResultFromLocalStorage] = useState(localStorage.getItem("seachResult"));
+  
   let isChecked = false;
 
   function getCardsFromServer(e) {
     e.preventDefault();
-
     return api
       .getInitialCards()
       .then((arrayFilms) => {
-        let findInput = find.toLowerCase()
-        let result = arrayFilms.filter(film => film.nameRU.toLowerCase().includes(findInput));
-
-        if (onShortFilms === "2") {
-           result = result.filter(film => film.duration < 41);
-        }
-        setCards(result);
+          let findInput = find.toLowerCase()
+          let result = arrayFilms.filter(film => film.nameRU.toLowerCase().includes(findInput));
+          if (onShortFilms === "2") {
+            result = result.filter(film => film.duration < 41);
+          }
+          setCards(result);
+          localStorage.removeItem("cards");
+          localStorage.removeItem("seachResult");
+          localStorage.setItem("cards", JSON.stringify(result));
+          localStorage.setItem("seachResult", seachResult);
       })
       .catch((err) => {
         console.log(err);
@@ -63,6 +67,10 @@ function App() {
                          setOnShortFilms={setOnShortFilms}
                          onShortFilms={onShortFilms}
                          isChecked={isChecked}
+                         setSeachResult={setSeachResult}
+                         seachResult={seachResult}
+                         searchResultFromLocalStorage={searchResultFromLocalStorage}
+                         setSearchResultFromLocalStorage={setSearchResultFromLocalStorage}
                     />
                   </Route>
 

@@ -23,6 +23,18 @@ function MoviesCard(props) {
     setShow("none");
   };
 
+  function toHoursAndMinutes(totalMinutes) {
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    if (hours === 0) {
+      let durationString = ` ${minutes} м`
+      return durationString;
+    } else {
+      let durationString = `${hours} ч ${minutes} м`
+      return durationString;
+    }
+  }
+
   return (
    <article key={props.card.id} className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
    >
@@ -32,7 +44,7 @@ function MoviesCard(props) {
           <button  type="button" className={`element__like ${currentPath === '/saved-movies' ? "element__remove" : "" } `} aria-label="Сердечко, поставить лайк"></button>
         </div>
       </div>
-      <p className="element__time">{props.card.duration}</p>
+      <p className="element__time">{toHoursAndMinutes(props.card.duration)}</p>
     </article>
     )
 }

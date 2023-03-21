@@ -4,17 +4,19 @@ function SearchForm(props) {
 
  const inputFindRef = useRef();
 
-//  console.log('inputFindRef >>>>>>>>>', inputFindRef.current.value)
-
-  // useEffect(() => {
-  //   props.setFind(inputFindRef.current.value);
-  // }, [inputFindRef.current.value]);
-
   const [userSearch, setUserSearch] = useState("");
 
   function handleChangeName(e) {
     setUserSearch(e.target.value);
     props.setFind(e.target.value)
+  }
+
+  function handleChangeBox() {
+    if (props.onShortFilms === '1') {
+      props.setOnShortFilms('2')
+    } else if (props.onShortFilms === '2') {
+      props.setOnShortFilms('1')
+    }
   }
  
 
@@ -43,8 +45,16 @@ function SearchForm(props) {
         </form>
         <div className="search__switcher">
 
-          <label class="search__switch">
-            <input class="search__checkbox" type="checkbox"></input>
+          <label
+            class="search__switch"
+            onChange={handleChangeBox}
+            >
+
+            <input
+              class="search__checkbox"
+              type="checkbox">
+            </input>
+
             <span class="search__slider"></span>
           </label>
 

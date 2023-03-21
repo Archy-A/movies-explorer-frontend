@@ -16,6 +16,9 @@ function Movies(props) {
           <SearchForm
              getCardsFromServer={props.getCardsFromServer}
              setFind={props.setFind}
+             setOnShortFilms={props.setOnShortFilms}
+             onShortFilms={props.onShortFilms}
+             isChecked={props.isChecked}
           />   
           <div className="under_grey"></div>
         </div>

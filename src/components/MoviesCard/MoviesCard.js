@@ -40,7 +40,7 @@ function MoviesCard(props) {
 
 
   return (
-   <article key={props.card._id} className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
+   <article key={props.card.id} className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
    >
       <img className="element__picture" src={`https://api.nomoreparties.co/${props.card.image.url}`} alt={props.card.nameRU}></img>      <div className="element__place">
         <h2 className="element__name">{props.card.nameRU}</h2>

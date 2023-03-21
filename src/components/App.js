@@ -20,6 +20,9 @@ function App() {
 
   const [cards, setCards] = useState([]);
   const [find, setFind] = useState([]);
+  const [onShortFilms, setOnShortFilms] = useState('1');
+
+  let isChecked = false;
 
   function getCardsFromServer(e) {
     e.preventDefault();
@@ -29,7 +32,10 @@ function App() {
       .then((arrayFilms) => {
         let findInput = find.toLowerCase()
         let result = arrayFilms.filter(film => film.nameRU.toLowerCase().includes(findInput));
-        console.log('>>>>>>>>>> find : ', find)
+
+        if (onShortFilms === "2") {
+           result = result.filter(film => film.duration < 41);
+        }
         setCards(result);
       })
       .catch((err) => {
@@ -54,6 +60,9 @@ function App() {
                          cards={cards}
                          getCardsFromServer={getCardsFromServer}
                          setFind={setFind}
+                         setOnShortFilms={setOnShortFilms}
+                         onShortFilms={onShortFilms}
+                         isChecked={isChecked}
                     />
                   </Route>
 

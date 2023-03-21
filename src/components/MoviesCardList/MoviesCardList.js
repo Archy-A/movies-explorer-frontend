@@ -13,7 +13,7 @@ function MoviesCardList({
         /> */}
         {cards.map((card) => (
           <MoviesCard
-            key={card._id}
+            key={card.id}
             link={card.link}
             name={card.name}
             card={card}

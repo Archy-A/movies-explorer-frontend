@@ -5,6 +5,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 
 function MoviesCardList({
   cards,
+  onCardLike
 }) {
  
   return (
@@ -15,6 +16,16 @@ function MoviesCardList({
             link={card.link}
             name={card.name}
             card={card}
+            likes={
+              // card.likes.length
+              card.likes?.length
+              ? card.likes.length
+              : 0
+            }
+            // onCardClick={handleCardClick}
+            onCardLike={onCardLike}
+            // onCardDelete={onCardDelete}
+            // onDeleteConfirmation={onDeleteConfirmation}
           />
         ))}
    </section>

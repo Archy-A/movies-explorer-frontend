@@ -22,7 +22,7 @@ function MoviesCard(props) {
   const hideRemove = (e) => {
     setShow("none");
   };
-
+//console.log("<<<<<<<<<<< props.card:\n", props.card);
   function toHoursAndMinutes(totalMinutes) {
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
@@ -35,13 +35,40 @@ function MoviesCard(props) {
     }
   }
 
+  function handleLikeClick(e) {
+    props.onCardLike(props.card, e);
+  }
+
+  const imageLink = `${
+    currentPath === '/saved-movies' ? `https://api.nomoreparties.co/${props.card.image}` : `https://api.nomoreparties.co/${props.card.image.url}`
+  }`;
+
+  const isLiked = props.card.like;
+
+  const cardLikeButtonClassName = `${
+    isLiked ? "element__like_pressed" : ""
+  }`;
+
   return (
    <article key={props.card.id} className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
    >
-      <img className="element__picture" src={`https://api.nomoreparties.co/${props.card.image.url}`} alt={props.card.nameRU}></img>      <div className="element__place">
+      <img className="element__picture"
+           src={`${imageLink}`} 
+           alt={props.card.nameRU}>
+      </img>
+      
+      <div className="element__place">
         <h2 className="element__name">{props.card.nameRU}</h2>
         <div className="element__container">
-          <button  type="button" className={`element__like ${currentPath === '/saved-movies' ? "element__remove" : "" } `} aria-label="Сердечко, поставить лайк"></button>
+
+          <button  
+            type="button" 
+            className={`element__like ${currentPath === '/saved-movies' ? "element__remove" : cardLikeButtonClassName} } `} 
+            aria-label="Сердечко, поставить лайк"
+            onClick={handleLikeClick}
+            >
+          </button>
+
         </div>
       </div>
       <p className="element__time">{toHoursAndMinutes(props.card.duration)}</p>

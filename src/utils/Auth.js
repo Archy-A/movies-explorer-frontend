@@ -18,7 +18,11 @@ export const register = (email, password) => {
 };
 
 export const sigin = (email, password) => {
-  return fetch(`https://api.testdeploy.nomoredomainsclub.ru/signin`, {
+  console.log(' --------------------------------- ')
+  console.log(' email = ', email)
+  console.log(' password = ', password)
+  console.log(' --------------------------------- ')
+  return fetch(`http://localhost:3000/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

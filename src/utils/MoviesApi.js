@@ -1,4 +1,4 @@
-const link = "https://api.nomoreparties.co/beatfilm-movies";
+const link = "http://localhost:3000/";
 
 class Api {
   constructor(options) {
@@ -25,13 +25,12 @@ class Api {
         return this._checkResponse(res);
       })
       .then((res) => {
-        // console.log('>>>>>>>>>>>>>>>> F I L M S :', res)
         return res;
       });
   }
 
   getUserInfo() {
-    return fetch(`https://api.nomoreparties.co/beatfilm-movies/${this.endPoint[1]}`, {
+    return fetch(`http://localhost:3000/${this.endPoint[1]}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
       },
@@ -45,7 +44,7 @@ class Api {
   }
 
   setUserInfo(name, about) {
-    return fetch(`https://api.nomoreparties.co/beatfilm-movies/${this.endPoint[1]}`, {
+    return fetch(`http://localhost:3000/${this.endPoint[1]}`, {
       method: "PATCH",
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -64,47 +63,28 @@ class Api {
       });
   }
 
-  setAva(avatar) {
-    return fetch(`https://api.nomoreparties.co/beatfilm-movies/users/me/avatar`, {
-      method: "PATCH",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        avatar: avatar,
-      }),
-    })
-      .then((res) => {
-        return this._checkResponse(res);
-      })
-      .then((res) => {
-        return res;
-      });
-  }
-
-  setCard(link, name) {
-      return fetch(`https://api.nomoreparties.co/beatfilm-movies/cards`, {
-      method: "POST",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: name,
-        link: link,
-      }),
-    })
-      .then((res) => {
-        return this._checkResponse(res);
-      })
-      .then((res) => {
-        return res;
-      });
-  }
+  // setCard(link, name) {
+  //     return fetch(`http://localhost:3000/movies`, {
+  //     method: "POST",
+  //     headers: {
+  //       authorization: `Bearer ${localStorage.getItem('token')}`,
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       name: name,
+  //       link: link,
+  //     }),
+  //   })
+  //     .then((res) => {
+  //       return this._checkResponse(res);
+  //     })
+  //     .then((res) => {
+  //       return res;
+  //     });
+  // }
 
   deleteCard(id) {
-    return fetch(`https://api.nomoreparties.co/beatfilm-movies/cards/${id}`, {
+    return fetch(`http://localhost:3000/movies/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -119,29 +99,72 @@ class Api {
       });
   }
 
-  likeCard(cardId, likeStateToBeSet) {
+  likeCard(cardNew, likeStateToBeSet) {
     // likeStateToBeSet - is a new state to be set on server
     let method = "";
     if (likeStateToBeSet) {
-      method = "PUT";
-    } else {
-      method = "DELETE";
-    }
-      return fetch(`https://api.nomoreparties.co/beatfilm-movies/cards/${cardId}/likes`, {
-      method: method,
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        "Content-Type": "application/json",
-      },
-    })
+      method = "POST";
+      return fetch(`http://localhost:3000/movies/`, {
+        method: method,
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cardNew),
+      })
       .then((res) => {
         return this._checkResponse(res);
       })
       .then((res) => {
         return res;
       });
+    } else {
+
+      method = "DELETE";
+      return fetch(`http://localhost:3000/movies/${cardNew.movieId}`, {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        return this._checkResponse(res);
+      })
+      .then((res) => {
+        return res;
+      });
+    }
+    }
   }
-}
+
+
+//   likeCard(cardNew, likeStateToBeSet) {
+//     // likeStateToBeSet - is a new state to be set on server
+//     let method = "";
+//     console.log(' likeStateToBeSet = ', likeStateToBeSet)
+//     if (likeStateToBeSet) {
+//       method = "POST";
+//     } else {
+//       method = "DELETE";
+//     }
+//       return fetch(`http://localhost:3000/movies/`, {
+//       method: method,
+//       headers: {
+//         authorization: `Bearer ${localStorage.getItem('token')}`,
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(cardNew),
+//     }
+//     )
+//       .then((res) => {
+//         return this._checkResponse(res);
+//       })
+//       .then((res) => {
+//         return res;
+//       });
+//   }
+// }
 
 // Api instance creation
 const api = new Api({

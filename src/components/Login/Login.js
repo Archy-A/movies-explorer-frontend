@@ -1,19 +1,20 @@
-import React, { useContext } from "react";
+import React, { useRef } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
 import SearchForm from "../SearchForm/SearchForm";
 
-function Login({
-  onEditProfile,
-}) {
+function Login(props) {
+
+  const inputEmailRef = useRef();
+  const inputPassRef = useRef();
 
   let history = useHistory()
 
-  function mySubmitFunction(e) {
-    e.preventDefault();
-    return false;
-  }
+  // function mySubmitFunction(e) {
+  //   e.preventDefault();
+  //   return false;
+  // }
 
   function handleGoMain() {
     history.push("/");
@@ -30,7 +31,7 @@ function Login({
         </div>
 
         <form
-              onSubmit={mySubmitFunction}
+              onSubmit={props.handleLogin}
               className="login_form"
               method="post"
               name="login"
@@ -40,11 +41,17 @@ function Login({
 
               <div className="login__box">
                 <input
+                  ref={inputEmailRef}
                   id="login__email"
                   type="text"
-                  //value="pochta@yandex.ru"
-                  // onChange={props.handleOnChange}
-                  name="emailReg"
+                  value={
+                    inputEmailRef.current
+                      ? props.emailAndPassSetterLoginValues[inputEmailRef.current.name] ||
+                        ""
+                      : ""
+                  }
+                  onChange={props.handleOnChange}
+                  name="emailLogin"
                   placeholder=""
                   className="register__email"
                   minLength="2"
@@ -58,11 +65,17 @@ function Login({
 
               <div className="login__box">
                 <input
+                  ref={inputPassRef}
                   id="login__password"
                   type="password"
-                  //value= "pochta@yandex.ru"
-                  // onChange={onSubmit}
-                  name="passwordReg"
+                  value={
+                    inputPassRef.current
+                      ? props.emailAndPassSetterLoginValues[inputPassRef.current.name] ||
+                        ""
+                      : ""
+                  }
+                  onChange={props.handleOnChange}
+                  name="passwordLogin"
                   placeholder=""
                   className="register__password"
                   minLength="2"

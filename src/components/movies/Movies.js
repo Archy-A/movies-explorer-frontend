@@ -30,6 +30,7 @@ function Movies(props) {
         <div className="movies__wrapper">
           <MoviesCardList
              cards={props.cards}
+             onCardLike={props.onCardLike}
           />
         </div>
 

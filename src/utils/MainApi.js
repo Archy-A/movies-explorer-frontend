@@ -1,4 +1,4 @@
-const link = "https://api.nomoreparties.co/beatfilm-movies";
+const link = "http://localhost:3000/";
 
 class Api {
   constructor(options) {
@@ -15,8 +15,8 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  getInitialCards() {
-    return fetch(`https://api.nomoreparties.co/beatfilm-movies/${this.endPoint[0]}`, {
+  getInitialCardsMy() {
+    return fetch(`http://localhost:3000/${this.endPoint[0]}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
       },
@@ -30,7 +30,7 @@ class Api {
   }
 
   getUserInfo() {
-    return fetch(`https://api.nomoreparties.co/beatfilm-movies/${this.endPoint[1]}`, {
+    return fetch(`http://localhost:3000/${this.endPoint[1]}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
       },
@@ -63,24 +63,6 @@ class Api {
       });
   }
 
-  setAva(avatar) {
-    return fetch(`https://api.nomoreparties.co/beatfilm-movies/users/me/avatar`, {
-      method: "PATCH",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        avatar: avatar,
-      }),
-    })
-      .then((res) => {
-        return this._checkResponse(res);
-      })
-      .then((res) => {
-        return res;
-      });
-  }
 
   setCard(link, name) {
       return fetch(`https://api.nomoreparties.co/beatfilm-movies/cards`, {
@@ -144,7 +126,7 @@ class Api {
 
 // Api instance creation
 const api = new Api({
-  baseUrl: ["cards", "users/me"],
+  baseUrl: ["movies", "users/me"],
   token: `Bearer ${localStorage.getItem('token')}`,
 });
 

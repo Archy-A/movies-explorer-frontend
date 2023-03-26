@@ -43,45 +43,6 @@ class Api {
       });
   }
 
-  setUserInfo(name, about) {
-    return fetch(`http://localhost:3000/${this.endPoint[1]}`, {
-      method: "PATCH",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: name,
-        about: about,
-      }),
-    })
-      .then((res) => {
-        return this._checkResponse(res);
-      })
-      .then((res) => {
-        return res;
-      });
-  }
-
-  // setCard(link, name) {
-  //     return fetch(`http://localhost:3000/movies`, {
-  //     method: "POST",
-  //     headers: {
-  //       authorization: `Bearer ${localStorage.getItem('token')}`,
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       name: name,
-  //       link: link,
-  //     }),
-  //   })
-  //     .then((res) => {
-  //       return this._checkResponse(res);
-  //     })
-  //     .then((res) => {
-  //       return res;
-  //     });
-  // }
 
   deleteCard(id) {
     return fetch(`http://localhost:3000/movies/${id}`, {

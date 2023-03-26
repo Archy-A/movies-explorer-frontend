@@ -63,12 +63,31 @@ function Header({ loggedIn, email, setLoggedIn }) {
               <div className="header__logo" onClick={handleLogoGoMain}>
               </div> 
 
-              <div className="header__container">
+              {/* <div>{`${loggedIn}`}</div> */}
+
+              <Link className={`header__films ${loggedIn ? "" : "header__login-hidden"} `} to="/movies">
+                  Фильмы
+              </Link>
+
+              <Link className={`header__films_saved ${loggedIn ? "" : "header__login-hidden"} `} to="/saved-movies">
+                  Сохранённые фильмы
+                </Link>
+
+                <div className={`header__container ${loggedIn ? "" : "header__login-hidden"} `}>
+                  <Link className="header__profile" to="/profile">
+                    Аккаунт
+                    <div className="header__frame" >
+                      <div className="header__icon" ></div>
+                    </div>
+                  </Link>
+                </div> 
+
+              <div className={`header__container ${loggedIn ? "header__login-hidden" : ""} `}>
                 <Link className="header__signup" to="/signup">
                   Регистрация
                 </Link>
                 <button
-                  className={`header__login ${loggedIn ? "" : "element-hidden"} `}
+                  className={`header__login ${loggedIn ? "header__login-hidden" : ""} `}
                   onClick={handleHeaderGoLogin}
                 >
                   Войти

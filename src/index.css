@@ -21,6 +21,7 @@
 @import url(../src/blocks/header/__nav/_layered/header__nav_layered.css);
 @import url(../src/blocks/header/__nav/header__nav-opened.css);
 @import url(../src/blocks/header/__nav/_open/header_open.css);
+@import url(../src/blocks/header/__login/header__login-hidden.css);
 
 @import url(../src/blocks/top/top.css);
 @import url(../src/blocks/top/__wrapper/top__wrapper.css);

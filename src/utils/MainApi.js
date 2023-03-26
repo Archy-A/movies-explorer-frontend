@@ -36,6 +36,7 @@ class Api {
       },
     })
       .then((res) => {
+        console.log(' getUserInfo = ', res)
         return this._checkResponse(res);
       })
       .then((res) => {
@@ -43,8 +44,11 @@ class Api {
       });
   }
 
-  setUserInfo(name, about) {
-    return fetch(`https://api.nomoreparties.co/beatfilm-movies/${this.endPoint[1]}`, {
+  setUserInfo(name, email) {
+    console.log(' name = ', name)
+    console.log(' email = ', email)
+
+    return fetch(`http://localhost:3000/${this.endPoint[1]}`, {
       method: "PATCH",
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -52,7 +56,7 @@ class Api {
       },
       body: JSON.stringify({
         name: name,
-        about: about,
+        email: email,
       }),
     })
       .then((res) => {

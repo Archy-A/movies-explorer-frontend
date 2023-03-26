@@ -1,15 +1,44 @@
-import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom";
 
-import SearchForm from "../SearchForm/SearchForm";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Profile({
-  onEditProfile,
+  onUpdateUser, setLoggedIn
 }) {
 
-  function onSubmit() {
-    console.log('ssssss')
+  const history = useHistory();
+  const currentUser = useContext(CurrentUserContext);
+
+  function handleSubmit(e) {
+    // console.log('>>>>>>>>>>>>>>>>>>>>>>>>> handleSubmit = ', nameUser, description)
+    e.preventDefault();
+    onUpdateUser({
+      name: nameUser,
+      email: description,
+    });
+  }
+
+  const [nameUser, setNameUser] = useState("");
+  const [description, setDescription] = useState("");
+
+  useEffect(() => {
+    setNameUser(currentUser.name);
+    setDescription(currentUser.email);
+  }, [currentUser]);
+
+  function handleChangeName(e) {
+    setNameUser(e.target.value);
+  }
+
+  function handleChangeDescription(e) {
+    setDescription(e.target.value);
+  }
+
+  function handleLogOut() {
+    setLoggedIn(false);
+    localStorage.removeItem("token");
+    history.push("/");
   }
 
   return (
@@ -18,11 +47,11 @@ function Profile({
         <div className="profile__wrapper">
 
        <div className="profile_title">
-           <h1 className="profile__welcome">Привет, Виталий!</h1>
+           <h1 className="profile__welcome">Привет, {currentUser.name}!</h1>
         </div>
 
         <form
-              onSubmit={onSubmit}
+              onSubmit={handleSubmit}
               className="profile_form"
               method="post"
               name="login"
@@ -35,8 +64,8 @@ function Profile({
                   <input
                     id="profile__name"
                     type="text"
-                    value="Виталий"
-                    // onChange={props.handleOnChange}
+                    value={nameUser || ""}
+                    onChange={handleChangeName}
                     name="nameReg"
                     placeholder=""
                     className="profile__name"
@@ -53,8 +82,8 @@ function Profile({
                 <input
                   id="profile__email"
                   type="text"
-                  value="pochta@yandex.ru"
-                  // onChange={props.handleOnChange}
+                  value={description || ""}
+                  onChange={handleChangeDescription}
                   name="emailReg"
                   placeholder=""
                   className="profile__email"
@@ -68,13 +97,26 @@ function Profile({
         
 
               <div className="profile__framer">
-                <NavLink to="/" className="profile__redirect">
-                  Редактировать
-                </NavLink>
 
-                <NavLink to="/" className="profile__out">
+                <button
+                  className="profile__redirect"
+                  onClick={handleSubmit}
+                  method="post"
+                >
+                  Редактировать
+                </button>
+
+                <button
+                  className="profile__out"
+                  onClick={handleLogOut}
+                  method="post"
+                >
                   Выйти из аккаунта
-                </NavLink>
+                </button>
+
+                {/* <NavLink to="/" className="profile__out">
+                  Выйти из аккаунта
+                </NavLink> */}
               </div>
             </form>
 

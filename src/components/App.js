@@ -1,7 +1,7 @@
 import "../index.css";
 
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Switch, useHistory } from 'react-router-dom'
+import { useHistory, Route, Switch, Redirect } from "react-router-dom";
 
 import Header from "./header/Header";
 import Landing from "./landing/Landing";
@@ -16,6 +16,9 @@ import * as auth from "../utils/Auth";
 import useForm from "../hooks/useForm";
 import api from "../utils/MoviesApi";
 import apiMy from "../utils/MainApi";
+import ProtectedRoute from "./protected_route/ProtectedRoute";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { CardContext } from "../contexts/CardContext";
 
 
 function App(props) {
@@ -55,7 +58,10 @@ function App(props) {
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
 
   const [currentUser, setCurrentUser] = useState([]);
-//console.log("================ init cards: \n", cards)
+  const [inited, setInited] = useState(false);
+
+  tokenCheck();
+
   useEffect(() => {
     loggedIn &&
       api
@@ -122,39 +128,34 @@ function App(props) {
               element.like = false;
               return element;
             })
-          console.log(' yandexDB = ', yandexDB)
-          console.log(' -----------------------------------')
-          console.log(' cardsMy = ', cardsMy)
 
           // compare myDB table with yandexDB table
           function compare(yandexDB, cardsMy) { /////Передаём 2 массива
-            let resArr = []; //// создаём массив который в будущем выведем
-            yandexDB.forEach((obj1)=>{ /// перебираем первый массив 
-              cardsMy.forEach((obj2)=>{ ///перебираем второй массив
-                    if (obj1.id == obj2.movieId) { /// сравниваем "ключи" из объектов
-                        resArr.push({
-                          nameRU: obj2.nameRU,
-                          nameEN: obj2.nameEN,
-                          description: obj2.description,
-                          director: obj2.director,
-                          country: obj2.country,
-                          duration: obj2.duration,
-                          year: obj2.year,
-                          image: {
-                            url: obj2.image
-                          },
-                          thumbnail: obj2.image,
-                          trailerLink: obj2.trailerLink,
-                          movieId: obj2.movieId,
-                          id: obj2.movieId,
-                          like: !obj2.like
-                    });
-                    } else {
-                      resArr.push(obj1)
-                    }
-                })
-            })
-            return resArr;
+            let cardsMyIds = {};
+            cardsMy.forEach(card => {
+              cardsMyIds[card.movieId] = card;
+            });
+            return yandexDB.map((obj) => {
+              const matched = Object.keys(cardsMyIds).includes(String(obj.id));
+              const card = matched ? cardsMyIds[obj.id] : obj;
+              return {
+                  nameRU: card.nameRU,
+                  nameEN: card.nameEN,
+                  description: card.description,
+                  director: card.director,
+                  country: card.country,
+                  duration: card.duration,
+                  year: card.year,
+                  image: {
+                    url:  matched ? card.image : card.image.url
+                  },
+                  thumbnail: card.image,
+                  trailerLink: card.trailerLink,
+                  movieId: matched ? card.movieId : card.id,
+                  id: matched ? card.movieId : card.id,
+                  like: matched
+              };
+          });
           }
 
           let yandexDBLikeUpdated = compare(yandexDB, cardsMy)
@@ -185,7 +186,7 @@ function App(props) {
       });
   }
 
-    // -------------- My Server ----------------------
+    // -------------- My Server ------------------
   function getCardsFromMyServer(e) {
     e.preventDefault();
     return apiMy
@@ -197,7 +198,6 @@ function App(props) {
             result = result.filter(film => film.duration < 41);
           }
           setCardsMy(result);
-          console.log('sssssssssssssssssssssssssssssssssssssssssssss')
           localStorage.removeItem("cardsMy");
           localStorage.removeItem("seachResultMy");
           localStorage.removeItem("shortFilmsMy");
@@ -248,6 +248,15 @@ function App(props) {
 
           let newCards = cards.map((c) => (c.id === card.id ? newCardLike : c));
           setCards(newCards);
+
+          if (newCardLike.like === true) {
+            cardsMy.push(newCard)
+            setCardsMy(cardsMy);
+          } else {
+            let filteredCardsMy = cardsMy.filter(e => e.id !== newCardLike.movieId)
+            setCardsMy(filteredCardsMy);
+          }
+
           localStorage.setItem("cards", JSON.stringify(newCards));
 
           getCardsFromMyServer(e)
@@ -260,54 +269,106 @@ function App(props) {
     e.stopPropagation();
   }
 
+  function tokenCheck() {
+    const jwt = localStorage.getItem("token");
+    if (jwt) {
+      auth
+        .getContent(jwt)
+        .then((res) => {
+          if (res) {
+            setEmail(res.email);
+            setLoggedIn(true);
+            setInited(true);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          if (!inited) {
+            setInited(true);
+          }
+        //  window.alert(`${alertMessage} ${err}`);
+        });
+    } else {
+      if (!inited) {
+        setInited(true);
+      }
+    }
+  }
+
+  function handleUpdateUser(info) {
+    console.log('handleUpdateUser info= ', info.name , info.email)
+    apiMy
+      .setUserInfo(info.name, info.email)
+      .then((data) => {
+        setCurrentUser(data);
+        
+        // history.push("/profile");
+      })
+      .catch((err) => {
+        console.log(err);
+        // window.alert(`${alertMessage} ${err}`);
+      });
+  }
+
+  // console.log('App.js currentUser = ', currentUser)
+
   return (
-    <div className="App">
+    inited ? <div className="App">
       <div className="root">
-        {/* <div className="wrapper"> */}
+         <CurrentUserContext.Provider value={currentUser}>
+            <CardContext.Provider value={cards}>
 
                 <Header
+                  loggedIn={loggedIn}
                 />
 
                 <Switch>
                   <Route exact path="/" component={Landing}
                   />
 
-                  <Route exact path="/movies">
-                    <Movies 
-                         cards={cards}
-                         getCardsFromServer={getCardsFromServer}
-                         setFind={setFind}
-                         setOnShortFilms={setOnShortFilms}
-                         onShortFilms={onShortFilms}
-                         isChecked={isChecked}
-                         setSeachResult={setSeachResult}
-                         seachResult={seachResult}
-                         searchResultFromLocalStorage={searchResultFromLocalStorage}
-                         setSearchResultFromLocalStorage={setSearchResultFromLocalStorage}
-                         checked={checked}
-                         setChecked={setChecked}
-                         onCardLike={handleCardLike}
-                    />
-                  </Route>
+                <ProtectedRoute
+                    exact path="/movies"
+                    loggedIn={loggedIn}
+                    component={Movies}
+                    cards={cards}
+                    getCardsFromServer={getCardsFromServer}
+                    setFind={setFind}
+                    setOnShortFilms={setOnShortFilms}
+                    onShortFilms={onShortFilms}
+                    isChecked={isChecked}
+                    setSeachResult={setSeachResult}
+                    seachResult={seachResult}
+                    searchResultFromLocalStorage={searchResultFromLocalStorage}
+                    setSearchResultFromLocalStorage={setSearchResultFromLocalStorage}
+                    checked={checked}
+                    setChecked={setChecked}
+                    onCardLike={handleCardLike}
+                  />
 
-                  <Route exact path="/saved-movies">
-                    <SavedMovies 
-                         cards={cardsMy}
-                         getCardsFromServer={getCardsFromMyServer}
-                         setFind={setFindMy}
-                         setOnShortFilms={setOnShortFilmsMy}
-                         onShortFilms={onShortFilmsMy}
-                         isChecked={isCheckedMy}
-                         setSeachResult={setSeachResultMy}
-                         seachResult={seachResultMy}
-                         searchResultFromLocalStorage={searchResultFromLocalStorageMy}
-                         setSearchResultFromLocalStorage={setSearchResultFromLocalStorageMy}
-                         checked={checkedMy}
-                         setChecked={setCheckedMy}
-                    />
-                  </Route>
+                  <ProtectedRoute
+                    exact path="/saved-movies"
+                    loggedIn={loggedIn}
+                    component={SavedMovies}
+                    cards={cardsMy}
+                    getCardsFromServer={getCardsFromMyServer}
+                    setFind={setFindMy}
+                    setOnShortFilms={setOnShortFilmsMy}
+                    onShortFilms={onShortFilmsMy}
+                    isChecked={isCheckedMy}
+                    setSeachResult={setSeachResultMy}
+                    seachResult={seachResultMy}
+                    searchResultFromLocalStorage={searchResultFromLocalStorageMy}
+                    setSearchResultFromLocalStorage={setSearchResultFromLocalStorageMy}
+                    checked={checkedMy}
+                    setChecked={setCheckedMy}
+                  />
 
-                  <Route exact path="/profile" component={Profile}
+                  <ProtectedRoute
+                    exact path="/profile"
+                    loggedIn={loggedIn}
+                    component={Profile}
+                    onUpdateUser={handleUpdateUser}
+                    setLoggedIn={setLoggedIn}
                   />
 
                   <Route exact path="/signup" component={Register}
@@ -330,9 +391,10 @@ function App(props) {
                 <Footer 
                 />
 
-        {/* </div> */}
+            </CardContext.Provider>
+          </CurrentUserContext.Provider>
       </div>
-    </div>
+    </div> : <div/>
   );
 }
 

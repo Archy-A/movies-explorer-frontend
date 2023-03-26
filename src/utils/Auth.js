@@ -1,4 +1,4 @@
-export const BASE_URL = "https://api.testdeploy.nomoredomainsclub.ru";
+export const BASE_URL = "http://localhost:3000";
 
 export function getResponseData(res) {
   if (!res.ok) {
@@ -8,7 +8,7 @@ export function getResponseData(res) {
 }
 
 export const register = (email, password) => {
-  return fetch(`https://api.testdeploy.nomoredomainsclub.ru/signup`, {
+  return fetch(`http://localhost:3000/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -32,7 +32,7 @@ export const sigin = (email, password) => {
 };
 
 export const getContent = (token) => {
-  return fetch(`https://api.testdeploy.nomoredomainsclub.ru/users/me`, {
+  return fetch(`http://localhost:3000/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

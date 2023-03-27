@@ -20,6 +20,20 @@ function Login(props) {
     history.push("/");
   }
 
+  // console.log('props.checkPass = ', props.checkPass)
+  // console.log('props.checkEmail = ', props.checkEmail)
+
+  let buttonDisable = true;
+  function setbuttonDisable() {
+    if (props.checkPass === true && props.checkEmail === true ) {
+      return buttonDisable = false;
+    } else {
+      return buttonDisable = true;
+    }
+  }
+
+  console.log('buttonDisable = ', buttonDisable)
+
   return (
     <>
       <section className="login">
@@ -84,11 +98,17 @@ function Login(props) {
                 ></input>
                 <div className="login__line" />
               </div>
+
+              <p className="profile__error">{props.registerError}</p>
               
-              <button type="submit" className="login__register">
-                <p className="login__label">
-                  Войти
-                </p>
+              <button
+                type="submit"
+                className="login__register"
+                // disabled={setbuttonDisable()}
+                >
+                  <p className="login__label">
+                    Войти
+                  </p>
               </button>
 
               <div className="login__framer">

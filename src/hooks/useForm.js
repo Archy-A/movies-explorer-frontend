@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-function useForm(inputValues) {
+function useForm(inputValues, valuesUpdatedCallback) {
   const [values, setValues] = useState(inputValues);
+
+  useEffect(() => {
+    valuesUpdatedCallback();
+    // console.log('values ===== ', values)
+  },[values, valuesUpdatedCallback])
 
   const handleChange = (event) => {
     const { value, name } = event.target;

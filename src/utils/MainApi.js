@@ -1,4 +1,5 @@
 const link = "http://localhost:3000/";
+const BadRequestError = require('../errors/user-id-err');
 
 class Api {
   constructor(options) {
@@ -44,7 +45,7 @@ class Api {
       });
   }
 
-  setUserInfo(name, email) {
+  setUserInfo(name, email, next) {
     console.log(' name = ', name)
     console.log(' email = ', email)
 
@@ -64,7 +65,7 @@ class Api {
       })
       .then((res) => {
         return res;
-      });
+      })
   }
 
 
@@ -129,9 +130,9 @@ class Api {
 }
 
 // Api instance creation
-const api = new Api({
+const apiMy = new Api({
   baseUrl: ["movies", "users/me"],
   token: `Bearer ${localStorage.getItem('token')}`,
 });
 
-export default api;
+export default apiMy;

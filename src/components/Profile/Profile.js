@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Profile({
-  onUpdateUser, setLoggedIn
+  onUpdateUser, setLoggedIn, profileError
 }) {
 
   const history = useHistory();
@@ -21,6 +21,7 @@ function Profile({
 
   const [nameUser, setNameUser] = useState("");
   const [description, setDescription] = useState("");
+
 
   useEffect(() => {
     setNameUser(currentUser.name);
@@ -58,7 +59,6 @@ function Profile({
             >
 
              <div className="profile__box">
-
                <div className="profile__container">
                  <p className="profile__title">Имя</p>
                   <input
@@ -74,9 +74,7 @@ function Profile({
                     required
                   ></input>
                 </div>
-
                 <div className="profile__line" />
-
               <div className="profile__container">
                 <p className="profile__title">E-mail</p>
                 <input
@@ -92,9 +90,9 @@ function Profile({
                   required
                 ></input>
               </div>
-
             </div>
         
+            <p className="profile__error">{profileError}</p>
 
               <div className="profile__framer">
 
@@ -114,9 +112,6 @@ function Profile({
                   Выйти из аккаунта
                 </button>
 
-                {/* <NavLink to="/" className="profile__out">
-                  Выйти из аккаунта
-                </NavLink> */}
               </div>
             </form>
 

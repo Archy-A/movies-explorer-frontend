@@ -7,21 +7,22 @@ export function getResponseData(res) {
   return res.json();
 }
 
-export const register = (email, password) => {
+export const register = (name, email, password) => {
+  console.log(' --------------------------------- ')
+  console.log(' name = ', name)
+  console.log(' email = ', email)
+  console.log(' password = ', password)
+  console.log(' --------------------------------- ')
   return fetch(`http://localhost:3000/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ name, email, password }),
   }).then((res) => getResponseData(res));
 };
 
 export const sigin = (email, password) => {
-  console.log(' --------------------------------- ')
-  console.log(' email = ', email)
-  console.log(' password = ', password)
-  console.log(' --------------------------------- ')
   return fetch(`http://localhost:3000/signin`, {
     method: "POST",
     headers: {

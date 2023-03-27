@@ -60,10 +60,15 @@ class Api {
       });
   }
 
-  likeCard(cardNew, likeStateToBeSet) {
+  likeCard(card, likeStateToBeSet) {
     // likeStateToBeSet - is a new state to be set on server
     let method = "";
     if (likeStateToBeSet) {
+      const newCard = {
+        ...card,
+        like: likeStateToBeSet
+      };
+       console.log('cardNew = ', newCard)
       method = "POST";
       return fetch(`http://localhost:3000/movies/`, {
         method: method,
@@ -71,7 +76,7 @@ class Api {
           authorization: `Bearer ${localStorage.getItem('token')}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(cardNew),
+        body: JSON.stringify(newCard),
       })
       .then((res) => {
         return this._checkResponse(res);
@@ -79,10 +84,12 @@ class Api {
       .then((res) => {
         return res;
       });
-    } else {
 
+
+    } else {
+      console.log('DELETE cardNew = ', card)
       method = "DELETE";
-      return fetch(`http://localhost:3000/movies/${cardNew.movieId}`, {
+      return fetch(`http://localhost:3000/movies/${card._id}`, {
         method: "DELETE",
         headers: {
           authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -90,6 +97,7 @@ class Api {
         },
       })
       .then((res) => {
+        
         return this._checkResponse(res);
       })
       .then((res) => {

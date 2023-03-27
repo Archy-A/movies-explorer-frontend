@@ -12,7 +12,7 @@ function MoviesCardList({
     <section className="elements">
         {cards.map((card) => (
           <MoviesCard
-            key={card.id}
+            key={card.externalId}
             link={card.link}
             name={card.name}
             card={card}

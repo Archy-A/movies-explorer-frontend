@@ -40,7 +40,8 @@ function MoviesCard(props) {
   }
 
   const imageLink = `${
-    currentPath === '/saved-movies' ? `https://api.nomoreparties.co/${props.card.image}` : `https://api.nomoreparties.co/${props.card.image.url}`
+    // currentPath === '/saved-movies' ? `https://api.nomoreparties.co/${props.card.image}` : `https://api.nomoreparties.co/${props.card.image.url}`
+    `https://api.nomoreparties.co/${props.card.image}`
   }`;
 
   const isLiked = props.card.like;
@@ -50,7 +51,7 @@ function MoviesCard(props) {
   }`;
 
   return (
-   <article key={props.card.id} className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
+   <article key={props.card.externalId} className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
    >
       <img className="element__picture"
            src={`${imageLink}`} 

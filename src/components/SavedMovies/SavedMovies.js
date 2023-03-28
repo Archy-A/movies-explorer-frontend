@@ -17,11 +17,12 @@ function SavedMovies(props) {
             onShortFilms={props.onShortFilms}
             isChecked={props.isChecked}
             setSeachResult={props.setSeachResult}
-            seachResult={props.seachResult}
+            searchResult={props.searchResult}
             searchResultFromLocalStorage={props.searchResultFromLocalStorage}
             setSearchResultFromLocalStorage={props.setSearchResultFromLocalStorage}
             setChecked={props.setChecked}
             checked={props.checked}
+
           />   
           <div className="under_grey"></div>
         </div>
@@ -29,6 +30,7 @@ function SavedMovies(props) {
         <div className="movies__wrapper">
           <MoviesCardList
             cards={props.cards}
+            onCardLike={props.onCardLike}
           />
         </div>
 

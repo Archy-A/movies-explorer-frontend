@@ -54,7 +54,13 @@ function App(props) {
   // const [myDBfilms, setMyDBfilms] = useState([]);
   // const [externalDBfilms, setExternalDBfilms] = useState("[]");
 
-  const [externalDBfilms, setExternalDBfilms] = useState(JSON.parse(localStorage.getItem("externalDBfilms") || "[]"));
+
+  const [firstIter, setFirstIter] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(12);
+  const [currentLimit, setCurrentLimit] = useState(15);
+
+  const [cardsForShow, setCardsForShow] = useState([]);
+  //const [externalDBfilms, setExternalDBfilms] = useState(JSON.parse(localStorage.getItem("externalDBfilms") || "[]"));
   const [cards, setCards] = useState(JSON.parse(localStorage.getItem("cards") || "[]"));
   // const [cards, setCards] = useState([]);
   const [find, setFind] = useState(localStorage.getItem("find") || "");
@@ -65,15 +71,15 @@ function App(props) {
   console.log('cardsMy from localStorage = ', cardsMy)
 
   const [like, setLike] = useState([]);
-  const [seachResult, setSeachResult] = useState(localStorage.getItem("seachResult") || "");
+  const [searchResult, setSeachResult] = useState(localStorage.getItem("searchResult") || "");
   const [onShortFilms, setOnShortFilms] = useState(localStorage.getItem("onShortFilms") || "1");
   const [checked, setChecked] = useState(localStorage.getItem("checked") || "");
-  const [searchResultFromLocalStorage, setSearchResultFromLocalStorage] = useState(localStorage.getItem("seachResult"));
+  const [searchResultFromLocalStorage, setSearchResultFromLocalStorage] = useState(localStorage.getItem("searchResult"));
 
   const [seachResultMy, setSeachResultMy] = useState(''); 
   const [onShortFilmsMy, setOnShortFilmsMy] = useState(localStorage.getItem("onShortFilmsMy") || "1");
   const [checkedMy, setCheckedMy] = useState(localStorage.getItem("checked") || "");
-  const [searchResultFromLocalStorageMy, setSearchResultFromLocalStorageMy] = useState(localStorage.getItem("seachResult"));
+  const [searchResultFromLocalStorageMy, setSearchResultFromLocalStorageMy] = useState(localStorage.getItem("searchResult"));
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
@@ -87,15 +93,11 @@ function App(props) {
 
   tokenCheck();
 
-  // console.log('localStorage.getItem("token") = ',localStorage.getItem("token"))
-  // console.log('currentUser = ', currentUser)
-
   useEffect(() => {
     loggedIn &&
       api
         .getUserInfo()
         .then((data) => {
-          // console.log('user data = ', data)
           setCurrentUser(data);
         })
         .catch((err) => {
@@ -112,7 +114,6 @@ function App(props) {
               setCardsMy(myCards);
             })
             .catch((err) => {
-              // console.log('ERROR getInitialCardsMy = ',myDBfilms) 
               console.log(err);
             });
   }, [loggedIn]);
@@ -158,88 +159,68 @@ function App(props) {
     return newCard;
   }
 
-    // -------------------- LOGIN --------------------------------------
-    function handleLogin(e) {
-      e.preventDefault();
-      auth
-        .sigin(
-          emailAndPassSetterLogin.values[emailLogin],
-          emailAndPassSetterLogin.values[passwordLogin]
-        )
-        .then((res) => {
-          if (res) {
+  async function loadInitialCards() {
+    try {
+      const arrayFilms = await api.getInitialCards();
+      const externalDB = arrayFilms.map((card) => createCardFromExternal(card));
+      console.log('externalDB = ', externalDB) 
+      //setExternalDBfilms(externalDB)
 
+      //localStorage.setItem("externalDBfilms", JSON.stringify(externalDB));
+      return externalDB;
+    } 
+    catch(err) {
+      console.log(err);
+    };
+  }
+
+  // -------------------- LOGIN --------------------------------------
+  function handleLogin(e) {
+    e.preventDefault();
+    auth
+      .sigin(
+        emailAndPassSetterLogin.values[emailLogin],
+        emailAndPassSetterLogin.values[passwordLogin]
+      )
+      .then((res) => {
+        if (res) {
           localStorage.removeItem("cards");
-          localStorage.removeItem("seachResult");
+          localStorage.removeItem("searchResult");
           localStorage.removeItem("shortFilms");
 
-          ///////////  GET INITIAL CARDS ////////////
-            api
-            .getInitialCards()
-            .then((arrayFilms) => {
-              let externalDB = arrayFilms.map((card) => createCardFromExternal(card)
-                
-              //   return {
-              //     nameRU: card.nameRU,
-              //     nameEN: card.nameEN,
-              //     description: card.description,
-              //     director: card.director,
-              //     country: card.country,
-              //     duration: card.duration,
-              //     year: card.year,
-              //     image: {
-              //       url: card.image.url
-              //     },
-              //     thumbnail: card.image.url,
-              //     trailerLink: card.trailerLink,
-              //     externalId: card.id,
-              //     _id: "",
-              //     like: false,
-              //   };
-            );
-            console.log('externalDB = ',externalDB) 
-            setExternalDBfilms(externalDB)
+          setLoggedIn(true);
+          setEmail(emailAndPassSetterLogin.values[emailLogin]);
+          history.push("/movies");
+          setLoginError(false);
 
-            localStorage.setItem("externalDBfilms", JSON.stringify(externalDB));
-            // localStorage.setItem("cards", JSON.stringify(yandexDBLikeUpdated));
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+          setSeachResultMy("")
+          setOnShortFilms("1")
+          setCards([]);
+          setCardsMy([]);
+          // getCardsFromServer(e);
 
-            setLoggedIn(true);
-            setEmail(emailAndPassSetterLogin.values[emailLogin]);
-            history.push("/movies");
-            setLoginError(false);
+          localStorage.setItem("token", res.token);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoggedIn(false);
+        setLoginError(true);
 
-            setSeachResultMy("")
-            setOnShortFilms("1")
-            setCards([]);
-            setCardsMy([]);
-            // getCardsFromServer(e);
+        if (err === 'Ошибка: 400') {
+          setLoginError(`Введены некорреткные данные в поля E-mail/Пароль`)
+        } else if (err === 'Ошибка: 401') {        
+          setLoginError(`Неверные E-mail/Пароль, попробуйте исправить`)
+        } else {        
+          setLoginError(`Извините, случилась проблема при входе: ${err}`)
+        }
 
-            localStorage.setItem("token", res.token);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          setLoggedIn(false);
-          setLoginError(true);
-
-          if (err === 'Ошибка: 400') {
-            setLoginError(`Введены некорреткные данные в поля E-mail/Пароль`)
-          } else if (err === 'Ошибка: 401') {        
-            setLoginError(`Неверные E-mail/Пароль, попробуйте исправить`)
-          } else {        
-            setLoginError(`Извините, случилась проблема при входе: ${err}`)
-          }
-
-          setIsInfoTooltipOpen(true);
-          history.push("/signin");
-        });
-   }
+        setIsInfoTooltipOpen(true);
+        history.push("/signin");
+      });
+  }
   
-    // ------------------------------------------------------------------
+  // ------------------------------------------------------------------
 
 
   //----------------- REGISTER ---------------------------------------
@@ -354,142 +335,68 @@ function App(props) {
     emailAndPassSetterLogin.handleChange(e);
   }
 
+
+  //////////////////////-------------------------------////////////////////////////
   //////////////////////<<<  S E A R C H   M A I N  >>>////////////////////////////
-  function findCardInMain(e) {
+  //////////////////////-------------------------------////////////////////////////
+  async function findCardInMain(e) {
     e.preventDefault();
     if (!find) {return}
-      function compare(dbfilms, cardsMy) { /////Передаём 2 массива
-          let cardsMyIds = {};
-          cardsMy.forEach(cardMyselect => {
-            cardsMyIds[cardMyselect.externalId] = cardMyselect;
-          });
-          return dbfilms.map((obj) => {
-            const matched = Object.keys(cardsMyIds).includes(String(obj.externalId));
-            // obj.like = matched;
-            // if (matched) {
-            //   obj['_id'] = cardsMyIds[obj.externalId]._id;
-            // }
-            return matched ? cardsMyIds[obj.externalId] : obj;
+
+    const initialCards = await loadInitialCards();
+    
+    function compare(dbfilms, cardsMy) { /////Передаём 2 массива
+        let cardsMyIds = {};
+        cardsMy.forEach(cardMyselect => {
+          cardsMyIds[cardMyselect.externalId] = cardMyselect;
         });
-      }
-
-      let findInput = find.toLowerCase()
-      let result = externalDBfilms.filter(film => film.nameRU.toLowerCase().includes(findInput));
-      if (onShortFilms === "2") {
-          result = result.filter(film => film.duration < 41);
-      }
-      result = compare(result, cardsMy);
-
-       //tmp preloader emulator >>>>>>>>>>------------------------
-       setPreloaderState(true)
-       console.log('preloaderState before= ', preloaderState)
-       setCards([])
-       function sleep(ms) {
-         return new Promise(resolve => setTimeout(resolve, ms));
-       }
-       sleep(1000).then(() => { 
-        setPreloaderState(false);
-        setCards(result); 
+        return dbfilms.map((obj) => {
+          const matched = Object.keys(cardsMyIds).includes(String(obj.externalId));
+          return matched ? cardsMyIds[obj.externalId] : obj;
       });
-       //<<<<<<<<<<<<<<<<<<<<<<<<---------------------------------
+    }
 
-    // uncomment this setCards after you moved preloader
+    let findInput = find.toLowerCase()
+    let result = initialCards.filter(film => film.nameRU.toLowerCase().includes(findInput));
+    if (onShortFilms === "2") {
+        result = result.filter(film => film.duration < 41);
+    }
+    result = compare(result, cardsMy);
+
+       //tmp preloader emulator >>>>>>>>>>-----------------------------
+              setPreloaderState(true)
+              console.log('preloaderState before= ', preloaderState)
+              setCards([])
+              function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+              }
+              sleep(500).then(() => { 
+                setPreloaderState(false);
+
+              /////// Button [LOAD MORE] ///////
+              
+              //////////////////////////////////
+
+                setCards(result); 
+              });
+       //<<<<<<<<<<<<<<<<<<<<<<<<---------------------------------------
+
+    // uncomment this setCards(result) after you moved preloader
     //  setCards(result);
 
       localStorage.setItem("find", find);
       localStorage.setItem("onShortFilms", onShortFilms);
       // my new changes:
       localStorage.setItem("cards", JSON.stringify(result));
-      localStorage.setItem("seachResult", seachResult);
+      localStorage.setItem("searchResult", searchResult);
       localStorage.setItem("onShortFilms", onShortFilms);
       localStorage.setItem("searchResultFromLocalStorage", searchResultFromLocalStorage);   
   }
 
-  // -------------- Yandex Server ----------------------
-  // function getCardsFromServer(e) {
-  //   e.preventDefault();
-  //   return api
-  //     .getInitialCards()
-  //     .then((arrayFilms) => {
-  //       if (!find) {return}
-  //         let findInput = find.toLowerCase()
-  //         let result = arrayFilms.filter(film => film.nameRU.toLowerCase().includes(findInput));
-  //         if (onShortFilms === "2") {
-  //           result = result.filter(film => film.duration < 41);
-  //         }
-  //         // ---------- Likes -----------------------------------
-  //         // add a new filed to yandexDB table: like
-  //         const yandexDB = result.map(
-  //           element => {
-  //             element.like = false;
-  //             return element;
-  //           })
-
-  //         // compare myDB table with yandexDB table
-  //         function compare(yandexDB, cardsMy) { /////Передаём 2 массива
-  //           let cardsMyIds = {};
-  //           cardsMy.forEach(card => {
-  //             cardsMyIds[card.movieId] = card;
-  //           });
-  //           return yandexDB.map((obj) => {
-  //             const matched = Object.keys(cardsMyIds).includes(String(obj.id));
-  //             const card = matched ? cardsMyIds[obj.id] : obj;
-  //             console.log( ' matched ? = ', matched)
-  //             console.log( ' card.myId = ', card.myId)
-  //             return {
-  //                 nameRU: card.nameRU,
-  //                 nameEN: card.nameEN,
-  //                 description: card.description,
-  //                 director: card.director,
-  //                 country: card.country,
-  //                 duration: card.duration,
-  //                 year: card.year,
-  //                 image: {
-  //                   url:  matched ? card.image : card.image.url
-  //                 },
-  //                 thumbnail: card.image,
-  //                 trailerLink: card.trailerLink,
-  //                 movieId: matched ? card.movieId : card.id,
-  //                 id: matched ? card.movieId : card.id,
-  //                 like: matched,
-  //                 myId: matched ? card.myId : ""
-  //             };
-  //         });
-  //         }
-
-  //         let yandexDBLikeUpdated = compare(yandexDB, cardsMy)
-
-  //         console.log('yandexDBLikeUpdated = ', yandexDBLikeUpdated)
-  //         if (yandexDBLikeUpdated.length !== 0) {
-  //           // get likes from myDB table (put it to yandexDB)
-  //           //-----------------------------------------------------
-  //           setCards(yandexDBLikeUpdated);
-  //           localStorage.removeItem("cards");
-  //           localStorage.removeItem("seachResult");
-  //           localStorage.removeItem("shortFilms");
-  //           localStorage.setItem("cards", JSON.stringify(yandexDBLikeUpdated));
-  //           localStorage.setItem("seachResult", seachResult);
-  //           localStorage.setItem("onShortFilms", onShortFilms);
-  //         } else {
-  //           setCards(yandexDB);
-  //           localStorage.removeItem("cards");
-  //           localStorage.removeItem("seachResult");
-  //           localStorage.removeItem("shortFilms");
-  //           localStorage.setItem("cards", JSON.stringify(yandexDB));
-  //           localStorage.setItem("seachResult", seachResult);
-  //           localStorage.setItem("onShortFilms", onShortFilms);
-  //         }
-  //         // getCardsFromMyServer(e)
-  //         // console.log(' RUN ------------------ getCardsFromMyServer')
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //}
-
- //////////////////////////////////////////////////////////////////////////////////////////////
- 
+  
+  //////////////////////-------------------------------------------////////////////////////////
   //////////////////////<<<  S E A R C H   F R O M   M Y   D B  >>>////////////////////////////
+  //////////////////////-------------------------------------------////////////////////////////
   function findCardInSaved(e) {
     e.preventDefault();
     let findInput = findMy.toLowerCase()
@@ -506,6 +413,11 @@ function App(props) {
     localStorage.setItem("onShortFilmsMy", onShortFilmsMy);
   }
 
+
+
+  ////////////////////////////-------------------------------///////////////////////////////////
+  ////////////////////////////   L I K E   / D I S L I K E   ///////////////////////////////////
+  ////////////////////////////-------------------------------///////////////////////////////////
   function handleCardLike(card, e) {
     const newLike = !card.like;
     if (!newLike && !card._id) {
@@ -542,6 +454,7 @@ function App(props) {
     e.stopPropagation();
   }
 
+  /////////////////////////////////////////////////////////////////////////////////////////////////
   function tokenCheck() {
     const jwt = localStorage.getItem("token");
     if (jwt) {
@@ -609,13 +522,21 @@ function App(props) {
                     onShortFilms={onShortFilms}
                     isChecked={isChecked}
                     setSeachResult={setSeachResult}
-                    seachResult={seachResult}
+                    searchResult={searchResult}
                     searchResultFromLocalStorage={searchResultFromLocalStorage}
                     setSearchResultFromLocalStorage={setSearchResultFromLocalStorage}
                     checked={checked}
                     setChecked={setChecked}
                     onCardLike={handleCardLike}
                     preloaderState={preloaderState}
+                    firstIter={firstIter}
+                    setFirstIter={setFirstIter}
+                    currentIndex={currentIndex}
+                    setCurrentIndex={setCurrentIndex}
+                    currentLimit={currentLimit}
+                    setCurrentLimit={setCurrentLimit}
+                    cardsForShow={cardsForShow}
+                    setCardsForShow={setCardsForShow}
                   />
 
                   <ProtectedRoute
@@ -629,11 +550,12 @@ function App(props) {
                     onShortFilms={onShortFilmsMy}
                     isChecked={isCheckedMy}
                     setSeachResult={setSeachResultMy}
-                    seachResult={seachResultMy}
+                    searchResult={seachResultMy}
                     searchResultFromLocalStorage={searchResultFromLocalStorageMy}
                     setSearchResultFromLocalStorage={setSearchResultFromLocalStorageMy}
                     checked={checkedMy}
                     setChecked={setCheckedMy}
+                    onCardLike={handleCardLike}
                   />
 
                   <ProtectedRoute

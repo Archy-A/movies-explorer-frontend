@@ -7,10 +7,10 @@ function MoviesCard(props) {
     return window.location.pathname
   }
   const url = getCurrentURL()
-  const [currentPath, setCurrentPath] = useState(url);
+  const [isSavedMovies, setIsSavedMovies] = useState(url);
 
   useEffect(() => {
-    setCurrentPath(url)
+    setIsSavedMovies(url === '/saved-movies')
   }, [url]);
 
   const [show, setShow] = useState("none");
@@ -39,6 +39,10 @@ function MoviesCard(props) {
     props.onCardLike(props.card, e);
   }
 
+  // function handleRemoveCard(e) {
+  //   props.onSavedCardRemove(props.card, e);
+  // }
+
   const imageLink = `${
     // currentPath === '/saved-movies' ? `https://api.nomoreparties.co/${props.card.image}` : `https://api.nomoreparties.co/${props.card.image.url}`
     `https://api.nomoreparties.co/${props.card.image}`
@@ -55,7 +59,7 @@ function MoviesCard(props) {
   }
 
   return (
-   <article key={props.card.externalId} className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
+   <article key={props.card.externalId} className={`${isSavedMovies ? "element_saved" : "element" } `}
    >
       <img className="element__picture"
            src={`${imageLink}`} 
@@ -69,7 +73,7 @@ function MoviesCard(props) {
 
           <button  
             type="button" 
-            className={`element__like ${currentPath === '/saved-movies' ? "element__remove" : cardLikeButtonClassName} } `} 
+            className={`element__like ${isSavedMovies ? "element__remove" : cardLikeButtonClassName} } `} 
             aria-label="Сердечко, поставить лайк"
             onClick={handleLikeClick}
             >

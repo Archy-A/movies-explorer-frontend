@@ -1,12 +1,18 @@
-import React from "react";
-import { useHistory, Route, Switch, Link } from "react-router-dom";
+import React, { useEffect } from "react";
 
 import MoviesCard from "../MoviesCard/MoviesCard";
+
 
 function MoviesCardList({
   cards,
   onCardLike
 }) {
+
+  
+useEffect(() => {
+  console.log('cardsForShow = ', cards)
+}, [cards]);
+
  
   return (
     <section className="elements">

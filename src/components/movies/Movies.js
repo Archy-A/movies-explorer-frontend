@@ -1,10 +1,35 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader.js";
 
 function Movies(props) {
+
+  let getFirstCards = [...props.cards];
+  getFirstCards.splice(12);
+  // props.setCardsForShow(getFirstCards);
+
+  // if (props.firstIter) {
+  //   console.log('First state ')
+  //   props.setFirstIter(false);
+  //   setCardsForShow(getFirstCards);
+  // }
+
+  console.log('getFirstCards = ', getFirstCards)
+
+  function showMore() {
+      if (props.currentLimit > props.cards.length) {
+        console.log('FINISH ======================================== ')
+        return
+      }
+      for (; props.currentIndex < props.currentLimit; props.setCurrentIndex(props.currentIndex + 1)) {
+        // setCardsForShow((oldCards) => ([...oldCards, props.cards[props.currentIndex]]));
+        console.log('currentIndex  = = = = = = = = == ', props.currentIndex)
+      };
+      props.setCurrentLimit(props.currentLimit + 3)  
+     }
+
 
   return (
     <main>
@@ -18,7 +43,7 @@ function Movies(props) {
              onShortFilms={props.onShortFilms}
              isChecked={props.isChecked}
              setSeachResult={props.setSeachResult}
-             seachResult={props.seachResult}
+             searchResult={props.searchResult}
              searchResultFromLocalStorage={props.searchResultFromLocalStorage}
              setSearchResultFromLocalStorage={props.setSearchResultFromLocalStorage}
              setChecked={props.setChecked}
@@ -30,6 +55,7 @@ function Movies(props) {
         <div className="movies__wrapper">
           <MoviesCardList
              cards={props.cards}
+            //  cards={props.cardsForShow}
              onCardLike={props.onCardLike}
           />
         </div>
@@ -37,6 +63,7 @@ function Movies(props) {
         <div className="preloader__wrapper">
           <Preloader
             preloaderState={props.preloaderState}
+            showMore={showMore}
           />  
         </div>
       

@@ -5,7 +5,6 @@ function useForm(inputValues, valuesUpdatedCallback) {
 
   useEffect(() => {
     valuesUpdatedCallback();
-    // console.log('values ===== ', values)
   },[values, valuesUpdatedCallback])
 
   const handleChange = (event) => {

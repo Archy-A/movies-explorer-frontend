@@ -1,38 +1,31 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import { withRouter } from "react-router-dom";
-
-import SearchForm from "../SearchForm/SearchForm";
 
 function Login(props) {
 
   const inputEmailRef = useRef();
   const inputPassRef = useRef();
-
   let history = useHistory()
-
-  // function mySubmitFunction(e) {
-  //   e.preventDefault();
-  //   return false;
-  // }
 
   function handleGoMain() {
     history.push("/");
   }
 
-  // console.log('props.checkPass = ', props.checkPass)
-  // console.log('props.checkEmail = ', props.checkEmail)
+  props.setRegisterError("")
 
-  let buttonDisable = true;
-  function setbuttonDisable() {
-    if (props.checkPass === true && props.checkEmail === true ) {
-      return buttonDisable = false;
+  // useEffect(() => {
+  //   console.log(' useEffect props.checkPassLog = ', props.checkPassLog)
+  // }, [props.checkPassLog]);
+
+  let buttonDisable1 = true;
+
+  function setbuttonDisable1() {
+    if (props.checkPassLog === true && props.checkEmailLog === true ) {
+      return buttonDisable1 = false;
     } else {
-      return buttonDisable = true;
+      return buttonDisable1 = true;
     }
   }
-
-  console.log('buttonDisable = ', buttonDisable)
 
   return (
     <>
@@ -99,12 +92,12 @@ function Login(props) {
                 <div className="login__line" />
               </div>
 
-              <p className="profile__error">{props.registerError}</p>
+              <p className="profile__error">{props.loginError}</p>
               
               <button
                 type="submit"
                 className="login__register"
-                // disabled={setbuttonDisable()}
+                disabled={setbuttonDisable1()}
                 >
                   <p className="login__label">
                     Войти

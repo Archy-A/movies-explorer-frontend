@@ -223,6 +223,15 @@ function App(props) {
           console.log(err);
           setLoggedIn(false);
           setLoginError(true);
+
+          if (err === 'Ошибка: 400') {
+            setLoginError(`Введены некорреткные данные в поля E-mail/Пароль`)
+          } else if (err === 'Ошибка: 401') {        
+            setLoginError(`Неверные E-mail/Пароль, попробуйте исправить`)
+          } else {        
+            setLoginError(`Извините, случилась проблема при входе: ${err}`)
+          }
+
           setIsInfoTooltipOpen(true);
           history.push("/signin");
         });
@@ -265,6 +274,8 @@ function App(props) {
         setEmail(emailAndPassSetterReg.values[emailReg]);
         if (err === 'Ошибка: 400') {
           setRegisterError(`Введены некорреткные данные в поля Имя/E-mail/Пароль`)
+        } else if (err === 'Ошибка: 409') {        
+          setRegisterError(`Такой пользователь уже существует!`)
         } else {        
           setRegisterError(`Извините, случилась проблема при регистрации: ${err}`)
         }
@@ -305,26 +316,28 @@ function App(props) {
   }
 
   //>>>>>>>>>>>> CHECK SIGNIN <<<<<<<<<<<<<<<<
+  const [checkPassLog, setCheckPassLog] = useState(false);
   function handleSetCheckPassLogin(inPass) {
-    let checker = false;
-    emailAndPassSetterLogin.values.passwordLogin.toString().length < 2 ? checker = false : checker = true;
-    setCheckPass(checker);
+    let checker1 = false;
+    emailAndPassSetterLogin.values.passwordLogin.toString().length < 2 ? checker1 = false : checker1 = true;
+
+    setCheckPassLog(checker1);
   }
 
+  const [checkEmailLog, setCheckEmailLog] = useState(false);
   function handleSetCheckEmailLogin(inPass) {
-    let checker = false;
+    let checker2 = false;
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     let email = emailAndPassSetterLogin.values.emailLogin.toString();
         if(email.match(mailformat))
           {
-            // console.log('email.match(mailformat) = ', email.match(mailformat))
-            checker = true 
-            setCheckEmail(checker);
+            checker2 = true 
+            setCheckEmailLog(checker2);
           }
           else
           {
-            checker = false 
-            setCheckEmail(checker);
+            checker2 = false 
+            setCheckEmailLog(checker2);
           }
   }
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -649,8 +662,9 @@ function App(props) {
                       handleOnChange={handleLoginOnChange}
                       emailAndPassSetterLoginValues={emailAndPassSetterLogin.values}
                       loginError={loginError}
-                      checkPass={checkPass}
-                      checkEmail={checkEmail}
+                      checkPassLog={checkPassLog}
+                      checkEmailLog={checkEmailLog}
+                      setRegisterError={setRegisterError}
                     />
                   </Route>
 

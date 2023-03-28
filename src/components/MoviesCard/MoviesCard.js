@@ -50,11 +50,16 @@ function MoviesCard(props) {
     isLiked ? "element__like_pressed" : ""
   }`;
 
+  function handleYouTubeTrailer() {
+    window.open(props.card.trailerLink, '_blank');
+  }
+
   return (
    <article key={props.card.externalId} className={`${currentPath === '/saved-movies' ? "element_saved" : "element" } `}
    >
       <img className="element__picture"
            src={`${imageLink}`} 
+           onClick={handleYouTubeTrailer}
            alt={props.card.nameRU}>
       </img>
       

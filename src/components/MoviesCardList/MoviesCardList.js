@@ -22,10 +22,7 @@ function MoviesCardList({
               ? card.likes.length
               : 0
             }
-            // onCardClick={handleCardClick}
             onCardLike={onCardLike}
-            // onCardDelete={onCardDelete}
-            // onDeleteConfirmation={onDeleteConfirmation}
           />
         ))}
    </section>

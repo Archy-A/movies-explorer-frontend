@@ -55,13 +55,14 @@ function App(props) {
   // const [externalDBfilms, setExternalDBfilms] = useState("[]");
 
   const [externalDBfilms, setExternalDBfilms] = useState(JSON.parse(localStorage.getItem("externalDBfilms") || "[]"));
-  // const [myDBfilms, setMyDBfilms] = useState(JSON.parse(localStorage.getItem("cardsMy") || "[]"));
   const [cards, setCards] = useState(JSON.parse(localStorage.getItem("cards") || "[]"));
-  const [find, setFind] = useState([]);
+  // const [cards, setCards] = useState([]);
+  const [find, setFind] = useState(localStorage.getItem("find") || "");
   const [cardsMy, setCardsMy] = useState(JSON.parse(localStorage.getItem("cardsMy") || "[]"));
   const [findMy, setFindMy] = useState([]);
+  const [preloaderState, setPreloaderState] = useState(false);
 // 
-  // console.log('externalDBfilms = ', externalDBfilms)
+  console.log('cardsMy from localStorage = ', cardsMy)
 
   const [like, setLike] = useState([]);
   const [seachResult, setSeachResult] = useState(localStorage.getItem("seachResult") || "");
@@ -70,7 +71,7 @@ function App(props) {
   const [searchResultFromLocalStorage, setSearchResultFromLocalStorage] = useState(localStorage.getItem("seachResult"));
 
   const [seachResultMy, setSeachResultMy] = useState(''); 
-  const [onShortFilmsMy, setOnShortFilmsMy] = useState(localStorage.getItem("onShortFilms") || "1");
+  const [onShortFilmsMy, setOnShortFilmsMy] = useState(localStorage.getItem("onShortFilmsMy") || "1");
   const [checkedMy, setCheckedMy] = useState(localStorage.getItem("checked") || "");
   const [searchResultFromLocalStorageMy, setSearchResultFromLocalStorageMy] = useState(localStorage.getItem("seachResult"));
 
@@ -106,6 +107,7 @@ function App(props) {
             .getInitialCardsMy()
             .then((myCards) => {
               myCards = myCards.map(c => createCardFromDB(c, true));
+              console.log('!!!!!!!!!!!!!!!!!!! ЭТО НУЖНО ИСПРАВИТЬ!!!!!!!!!!!!!!!!!!!!!!!!!!! происходит загрузка карточек из моей базы каждый раз при обновлении страницы из-за useEffect[loggedIn] в App.js')
               localStorage.setItem("cardsMy", JSON.stringify(myCards));
               setCardsMy(myCards);
             })
@@ -356,12 +358,6 @@ function App(props) {
   function findCardInMain(e) {
     e.preventDefault();
     if (!find) {return}
-      // compare myDB table with yandexDB table
-   
-      // console.log('externalDBfilms search 3= ', externalDBfilms["1"])
-      // console.log('cardsMy search = 3', cardsMy)
-      // console.log('=======================++++++++++++++++++++++++++++++++++++++++++++++++++')
-
       function compare(dbfilms, cardsMy) { /////Передаём 2 массива
           let cardsMyIds = {};
           cardsMy.forEach(cardMyselect => {
@@ -377,23 +373,37 @@ function App(props) {
         });
       }
 
-      //console.log('FILMS after compare = ', compare(externalDBfilms, cardsMy))
-
       let findInput = find.toLowerCase()
-      console.log("== externalDBfilms = ", externalDBfilms);
       let result = externalDBfilms.filter(film => film.nameRU.toLowerCase().includes(findInput));
       if (onShortFilms === "2") {
           result = result.filter(film => film.duration < 41);
       }
-      console.log("== result before = ", result);
-      console.log("== cardsMy = ", cardsMy);
       result = compare(result, cardsMy);
-      console.log("== result = ", result);
-      setCards(result);
-      // localStorage.setItem("seachResult", seachResult);
-      localStorage.setItem("onShortFilms", onShortFilms);
-  }
 
+       //tmp preloader emulator >>>>>>>>>>------------------------
+       setPreloaderState(true)
+       console.log('preloaderState before= ', preloaderState)
+       setCards([])
+       function sleep(ms) {
+         return new Promise(resolve => setTimeout(resolve, ms));
+       }
+       sleep(1000).then(() => { 
+        setPreloaderState(false);
+        setCards(result); 
+      });
+       //<<<<<<<<<<<<<<<<<<<<<<<<---------------------------------
+
+    // uncomment this setCards after you moved preloader
+    //  setCards(result);
+
+      localStorage.setItem("find", find);
+      localStorage.setItem("onShortFilms", onShortFilms);
+      // my new changes:
+      localStorage.setItem("cards", JSON.stringify(result));
+      localStorage.setItem("seachResult", seachResult);
+      localStorage.setItem("onShortFilms", onShortFilms);
+      localStorage.setItem("searchResultFromLocalStorage", searchResultFromLocalStorage);   
+  }
 
   // -------------- Yandex Server ----------------------
   // function getCardsFromServer(e) {
@@ -482,10 +492,12 @@ function App(props) {
   //////////////////////<<<  S E A R C H   F R O M   M Y   D B  >>>////////////////////////////
   function findCardInSaved(e) {
     e.preventDefault();
-    
     let findInput = findMy.toLowerCase()
     let result = cardsMy.filter(film => film.nameRU.toLowerCase().includes(findInput));
-    if (onShortFilms === "2") {
+////////
+    console.log('SEARCH >> onShortFilmsMy = ', onShortFilmsMy)
+////////
+    if (onShortFilmsMy === "2") {
       result = result.filter(film => film.duration < 41);
     }
     setCardsMy(result);
@@ -522,9 +534,6 @@ function App(props) {
 
         localStorage.setItem("cards", JSON.stringify(newCards));
 
-        //getCardsFromMyServer(e)
-        //console.log(' RUN ------------------ getCardsFromMyServer')
-
       })
       .catch((err) => {
         console.log(err);;
@@ -550,7 +559,6 @@ function App(props) {
           if (!inited) {
             setInited(true);
           }
-        //  window.alert(`${alertMessage} ${err}`);
         });
     } else {
       if (!inited) {
@@ -560,13 +568,11 @@ function App(props) {
   }
 
   function handleUpdateUser(info) {
-    // console.log('handleUpdateUser info= ', info.name , info.email)
     apiMy
       .setUserInfo(info.name, info.email)
       .then((data) => {
         setCurrentUser(data);
         setProfileError("")
-         // history.push("/profile");
       })
       .catch((err) => {
         console.log(err);
@@ -574,13 +580,9 @@ function App(props) {
             setProfileError(`Введены некорреткные данные в поля Имя/E-mail`)
           } else {        
             setProfileError(`Извините, случилась проблема обновления профиля: ${err}`)
-        // window.alert(`${alertMessage} ${err}`);
           }
       });
   }
-
-
-  // console.log('App.js currentUser = ', currentUser)
 
   return (
     inited ? <div className="App">
@@ -613,6 +615,7 @@ function App(props) {
                     checked={checked}
                     setChecked={setChecked}
                     onCardLike={handleCardLike}
+                    preloaderState={preloaderState}
                   />
 
                   <ProtectedRoute

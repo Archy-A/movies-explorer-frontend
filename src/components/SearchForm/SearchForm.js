@@ -18,16 +18,19 @@ function SearchForm(props) {
 
   function handleChangeBox() {
     if (props.onShortFilms === '1') {
+      console.log('handleChangeBox setOnShortFilms= ', "2")
       props.setOnShortFilms('2')
       props.setChecked('checked')
 
     } else if (props.onShortFilms === '2') {
+      console.log('handleChangeBox setOnShortFilms= ', "1")
       props.setOnShortFilms('1')
       props.setChecked('')
     }
   }
 
   useEffect(() => {
+    // console.log('setFind useEffect')
     props.setSeachResult(inputFindRef.current.value);
     props.setFind(inputFindRef.current.value);
   }, [location, inputFindRef]);

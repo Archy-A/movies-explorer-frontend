@@ -36,6 +36,7 @@ function Movies(props) {
 
         <div className="preloader__wrapper">
           <Preloader
+            preloaderState={props.preloaderState}
           />  
         </div>
       

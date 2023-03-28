@@ -6,6 +6,11 @@ import Preloader from "../Preloader/Preloader.js";
 
 function Movies(props) {
 
+  //const [allCards, setAllCards] = useState(props.cards);
+  const [filteredCards, setFilteredCards] = useState([]);
+  const [searchString, setSearchString] = useState(localStorage.getItem("searchString") || "");
+  const [onShortFilms, setOnShortFilms] = useState(localStorage.getItem("onShortFilms") || "1");
+
   let getFirstCards = [...props.cards];
   getFirstCards.splice(12);
   // props.setCardsForShow(getFirstCards);

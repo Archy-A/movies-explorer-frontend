@@ -64,11 +64,11 @@ function App(props) {
   const [cards, setCards] = useState(JSON.parse(localStorage.getItem("cards") || "[]"));
   // const [cards, setCards] = useState([]);
   const [find, setFind] = useState(localStorage.getItem("find") || "");
-  const [cardsMy, setCardsMy] = useState(JSON.parse(localStorage.getItem("cardsMy") || "[]"));
+  const [myCards, setMyCards] = useState(JSON.parse(localStorage.getItem("myCards") || "[]"));
   const [findMy, setFindMy] = useState([]);
   const [preloaderState, setPreloaderState] = useState(false);
 // 
-  console.log('cardsMy from localStorage = ', cardsMy)
+  console.log('myCards from localStorage = ', myCards)
 
   const [like, setLike] = useState([]);
   const [searchResult, setSeachResult] = useState(localStorage.getItem("searchResult") || "");
@@ -104,18 +104,18 @@ function App(props) {
           console.log(err);
         });
 
-    loggedIn &&
-        apiMy
-            .getInitialCardsMy()
-            .then((myCards) => {
-              myCards = myCards.map(c => createCardFromDB(c, true));
-              console.log('!!!!!!!!!!!!!!!!!!! ЭТО НУЖНО ИСПРАВИТЬ!!!!!!!!!!!!!!!!!!!!!!!!!!! происходит загрузка карточек из моей базы каждый раз при обновлении страницы из-за useEffect[loggedIn] в App.js')
-              localStorage.setItem("cardsMy", JSON.stringify(myCards));
-              setCardsMy(myCards);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+    // loggedIn &&
+    //     apiMy
+    //         .getInitialCardsMy()
+    //         .then((myCards) => {
+    //           myCards = myCards.map(c => createCardFromDB(c, true));
+    //           console.log('!!!!!!!!!!!!!!!!!!! ЭТО НУЖНО ИСПРАВИТЬ!!!!!!!!!!!!!!!!!!!!!!!!!!! происходит загрузка карточек из моей базы каждый раз при обновлении страницы из-за useEffect[loggedIn] в App.js')
+    //           localStorage.setItem("myCards", JSON.stringify(myCards));
+    //           setMyCards(myCards);
+    //         })
+    //         .catch((err) => {
+    //           console.log(err);
+    //         });
   }, [loggedIn]);
 
   let isChecked = false;
@@ -174,6 +174,18 @@ function App(props) {
     };
   }
 
+  async function loadMyCards() {
+    try {
+      let myCards = await apiMy.getInitialCardsMy();
+      myCards = myCards.map(c => createCardFromDB(c, true));
+      //localStorage.setItem("myCards", JSON.stringify(myCards));
+      return myCards;
+    }
+    catch(err) {
+      console.log(err);
+    };
+  }
+
   // -------------------- LOGIN --------------------------------------
   function handleLogin(e) {
     e.preventDefault();
@@ -196,7 +208,7 @@ function App(props) {
           setSeachResultMy("")
           setOnShortFilms("1")
           setCards([]);
-          setCardsMy([]);
+          setMyCards([]);
           // getCardsFromServer(e);
 
           localStorage.setItem("token", res.token);
@@ -242,7 +254,7 @@ function App(props) {
           setSeachResultMy("")
           setOnShortFilms("1")
           setCards([]);
-          setCardsMy([]);
+          setMyCards([]);
           setCheckPass(false);
           setCheckName(false);
           setCheckEmail(false);
@@ -344,10 +356,11 @@ function App(props) {
     if (!find) {return}
 
     const initialCards = await loadInitialCards();
+    const myCards = await loadMyCards();
     
-    function compare(dbfilms, cardsMy) { /////Передаём 2 массива
+    function compare(dbfilms, myCards) { /////Передаём 2 массива
         let cardsMyIds = {};
-        cardsMy.forEach(cardMyselect => {
+        myCards.forEach(cardMyselect => {
           cardsMyIds[cardMyselect.externalId] = cardMyselect;
         });
         return dbfilms.map((obj) => {
@@ -361,7 +374,7 @@ function App(props) {
     if (onShortFilms === "2") {
         result = result.filter(film => film.duration < 41);
     }
-    result = compare(result, cardsMy);
+    result = compare(result, myCards);
 
        //tmp preloader emulator >>>>>>>>>>-----------------------------
               setPreloaderState(true)
@@ -378,6 +391,7 @@ function App(props) {
               //////////////////////////////////
 
                 setCards(result); 
+                setMyCards(myCards);
               });
        //<<<<<<<<<<<<<<<<<<<<<<<<---------------------------------------
 
@@ -388,6 +402,7 @@ function App(props) {
       localStorage.setItem("onShortFilms", onShortFilms);
       // my new changes:
       localStorage.setItem("cards", JSON.stringify(result));
+      localStorage.setItem("myCards", JSON.stringify(myCards));
       localStorage.setItem("searchResult", searchResult);
       localStorage.setItem("onShortFilms", onShortFilms);
       localStorage.setItem("searchResultFromLocalStorage", searchResultFromLocalStorage);   
@@ -400,15 +415,15 @@ function App(props) {
   function findCardInSaved(e) {
     e.preventDefault();
     let findInput = findMy.toLowerCase()
-    let result = cardsMy.filter(film => film.nameRU.toLowerCase().includes(findInput));
+    let result = myCards.filter(film => film.nameRU.toLowerCase().includes(findInput));
 ////////
     console.log('SEARCH >> onShortFilmsMy = ', onShortFilmsMy)
 ////////
     if (onShortFilmsMy === "2") {
       result = result.filter(film => film.duration < 41);
     }
-    setCardsMy(result);
-    localStorage.setItem("cardsMy", JSON.stringify(result));
+    //setMyCards(result);
+    //localStorage.setItem("myCards", JSON.stringify(result));
     localStorage.setItem("seachResultMy", seachResultMy);
     localStorage.setItem("onShortFilmsMy", onShortFilmsMy);
   }
@@ -438,10 +453,10 @@ function App(props) {
         //console.log('>>>>>>>>>>>>>>>>>>>>>>>> newCards = ', newCards)
 
         if (newLike) {
-          setCardsMy((oldCards) => ([...oldCards, newCard]));
+          setMyCards((oldCards) => ([...oldCards, newCard]));
         } else {
-          let filteredCardsMy = cardsMy.filter(card => card._id !== oldId)
-          setCardsMy(filteredCardsMy);
+          let filteredCardsMy = myCards.filter(card => card._id !== oldId)
+          setMyCards(filteredCardsMy);
         }
 
         localStorage.setItem("cards", JSON.stringify(newCards));
@@ -543,7 +558,7 @@ function App(props) {
                     exact path="/saved-movies"
                     loggedIn={loggedIn}
                     component={SavedMovies}
-                    cards={cardsMy}
+                    cards={myCards}
                     getCardsFromServer={findCardInSaved}
                     setFind={setFindMy}
                     setOnShortFilms={setOnShortFilmsMy}

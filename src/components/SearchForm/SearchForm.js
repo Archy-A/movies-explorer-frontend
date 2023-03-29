@@ -21,12 +21,6 @@ function SearchForm(props) {
   function handleSubmitForm(e) {
     e.preventDefault();
     props.onSearchBtnClicked();
-
-    //> for buttom more:
-      props.getInitNumber();
-      props.setFirstLoadMovies(true);
-      localStorage.removeItem("cardsForShow");
-    //<  
   }
  
 
@@ -45,7 +39,6 @@ function SearchForm(props) {
             placeholder="Фильм"
             id="search_input"
             type="text"
-            //value={props.searchResultFromLocalStorage ? props.searchResultFromLocalStorage : userSearch || ""}
             value={props.searchString}
             onChange={handleChangeName}
             minLength="1"

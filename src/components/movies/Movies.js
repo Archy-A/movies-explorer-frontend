@@ -13,15 +13,8 @@ function Movies(props) {
 //---------------------------------------------------------------------------------------
 //////////////////////////// BUTTON LOAD [MORE] FILMS ///////////////////////////////////
 //---------------------------------------------------------------------------------------
-  // let [firstLoadMovies, setFirstLoadMovies] = useState(true);
-  // console.log('props.firstLoadMovies = ', props.firstLoadMovies)
-
-  let filteredCardsForShow = [...filteredCards];
-  let [number, setNumber] = useState(getInitNumber());
-
-  // const [cardsForShow, setCardsForShow] = useState(JSON.parse(localStorage.getItem("cardsForShow") || filteredCardsForShow.slice(0, number)));
-  const [cardsForShow, setCardsForShow] = useState(filteredCardsForShow.slice(0, number));
-  //console.log('JSONcardsForShow = ', JSON.parse(localStorage.getItem("cardsForShow")))
+  const [number, setNumber] = useState(getInitNumber());
+  const [cardsForShow, setCardsForShow] = useState(filteredCards.slice(0, number));
 
   let resizeTimeout;
 
@@ -50,19 +43,20 @@ function Movies(props) {
 
   function showMore() {
     if (window.innerWidth <769) {
-      setNumber((number += 2));
+      setNumber(number + 2);
     } else {
-      setNumber((number += 3));
+      setNumber(number + 3);
     }
-    cardsForShow = filteredCardsForShow.slice(0, number);
-    props.setFirstLoadMovies(false);
-    localStorage.setItem("cardsForShow", JSON.stringify(cardsForShow));
   }
 //---------------------------------------------------------------------------------------
 
   useEffect(() => {
     filterCards(props.cards);
   }, [props.cards]);
+
+  useEffect(() => {
+    setCardsForShow(filteredCards.slice(0, number));
+  }, [filteredCards, number]);
 
   function onSearchStringChanged(newSearchString) {
     setSearchString(newSearchString);
@@ -75,6 +69,9 @@ function Movies(props) {
   }
 
   function filterCards(cards) {
+    if (searchString.length === 0) {
+      return;
+    }
     function compare(dbfilms, myCards) { /////Передаём 2 массива
         let cardsMyIds = {};
         myCards.forEach(cardMyselect => {
@@ -107,17 +104,13 @@ function Movies(props) {
             onShortFilmsChanged={onShortFilmsChanged}
             shortFilmsChecked={shortFilmsChecked}
             onSearchBtnClicked={props.onSearchMovieClicked}
-
-            getInitNumber={getInitNumber}
-            setFirstLoadMovies={props.setFirstLoadMovies}
           />   
           <div className="under_grey"></div>
         </div>
 
         <div className="movies__wrapper">
           <MoviesCardList
-            cards={filteredCards}
-            //  cards={cardsForShow}
+            cards={cardsForShow}
             onCardLike={props.onCardLike}
           />
         </div>
@@ -126,8 +119,8 @@ function Movies(props) {
           <Preloader
             preloaderState={props.preloaderState}
             showMore={showMore}
-            allCards={filteredCardsForShow}
-            cardsNumber={filteredCards.length}
+            allCardsNumber={filteredCards.length}
+            cardsNumber={cardsForShow.length}
             backendError={props.backendError}
           />  
         </div>

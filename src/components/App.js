@@ -1,7 +1,7 @@
 import "../index.css";
 
 import React, { useEffect, useState } from "react";
-import { useHistory, Route, Switch, Redirect } from "react-router-dom";
+import { useHistory, Route, Switch } from "react-router-dom";
 
 import Header from "./header/Header";
 import Landing from "./landing/Landing";
@@ -18,7 +18,6 @@ import api from "../utils/MoviesApi";
 import apiMy from "../utils/MainApi";
 import ProtectedRoute from "./protected_route/ProtectedRoute";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { CardContext } from "../contexts/CardContext";
 
 
 function App(props) {
@@ -52,11 +51,6 @@ function App(props) {
   }, fieldsUpdatedCallback);
   const BACKERROR = "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз";
 
-
-  const [firstIter, setFirstIter] = useState(true);
-  const [currentIndex, setCurrentIndex] = useState(12);
-  const [currentLimit, setCurrentLimit] = useState(15);
-  const [cardsForShow, setCardsForShow] = useState([]);
   const [cards, setCards] = useState(JSON.parse(localStorage.getItem("cards")) || {'allCards':[], 'myCards':[]});
   const [preloaderState, setPreloaderState] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -66,7 +60,6 @@ function App(props) {
   const [profileError, setProfileError] = useState("");
   const [currentUser, setCurrentUser] = useState([]);
   const [inited, setInited] = useState(false);
-  const [firstLoadMovies, setFirstLoadMovies] = useState(true);
   const [backendError, setBackendError] = useState("");
   const [editProfileMessage, setEditProfileMessage] = useState("");
   const [messageReg, setMessageReg] = useState("");
@@ -400,17 +393,6 @@ function App(props) {
                     onSearchMovieClicked={findCardInMain}
                     onCardLike={handleCardLike}
                     preloaderState={preloaderState}
-
-                    firstIter={firstIter}
-                    setFirstIter={setFirstIter}
-                    currentIndex={currentIndex}
-                    setCurrentIndex={setCurrentIndex}
-                    currentLimit={currentLimit}
-                    setCurrentLimit={setCurrentLimit}
-                    cardsForShow={cardsForShow}
-                    setCardsForShow={setCardsForShow}
-                    firstLoadMovies={firstLoadMovies}
-                    setFirstLoadMovies={setFirstLoadMovies}
                     backendError={backendError}
                   />
 

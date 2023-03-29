@@ -1,6 +1,10 @@
 # Movies-explorer-frontend: поиск фильмов
 
-Сслыка на дизайн https://disk.yandex.ru/d/Y79-g7yNkNKMYQ
+Ссылка на дизайн https://disk.yandex.ru/d/Y79-g7yNkNKMYQ
+       на сайт в online https://dipp.nomoredomains.work
+       на api в online https://api.dipp.nomoredomains.work
+       на pullrequest https://github.com/Archy-A/movies-explorer-frontend/pull/2
+
 
 Представлены несколько блоков информации:
 
@@ -9,7 +13,7 @@
 
 ## Как с этим работать?
 
-Открываем в веб-браузере старицу https://archy-a.github.io/aaaaa
+Открываем в веб-браузере страницу https://dipp.nomoredomains.work/
 
 - Сохранение фильмов в свой профиль;
 - Загрузка фильмов;

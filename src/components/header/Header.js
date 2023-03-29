@@ -63,24 +63,22 @@ function Header({ loggedIn, email, setLoggedIn }) {
               <div className="header__logo" onClick={handleLogoGoMain}>
               </div> 
 
-              {/* <div>{`${loggedIn}`}</div> */}
-
               <Link className={`header__films ${loggedIn ? "" : "header__login-hidden"} `} to="/movies">
                   Фильмы
               </Link>
 
               <Link className={`header__films_saved ${loggedIn ? "" : "header__login-hidden"} `} to="/saved-movies">
                   Сохранённые фильмы
-                </Link>
+              </Link>
 
-                <div className={`header__container ${loggedIn ? "" : "header__login-hidden"} `}>
-                  <Link className="header__profile" to="/profile">
-                    Аккаунт
-                    <div className="header__frame" >
-                      <div className="header__icon" ></div>
-                    </div>
-                  </Link>
-                </div> 
+              <div className={`header__container ${loggedIn ? "" : "header__login-hidden"} `}>
+                <Link className="header__profile" to="/profile">
+                  Аккаунт
+                  <div className="header__frame" >
+                    <div className="header__icon" ></div>
+                  </div>
+                </Link>
+              </div> 
 
               <div className={`header__container ${loggedIn ? "header__login-hidden" : ""} `}>
                 <Link className="header__signup" to="/signup">
@@ -93,33 +91,66 @@ function Header({ loggedIn, email, setLoggedIn }) {
                   Войти
                 </button>
               </div>
+
+              <section className={`header__nav_layered ${isActive ? "" : "header__open"}`}>
+                <div className={`header__nav ${isActive ? "" : "header__nav-opened"}`}>
+
+                    <div className="burger__container">
+
+                      <div className="burger__frame">
+                        <button className={`burger__main ${currentPath === '/' ? "burger__main_active" : ""} `} onClick={handleBurgerGoMain}>Главная</button>
+                        <button className={`burger__films ${currentPath === '/movies' ? "burger__films_active" : ""} `} onClick={handleBurgerGoFilms}>Фильмы</button>
+                        <button className={`burger__saved ${currentPath === '/saved-movies' ? "burger__saved_active" : ""} `} onClick={handleBurgerGoSaved}>Сохранённые фильмы</button>
+                      </div>
+
+                      <div className="burger__account">
+                        <button className={`burger__profile ${currentPath === '/profile' ? "burger__profile_active" : ""} `} onClick={handleBurgerGoProfile}>Аккаунт</button>
+                        <div className="burger__frame2" >
+                          <div className="burger__icon" onClick={handleBurgerGoProfile}></div>
+                        </div>
+                      </div> 
+
+                    </div>
+
+                  </div>
+                </section>
+
+                <div
+                  className={`burger ${isActive ? "" : "active"} ${loggedIn ? "" : "burger-hidden"}`}
+                  onClick={handleToggle}
+                  >
+                   <span>
+                   </span>
+                </div>
+
             </Route>
+
+{/* ////////////////////////////////////////////////////////////////////////////////////////////////// */}
 
             <Route exact path={["/profile", "/movies", "/saved-movies"]}>
 
               <div className="header__logo" onClick={handleLogoGoMain}>
               </div>
 
+              <Link className="header__films" to="/movies">
+                Фильмы
+              </Link>
 
-                <Link className="header__films" to="/movies">
-                  Фильмы
+              <Link className="header__films_saved" to="/saved-movies">
+                Сохранённые фильмы
+              </Link>
+
+              <div className="header__container">
+                <Link className="header__profile" to="/profile">
+                  Аккаунт
+                  <div className="header__frame" >
+                    <div className="header__icon" ></div>
+                  </div>
                 </Link>
+              </div> 
 
-                <Link className="header__films_saved" to="/saved-movies">
-                  Сохранённые фильмы
-                </Link>
-
-                <div className="header__container">
-                  <Link className="header__profile" to="/profile">
-                    Аккаунт
-                    <div className="header__frame" >
-                      <div className="header__icon" ></div>
-                    </div>
-                  </Link>
-                </div> 
-
-                <section className={`header__nav_layered ${isActive ? "" : "header__open"}`}>
-                  <div className={`header__nav ${isActive ? "" : "header__nav-opened"}`}>
+              <section className={`header__nav_layered ${isActive ? "" : "header__open"}`}>
+                <div className={`header__nav ${isActive ? "" : "header__nav-opened"}`}>
 
                 {/* <div className="header__nav_layered header__open"> */}
                   {/* <div className="header__nav header__nav-opened"> */}

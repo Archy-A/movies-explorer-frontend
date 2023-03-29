@@ -50,6 +50,7 @@ function App(props) {
     emailReg: "", 
     passwordReg: ""
   }, fieldsUpdatedCallback);
+  const BACKERROR = "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз";
 
   // const [myDBfilms, setMyDBfilms] = useState([]);
   // const [externalDBfilms, setExternalDBfilms] = useState("[]");
@@ -92,6 +93,8 @@ function App(props) {
   const [inited, setInited] = useState(false);
 
   const [firstLoadMovies, setFirstLoadMovies] = useState(true);
+
+  const [backendError, setBackendError] = useState("");
 
   tokenCheck();
 
@@ -181,10 +184,12 @@ function App(props) {
       let myCards = await apiMy.getInitialCardsMy();
       myCards = myCards.map(c => createCardFromDB(c, true));
       //localStorage.setItem("myCards", JSON.stringify(myCards));
+      setBackendError("")
       return myCards;
     }
     catch(err) {
       console.log(err);
+      setBackendError(BACKERROR);
     };
   }
 
@@ -226,7 +231,7 @@ function App(props) {
         } else if (err === 'Ошибка: 401') {        
           setLoginError(`Неверные E-mail/Пароль, попробуйте исправить`)
         } else {        
-          setLoginError(`Извините, случилась проблема при входе: ${err}`)
+          setLoginError(`Извините, случилась проблема при входе, попробуйте чуть позже...`)
         }
 
         setIsInfoTooltipOpen(true);
@@ -529,6 +534,7 @@ function App(props) {
                     setCardsForShow={setCardsForShow}
                     firstLoadMovies={firstLoadMovies}
                     setFirstLoadMovies={setFirstLoadMovies}
+                    backendError={backendError}
                   />
 
                   <ProtectedRoute

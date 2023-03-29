@@ -68,7 +68,7 @@ class Api {
         ...card,
         like: likeStateToBeSet
       };
-       console.log('cardNew = ', newCard)
+      //  console.log('cardNew = ', newCard)
       method = "POST";
       return fetch(`http://localhost:3000/movies/`, {
         method: method,
@@ -87,7 +87,7 @@ class Api {
 
 
     } else {
-      console.log('DELETE cardNew = ', card)
+      // console.log('DELETE cardNew = ', card)
       method = "DELETE";
       return fetch(`http://localhost:3000/movies/${card._id}`, {
         method: "DELETE",

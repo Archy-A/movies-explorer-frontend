@@ -2,6 +2,11 @@ import React from "react";
 
 function Preloader(props) {
 
+  let messageError = "Ничего не найдено";
+  if (props.backendError) {
+     messageError = props.backendError;
+  }
+
   // console.log(' props.allCards.length = ',props.allCards.length)
   // console.log(' props.cards.length = ', props.cards.length)
 
@@ -22,7 +27,7 @@ function Preloader(props) {
           className={`preloader_notfound ${props.preloaderState === true || props.cards.length > 0 ? "" : "preloader_notfound-show"} } `}
           // className="preloader_notfound preloader_notfound-show "
           >
-            Ничего не найдено
+            {messageError}
         </div>
 
     </section>

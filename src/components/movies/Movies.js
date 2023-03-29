@@ -159,6 +159,7 @@ function Movies(props) {
             showMore={showMore}
             allCards={filteredCardsForShow}
             cards={props.cards}
+            backendError={props.backendError}
           />  
         </div>
       

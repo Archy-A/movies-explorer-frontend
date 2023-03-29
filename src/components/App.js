@@ -68,18 +68,18 @@ function App(props) {
   const [findMy, setFindMy] = useState([]);
   const [preloaderState, setPreloaderState] = useState(false);
 // 
-  console.log('myCards from localStorage = ', myCards)
+  // console.log('myCards from localStorage = ', myCards)
 
   const [like, setLike] = useState([]);
-  const [searchResult, setSeachResult] = useState(localStorage.getItem("searchResult") || "");
+ // const [searchResult, setSeachResult] = useState(localStorage.getItem("searchResult") || "");
   const [onShortFilms, setOnShortFilms] = useState(localStorage.getItem("onShortFilms") || "1");
-  const [checked, setChecked] = useState(localStorage.getItem("checked") || "");
-  const [searchResultFromLocalStorage, setSearchResultFromLocalStorage] = useState(localStorage.getItem("searchResult"));
+  //const [checked, setChecked] = useState(localStorage.getItem("checked") || "");
+  //const [searchResultFromLocalStorage, setSearchResultFromLocalStorage] = useState(localStorage.getItem("searchResult"));
 
   const [seachResultMy, setSeachResultMy] = useState(''); 
   const [onShortFilmsMy, setOnShortFilmsMy] = useState(localStorage.getItem("onShortFilmsMy") || "1");
-  const [checkedMy, setCheckedMy] = useState(localStorage.getItem("checked") || "");
-  const [searchResultFromLocalStorageMy, setSearchResultFromLocalStorageMy] = useState(localStorage.getItem("searchResult"));
+ // const [checkedMy, setCheckedMy] = useState(localStorage.getItem("checked") || "");
+ // const [searchResultFromLocalStorageMy, setSearchResultFromLocalStorageMy] = useState(localStorage.getItem("searchResult"));
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
@@ -90,6 +90,8 @@ function App(props) {
 
   const [currentUser, setCurrentUser] = useState([]);
   const [inited, setInited] = useState(false);
+
+  const [firstLoadMovies, setFirstLoadMovies] = useState(true);
 
   tokenCheck();
 
@@ -118,8 +120,8 @@ function App(props) {
     //         });
   }, [loggedIn]);
 
-  let isChecked = false;
-  let isCheckedMy = false;
+  // let isChecked = false;
+  // let isCheckedMy = false;
 
   function createCardFromExternal(externalCard) {
     return {
@@ -197,7 +199,7 @@ function App(props) {
       .then((res) => {
         if (res) {
           localStorage.removeItem("cards");
-          localStorage.removeItem("searchResult");
+         // localStorage.removeItem("searchResult");
           localStorage.removeItem("shortFilms");
 
           setLoggedIn(true);
@@ -352,8 +354,6 @@ function App(props) {
   //////////////////////<<<  S E A R C H   M A I N  >>>////////////////////////////
   //////////////////////-------------------------------////////////////////////////
   async function findCardInMain(e) {
-    e.preventDefault();
-    if (!find) {return}
 
     const initialCards = await loadInitialCards();
     const myCards = await loadMyCards();
@@ -403,30 +403,29 @@ function App(props) {
       // my new changes:
       localStorage.setItem("cards", JSON.stringify(result));
       localStorage.setItem("myCards", JSON.stringify(myCards));
-      localStorage.setItem("searchResult", searchResult);
-      localStorage.setItem("onShortFilms", onShortFilms);
-      localStorage.setItem("searchResultFromLocalStorage", searchResultFromLocalStorage);   
+      //localStorage.setItem("searchResult", searchResult);
+      //localStorage.setItem("searchResultFromLocalStorage", searchResultFromLocalStorage);   
   }
 
   
   //////////////////////-------------------------------------------////////////////////////////
   //////////////////////<<<  S E A R C H   F R O M   M Y   D B  >>>////////////////////////////
   //////////////////////-------------------------------------------////////////////////////////
-  function findCardInSaved(e) {
-    e.preventDefault();
-    let findInput = findMy.toLowerCase()
-    let result = myCards.filter(film => film.nameRU.toLowerCase().includes(findInput));
-////////
-    console.log('SEARCH >> onShortFilmsMy = ', onShortFilmsMy)
-////////
-    if (onShortFilmsMy === "2") {
-      result = result.filter(film => film.duration < 41);
-    }
-    //setMyCards(result);
-    //localStorage.setItem("myCards", JSON.stringify(result));
-    localStorage.setItem("seachResultMy", seachResultMy);
-    localStorage.setItem("onShortFilmsMy", onShortFilmsMy);
-  }
+//   function findCardInSaved(e) {
+//     e.preventDefault();
+//     let findInput = findMy.toLowerCase()
+//     let result = myCards.filter(film => film.nameRU.toLowerCase().includes(findInput));
+// ////////
+//     console.log('SEARCH >> onShortFilmsMy = ', onShortFilmsMy)
+// ////////
+//     if (onShortFilmsMy === "2") {
+//       result = result.filter(film => film.duration < 41);
+//     }
+//     //setMyCards(result);
+//     //localStorage.setItem("myCards", JSON.stringify(result));
+//     localStorage.setItem("seachResultMy", seachResultMy);
+//     localStorage.setItem("onShortFilmsMy", onShortFilmsMy);
+//   }
 
 
 
@@ -531,19 +530,19 @@ function App(props) {
                     loggedIn={loggedIn}
                     component={Movies}
                     cards={cards}
-                    getCardsFromServer={findCardInMain}
+                    onSearchMovieClicked={findCardInMain}
                     setFind={setFind}
                     setOnShortFilms={setOnShortFilms}
                     onShortFilms={onShortFilms}
-                    isChecked={isChecked}
-                    setSeachResult={setSeachResult}
-                    searchResult={searchResult}
-                    searchResultFromLocalStorage={searchResultFromLocalStorage}
-                    setSearchResultFromLocalStorage={setSearchResultFromLocalStorage}
-                    checked={checked}
-                    setChecked={setChecked}
+                   // isChecked={isChecked}
+                  //  setSeachResult={setSeachResult}
+                   // searchResult={searchResult}
+                   // searchResultFromLocalStorage={searchResultFromLocalStorage}
+                   // setSearchResultFromLocalStorage={setSearchResultFromLocalStorage}
+                    //checked={checked}
+                   // setChecked={setChecked}
                     onCardLike={handleCardLike}
-                    preloaderState={preloaderState}
+                    //preloaderState={preloaderState}
                     firstIter={firstIter}
                     setFirstIter={setFirstIter}
                     currentIndex={currentIndex}
@@ -552,6 +551,8 @@ function App(props) {
                     setCurrentLimit={setCurrentLimit}
                     cardsForShow={cardsForShow}
                     setCardsForShow={setCardsForShow}
+                    firstLoadMovies={firstLoadMovies}
+                    setFirstLoadMovies={setFirstLoadMovies}
                   />
 
                   <ProtectedRoute
@@ -559,17 +560,17 @@ function App(props) {
                     loggedIn={loggedIn}
                     component={SavedMovies}
                     cards={myCards}
-                    getCardsFromServer={findCardInSaved}
+                    //getCardsFromServer={findCardInSaved}
                     setFind={setFindMy}
                     setOnShortFilms={setOnShortFilmsMy}
                     onShortFilms={onShortFilmsMy}
-                    isChecked={isCheckedMy}
-                    setSeachResult={setSeachResultMy}
-                    searchResult={seachResultMy}
-                    searchResultFromLocalStorage={searchResultFromLocalStorageMy}
-                    setSearchResultFromLocalStorage={setSearchResultFromLocalStorageMy}
-                    checked={checkedMy}
-                    setChecked={setCheckedMy}
+                   // isChecked={isCheckedMy}
+                  //  setSeachResult={setSeachResultMy}
+                   // searchResult={seachResultMy}
+                   // searchResultFromLocalStorage={searchResultFromLocalStorageMy}
+                   // setSearchResultFromLocalStorage={setSearchResultFromLocalStorageMy}
+                   // checked={checkedMy}
+                   // setChecked={setCheckedMy}
                     onCardLike={handleCardLike}
                   />
 

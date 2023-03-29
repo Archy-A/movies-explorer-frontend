@@ -10,7 +10,7 @@ function MoviesCardList({
 
   
 useEffect(() => {
-  console.log('cardsForShow = ', cards)
+  // console.log('cardsForShow = ', cards)
 }, [cards]);
 
  

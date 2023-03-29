@@ -127,6 +127,7 @@
 @import url(../src/blocks/preloader/__button/preloader__button.css);
 @import url(../src/blocks/preloader/__spinner/preloader__spinner.css);
 @import url(../src/blocks/preloader/__spinner/preloader__spinner-hidden.css);
+@import url(../src/blocks/preloader/__button/preloader__button-hidden.css);
 
 @import url(../src/blocks/register/register.css);
 @import url(../src/blocks/register/__container/register__container.css);

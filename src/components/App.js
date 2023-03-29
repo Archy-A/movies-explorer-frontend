@@ -56,23 +56,20 @@ function App(props) {
   const [firstIter, setFirstIter] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(12);
   const [currentLimit, setCurrentLimit] = useState(15);
-
   const [cardsForShow, setCardsForShow] = useState([]);
   const [cards, setCards] = useState(JSON.parse(localStorage.getItem("cards")) || {'allCards':[], 'myCards':[]});
   const [preloaderState, setPreloaderState] = useState(false);
-
   const [loggedIn, setLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [loginError, setLoginError] = useState(false);
   const [registerError, setRegisterError] = useState(false);
   const [profileError, setProfileError] = useState("");
-
   const [currentUser, setCurrentUser] = useState([]);
   const [inited, setInited] = useState(false);
-
   const [firstLoadMovies, setFirstLoadMovies] = useState(true);
-
   const [backendError, setBackendError] = useState("");
+  const [editProfileMessage, setEditProfileMessage] = useState("");
+  const [messageReg, setMessageReg] = useState("");
 
   tokenCheck();
 
@@ -364,11 +361,13 @@ function App(props) {
   }
 
   function handleUpdateUser(info) {
+    setEditProfileMessage("")
     apiMy
       .setUserInfo(info.name, info.email)
       .then((data) => {
         setCurrentUser(data);
         setProfileError("")
+        setEditProfileMessage("Редактирование профиля выполнено успешно!")
       })
       .catch((err) => {
         console.log(err);
@@ -430,6 +429,9 @@ function App(props) {
                     onUpdateUser={handleUpdateUser}
                     setLoggedIn={setLoggedIn}
                     profileError={profileError}
+                    editProfileMessage={editProfileMessage}
+                    messageReg={messageReg}
+                    setMessageReg={setMessageReg}
                   />
 
                   <Route exact path="/signup">

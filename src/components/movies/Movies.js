@@ -10,7 +10,6 @@ function Movies(props) {
   const [searchString, setSearchString] = useState(localStorage.getItem("searchString") || "");
   const [shortFilmsChecked, setShortFilmsChecked] = useState(localStorage.getItem("shortFilmsChecked")?.toLowerCase() === 'true' || false);
 
-
 //---------------------------------------------------------------------------------------
 //////////////////////////// BUTTON LOAD [MORE] FILMS ///////////////////////////////////
 //---------------------------------------------------------------------------------------

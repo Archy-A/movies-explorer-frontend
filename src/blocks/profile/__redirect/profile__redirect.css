@@ -19,6 +19,11 @@
     cursor: pointer;
   }
 
+  .profile__redirect:disabled,
+  .profile__redirect[disabled]{
+    color: #656565;
+}
+
   @media screen and (max-width: 768px) {
     .profile__redirect {
       margin-top: 194px;

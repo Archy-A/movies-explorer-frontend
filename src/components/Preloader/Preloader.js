@@ -7,8 +7,8 @@ function Preloader(props) {
      messageError = props.backendError;
   }
 
-  console.log(' props.cards.length = ', props.cardsNumber)
-  console.log(' props.preloaderState = ', props.preloaderState)
+  // console.log(' props.cards.length = ', props.cardsNumber)
+  // console.log(' props.preloaderState = ', props.preloaderState)
 
   return (
     <section className="preloader">

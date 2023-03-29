@@ -183,6 +183,8 @@
 @import url(../src/blocks/profile/__label/profile__label.css);
 @import url(../src/blocks/profile/__out/profile__out.css);
 @import url(../src/blocks/profile/__error/profile__error.css);
+@import url(../src/blocks/profile/__message/profile__message.css);
+@import url(../src/blocks/profile/__message/profile__message-hidden.css);
 
 @import url(../src/blocks/notfound/notfound.css);
 @import url(../src/blocks/notfound/__framer/notfound__framer.css);

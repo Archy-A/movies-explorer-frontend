@@ -8,11 +8,6 @@ export function getResponseData(res) {
 }
 
 export const register = (name, email, password) => {
-  console.log(' --------------------------------- ')
-  console.log(' name = ', name)
-  console.log(' email = ', email)
-  console.log(' password = ', password)
-  console.log(' --------------------------------- ')
   return fetch(`http://localhost:3000/signup`, {
     method: "POST",
     headers: {

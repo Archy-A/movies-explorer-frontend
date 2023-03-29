@@ -45,9 +45,6 @@ class Api {
   }
 
   setUserInfo(name, email, next) {
-    console.log(' name = ', name)
-    console.log(' email = ', email)
-
     return fetch(`http://localhost:3000/${this.endPoint[1]}`, {
       method: "PATCH",
       headers: {

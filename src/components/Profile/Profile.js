@@ -1,17 +1,20 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect, useContext, useRef } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Profile({
-  onUpdateUser, setLoggedIn, profileError
+  onUpdateUser, setLoggedIn, profileError, editProfileMessage, setMessageReg, messageReg
 }) {
 
   const history = useHistory();
   const currentUser = useContext(CurrentUserContext);
 
+  useEffect(() => {
+    setMessageReg(editProfileMessage)
+  }, [editProfileMessage]);
+
   function handleSubmit(e) {
-    // console.log('>>>>>>>>>>>>>>>>>>>>>>>>> handleSubmit = ', nameUser, description)
     e.preventDefault();
     onUpdateUser({
       name: nameUser,
@@ -22,6 +25,11 @@ function Profile({
   const [nameUser, setNameUser] = useState("");
   const [description, setDescription] = useState("");
 
+  const location = useLocation();
+  useEffect(() => {
+    setMessageReg("");
+  }, [location]);
+
 
   useEffect(() => {
     setNameUser(currentUser.name);
@@ -30,17 +38,32 @@ function Profile({
 
   function handleChangeName(e) {
     setNameUser(e.target.value);
+    setMessageReg("");
   }
 
   function handleChangeDescription(e) {
     setDescription(e.target.value);
+    setMessageReg("");
   }
 
   function handleLogOut() {
     setLoggedIn(false);
-    // localStorage.removeItem("token");
     localStorage.clear();
     history.push("/");
+  }
+
+
+  const inputNameProfile = useRef();
+  const inputEmailProfile = useRef();
+
+  let buttonDisable1 = true;
+
+   function setbuttonDisable1() {
+    if (currentUser.name ===  nameUser && currentUser.email === description) {
+      return buttonDisable1 = true;
+    } else {
+      return buttonDisable1 = false;
+    }
   }
 
   return (
@@ -63,6 +86,7 @@ function Profile({
                <div className="profile__container">
                  <p className="profile__title">Имя</p>
                   <input
+                    ref={inputNameProfile}
                     id="profile__name"
                     type="text"
                     value={nameUser || ""}
@@ -75,10 +99,13 @@ function Profile({
                     required
                   ></input>
                 </div>
-                <div className="profile__line" />
+
+              <div className="profile__line" />
+
               <div className="profile__container">
                 <p className="profile__title">E-mail</p>
                 <input
+                  ref={inputEmailProfile}
                   id="profile__email"
                   type="text"
                   value={description || ""}
@@ -97,10 +124,15 @@ function Profile({
 
               <div className="profile__framer">
 
+                <div className={`profile__message ${messageReg.length < 0 ? "profile__message-hidden" : ""} } `}>
+                   {messageReg}
+                </div>
+
                 <button
                   className="profile__redirect"
                   onClick={handleSubmit}
                   method="post"
+                  disabled={setbuttonDisable1()}
                 >
                   Редактировать
                 </button>

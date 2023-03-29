@@ -1,0 +1,17 @@
+.profile__message {
+    margin: 0;
+    padding: 0;
+    min-width: 146px;
+    min-height: 17px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    padding-right: 3px;
+    color: rgb(131, 219, 159);
+    margin-top: 50px;
+
+    /* border: 1px rgb(235, 14, 14) solid; */
+  }

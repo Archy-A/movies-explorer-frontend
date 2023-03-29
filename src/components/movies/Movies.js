@@ -6,12 +6,9 @@ import Preloader from "../Preloader/Preloader.js";
 
 function Movies(props) {
 
-  //const [cards, setCards] = useState({'allCards':[], 'myCards':[]});
   const [filteredCards, setFilteredCards] = useState([]);
   const [searchString, setSearchString] = useState(localStorage.getItem("searchString") || "");
   const [shortFilmsChecked, setShortFilmsChecked] = useState(localStorage.getItem("shortFilmsChecked")?.toLowerCase() === 'true' || false);
-  //const [preloaderState, setPreloaderState] = useState(false);
-
 
 
 //---------------------------------------------------------------------------------------
@@ -65,30 +62,20 @@ function Movies(props) {
 //---------------------------------------------------------------------------------------
 
   useEffect(() => {
-    //setAllCards(props.allCards);
     filterCards(props.cards);
   }, [props.cards]);
 
   function onSearchStringChanged(newSearchString) {
     setSearchString(newSearchString);
     localStorage.setItem("searchString", newSearchString);
-    
-    //props.setFind(newSearchString);//REMOVE IT
   }
 
   function onShortFilmsChanged(value) {
     setShortFilmsChecked(value);
     localStorage.setItem("shortFilmsChecked", JSON.stringify(value));
-    //props.setOnShortFilms(value);//REMOVE IT
   }
 
   function filterCards(cards) {
-    // setPreloaderState(true)
-    // setFilteredCards([])
-    // const initialCards = await props.loadInitialCards();
-    // const myCards = await props.loadMyCards();
-    // setPreloaderState(false);
-    
     function compare(dbfilms, myCards) { /////Передаём 2 массива
         let cardsMyIds = {};
         myCards.forEach(cardMyselect => {
@@ -122,16 +109,8 @@ function Movies(props) {
             shortFilmsChecked={shortFilmsChecked}
             onSearchBtnClicked={props.onSearchMovieClicked}
 
-            //onShortFilms={props.onShortFilms}
-            // isChecked={props.isChecked}
-            // setSeachResult={props.setSeachResult}
-            // searchResult={props.searchResult}
-            // searchResultFromLocalStorage={props.searchResultFromLocalStorage}
-            // setSearchResultFromLocalStorage={props.setSearchResultFromLocalStorage}
-             //setChecked={props.setChecked}
-             //checked={props.checked}
-             getInitNumber={getInitNumber}
-             setFirstLoadMovies={props.setFirstLoadMovies}
+            getInitNumber={getInitNumber}
+            setFirstLoadMovies={props.setFirstLoadMovies}
           />   
           <div className="under_grey"></div>
         </div>

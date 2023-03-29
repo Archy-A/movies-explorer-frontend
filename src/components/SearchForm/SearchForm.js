@@ -3,39 +3,18 @@ import { useLocation } from "react-router-dom";
 
 function SearchForm(props) {
 
- // console.log("--- search props: ", props);
-
  const inputFindRef = useRef();
  const location = useLocation();
 
- // const [userSearch, setUserSearch] = useState("");
-
   function handleChangeName(e) {
-    //setUserSearch(e.target.value);
     props.setFind(e.target.value);
-
-    //props.setSeachResult(e.target.value);
-    //props.setSearchResultFromLocalStorage('');
-
   }
 
   function handleChangeBox() {
-    // if (props.onShortFilms === '1') {
-    //   // console.log('handleChangeBox setOnShortFilms= ', "2")
-    //   props.setOnShortFilms('2')
-    //   props.setChecked('checked')
-
-    // } else if (props.onShortFilms === '2') {
-    //   // console.log('handleChangeBox setOnShortFilms= ', "1")
-    //   props.setOnShortFilms('1')
-    //   props.setChecked('')
-    // }
     props.onShortFilmsChanged(!props.shortFilmsChecked);
   }
 
   useEffect(() => {
-    // console.log('setFind useEffect')
-    //props.setSeachResult(inputFindRef.current.value);
     props.setFind(inputFindRef.current.value);
   }, [location, inputFindRef]);
 

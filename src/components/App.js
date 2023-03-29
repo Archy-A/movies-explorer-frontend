@@ -52,42 +52,19 @@ function App(props) {
   }, fieldsUpdatedCallback);
   const BACKERROR = "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз";
 
-  // const [myDBfilms, setMyDBfilms] = useState([]);
-  // const [externalDBfilms, setExternalDBfilms] = useState("[]");
-
 
   const [firstIter, setFirstIter] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(12);
   const [currentLimit, setCurrentLimit] = useState(15);
 
   const [cardsForShow, setCardsForShow] = useState([]);
-  //const [externalDBfilms, setExternalDBfilms] = useState(JSON.parse(localStorage.getItem("externalDBfilms") || "[]"));
-  const [cards, setCards] = useState(JSON.parse(localStorage.getItem("cards") || {'allCards':[], 'myCards':[]}));
-  //console.log("-- after load:", JSON.parse(localStorage.getItem("cards")));
-  // const [cards, setCards] = useState([]);
-  //const [find, setFind] = useState(localStorage.getItem("find") || "");
-  const [myCards, setMyCards] = useState(JSON.parse(localStorage.getItem("myCards") || "[]"));
- // const [findMy, setFindMy] = useState([]);
+  const [cards, setCards] = useState(JSON.parse(localStorage.getItem("cards")) || {'allCards':[], 'myCards':[]});
   const [preloaderState, setPreloaderState] = useState(false);
-// 
-  // console.log('myCards from localStorage = ', myCards)
-
-  const [like, setLike] = useState([]);
- // const [searchResult, setSeachResult] = useState(localStorage.getItem("searchResult") || "");
-  //const [onShortFilms, setOnShortFilms] = useState(localStorage.getItem("onShortFilms") || "1");
-  //const [checked, setChecked] = useState(localStorage.getItem("checked") || "");
-  //const [searchResultFromLocalStorage, setSearchResultFromLocalStorage] = useState(localStorage.getItem("searchResult"));
-
-  const [seachResultMy, setSeachResultMy] = useState(''); 
- // const [onShortFilmsMy, setOnShortFilmsMy] = useState(localStorage.getItem("onShortFilmsMy") || "1");
- // const [checkedMy, setCheckedMy] = useState(localStorage.getItem("checked") || "");
- // const [searchResultFromLocalStorageMy, setSearchResultFromLocalStorageMy] = useState(localStorage.getItem("searchResult"));
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [loginError, setLoginError] = useState(false);
   const [registerError, setRegisterError] = useState(false);
-  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [profileError, setProfileError] = useState("");
 
   const [currentUser, setCurrentUser] = useState([]);
@@ -109,23 +86,7 @@ function App(props) {
         .catch((err) => {
           console.log(err);
         });
-
-    // loggedIn &&
-    //     apiMy
-    //         .getInitialCardsMy()
-    //         .then((myCards) => {
-    //           myCards = myCards.map(c => createCardFromDB(c, true));
-    //           console.log('!!!!!!!!!!!!!!!!!!! ЭТО НУЖНО ИСПРАВИТЬ!!!!!!!!!!!!!!!!!!!!!!!!!!! происходит загрузка карточек из моей базы каждый раз при обновлении страницы из-за useEffect[loggedIn] в App.js')
-    //           localStorage.setItem("myCards", JSON.stringify(myCards));
-    //           setMyCards(myCards);
-    //         })
-    //         .catch((err) => {
-    //           console.log(err);
-    //         });
   }, [loggedIn]);
-
-  // let isChecked = false;
-  // let isCheckedMy = false;
 
   function createCardFromExternal(externalCard) {
     return {
@@ -169,10 +130,6 @@ function App(props) {
     try {
       const arrayFilms = await api.getInitialCards();
       const externalDB = arrayFilms.map((card) => createCardFromExternal(card));
-      // console.log('externalDB = ', externalDB) 
-      //setExternalDBfilms(externalDB)
-
-      //localStorage.setItem("externalDBfilms", JSON.stringify(externalDB));
       return externalDB;
     } 
     catch(err) {
@@ -184,7 +141,6 @@ function App(props) {
     try {
       let myCards = await apiMy.getInitialCardsMy();
       myCards = myCards.map(c => createCardFromDB(c, true));
-      //localStorage.setItem("myCards", JSON.stringify(myCards));
       setBackendError("")
       return myCards;
     }
@@ -204,21 +160,10 @@ function App(props) {
       )
       .then((res) => {
         if (res) {
-        //  localStorage.removeItem("cards");
-         // localStorage.removeItem("searchResult");
-          localStorage.removeItem("shortFilms");
-
           setLoggedIn(true);
           setEmail(emailAndPassSetterLogin.values[emailLogin]);
           history.push("/movies");
           setLoginError(false);
-
-          setSeachResultMy("")
-         // setOnShortFilms("1")
-         // setCards([]);
-         // setMyCards([]);
-          // getCardsFromServer(e);
-
           localStorage.setItem("token", res.token);
         }
       })
@@ -235,7 +180,6 @@ function App(props) {
           setLoginError(`Извините, случилась проблема при входе, попробуйте чуть позже...`)
         }
 
-        setIsInfoTooltipOpen(true);
         history.push("/signin");
       });
   }
@@ -255,14 +199,9 @@ function App(props) {
       .then((res) => {
         if (res) {
           setLoggedIn(false);
-          localStorage.removeItem("token");
-          setIsInfoTooltipOpen(true);
+         // localStorage.removeItem("token");
           setRegisterError(false);
           setRegisterError("")
-          setSeachResultMy("")
-        //  setOnShortFilms("1")
-        //  setCards([]);
-        //  setMyCards([]);
           setCheckPass(false);
           setCheckName(false);
           setCheckEmail(false);
@@ -272,7 +211,6 @@ function App(props) {
       .catch((err) => {
         console.log(err);
         setLoggedIn(false);
-        setIsInfoTooltipOpen(true);
         setRegisterError(true);
         setEmail(emailAndPassSetterReg.values[emailReg]);
         if (err === 'Ошибка: 400') {
@@ -369,68 +307,14 @@ function App(props) {
 
     const updatedCards = {'allCards': initialCards, 'myCards': myCards};
     setCards(updatedCards);
-    //console.log("== stringified: ", JSON.stringify(updatedCards));
     localStorage.setItem("cards", JSON.stringify(updatedCards));
-    
-  //   function compare(dbfilms, myCards) { /////Передаём 2 массива
-  //       let cardsMyIds = {};
-  //       myCards.forEach(cardMyselect => {
-  //         cardsMyIds[cardMyselect.externalId] = cardMyselect;
-  //       });
-  //       return dbfilms.map((obj) => {
-  //         const matched = Object.keys(cardsMyIds).includes(String(obj.externalId));
-  //         return matched ? cardsMyIds[obj.externalId] : obj;
-  //     });
-  //   }
-
-  //   let findInput = "";//find.toLowerCase()
-  //   let result = initialCards.filter(film => film.nameRU.toLowerCase().includes(findInput));
-  //   // if (onShortFilms === "2") {
-  //   //     result = result.filter(film => film.duration < 41);
-  //   // }
-  //   result = compare(result, myCards);
-  //   setCards(result); 
-  //   setMyCards(myCards);
-
-  //   //localStorage.setItem("find", find);
-  //  // localStorage.setItem("onShortFilms", onShortFilms);
-  //   // my new changes:
-  //   localStorage.setItem("cards", JSON.stringify(result));
-  //   localStorage.setItem("myCards", JSON.stringify(myCards));
-  //   //localStorage.setItem("searchResult", searchResult);
-  //   //localStorage.setItem("searchResultFromLocalStorage", searchResultFromLocalStorage);   
   }
-
-  
-  //////////////////////-------------------------------------------////////////////////////////
-  //////////////////////<<<  S E A R C H   F R O M   M Y   D B  >>>////////////////////////////
-  //////////////////////-------------------------------------------////////////////////////////
-//   function findCardInSaved(e) {
-//     e.preventDefault();
-//     let findInput = findMy.toLowerCase()
-//     let result = myCards.filter(film => film.nameRU.toLowerCase().includes(findInput));
-// ////////
-//     console.log('SEARCH >> onShortFilmsMy = ', onShortFilmsMy)
-// ////////
-//     if (onShortFilmsMy === "2") {
-//       result = result.filter(film => film.duration < 41);
-//     }
-//     //setMyCards(result);
-//     //localStorage.setItem("myCards", JSON.stringify(result));
-//     localStorage.setItem("seachResultMy", seachResultMy);
-//     localStorage.setItem("onShortFilmsMy", onShortFilmsMy);
-//   }
-
-
 
   ////////////////////////////-------------------------------///////////////////////////////////
   ////////////////////////////   L I K E   / D I S L I K E   ///////////////////////////////////
   ////////////////////////////-------------------------------///////////////////////////////////
   function handleCardLike(card, e) {
     const newLike = !card.like;
-    // if (!newLike && !card._id) {
-    //   debugger;
-    // }
     api
       .likeCard(card, newLike)
       .then((newCard) => {
@@ -441,7 +325,9 @@ function App(props) {
           ? [...cards['myCards'],  newCard]
           : cards['myCards'].filter(card => card._id !== oldId);
         
-        setCards({'allCards': newCards, 'myCards': myCards});
+        const updatedCards = {'allCards': newCards, 'myCards': myCards};
+        setCards(updatedCards);
+        localStorage.setItem("cards", JSON.stringify(updatedCards));
       })
       .catch((err) => {
         console.log(err);
@@ -513,18 +399,9 @@ function App(props) {
                     component={Movies}
                     cards={cards}
                     onSearchMovieClicked={findCardInMain}
-                  //  setFind={setFind}
-                  //  setOnShortFilms={setOnShortFilms}
-                  //  onShortFilms={onShortFilms}
-                   // isChecked={isChecked}
-                  //  setSeachResult={setSeachResult}
-                   // searchResult={searchResult}
-                   // searchResultFromLocalStorage={searchResultFromLocalStorage}
-                   // setSearchResultFromLocalStorage={setSearchResultFromLocalStorage}
-                    //checked={checked}
-                   // setChecked={setChecked}
                     onCardLike={handleCardLike}
                     preloaderState={preloaderState}
+
                     firstIter={firstIter}
                     setFirstIter={setFirstIter}
                     currentIndex={currentIndex}
@@ -543,17 +420,6 @@ function App(props) {
                     loggedIn={loggedIn}
                     component={SavedMovies}
                     cards={cards['myCards']}
-                    //getCardsFromServer={findCardInSaved}
-                  //  setFind={setFindMy}
-                  //  setOnShortFilms={setOnShortFilmsMy}
-                  //  onShortFilms={onShortFilmsMy}
-                   // isChecked={isCheckedMy}
-                  //  setSeachResult={setSeachResultMy}
-                   // searchResult={seachResultMy}
-                   // searchResultFromLocalStorage={searchResultFromLocalStorageMy}
-                   // setSearchResultFromLocalStorage={setSearchResultFromLocalStorageMy}
-                   // checked={checkedMy}
-                   // setChecked={setCheckedMy}
                     onCardLike={handleCardLike}
                   />
 

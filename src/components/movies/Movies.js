@@ -6,11 +6,11 @@ import Preloader from "../Preloader/Preloader.js";
 
 function Movies(props) {
 
-  //const [allCards, setAllCards] = useState(props.cards);
-  const [cards, setCards] = useState(props.cards);
+  //const [cards, setCards] = useState({'allCards':[], 'myCards':[]});
+  const [filteredCards, setFilteredCards] = useState([]);
   const [searchString, setSearchString] = useState(localStorage.getItem("searchString") || "");
   const [shortFilmsChecked, setShortFilmsChecked] = useState(localStorage.getItem("shortFilmsChecked")?.toLowerCase() === 'true' || false);
-//  const [preloaderState, setPreloaderState] = useState(false);
+  //const [preloaderState, setPreloaderState] = useState(false);
 
 
 
@@ -20,7 +20,7 @@ function Movies(props) {
   // let [firstLoadMovies, setFirstLoadMovies] = useState(true);
   // console.log('props.firstLoadMovies = ', props.firstLoadMovies)
 
-  let filteredCardsForShow = [...props.cards];
+  let filteredCardsForShow = [...filteredCards];
   let [number, setNumber] = useState(getInitNumber());
 
   // const [cardsForShow, setCardsForShow] = useState(JSON.parse(localStorage.getItem("cardsForShow") || filteredCardsForShow.slice(0, number)));
@@ -64,60 +64,51 @@ function Movies(props) {
   }
 //---------------------------------------------------------------------------------------
 
+  useEffect(() => {
+    //setAllCards(props.allCards);
+    filterCards(props.cards);
+  }, [props.cards]);
+
   function onSearchStringChanged(newSearchString) {
     setSearchString(newSearchString);
     localStorage.setItem("searchString", newSearchString);
     
-    props.setFind(newSearchString);//REMOVE IT
+    //props.setFind(newSearchString);//REMOVE IT
   }
 
   function onShortFilmsChanged(value) {
     setShortFilmsChecked(value);
     localStorage.setItem("shortFilmsChecked", JSON.stringify(value));
-    props.setOnShortFilms(value);//REMOVE IT
+    //props.setOnShortFilms(value);//REMOVE IT
   }
 
-  // async function filterCards() {
-
-  //   const initialCards = await loadInitialCards();
-  //   const myCards = await loadMyCards();
+  function filterCards(cards) {
+    // setPreloaderState(true)
+    // setFilteredCards([])
+    // const initialCards = await props.loadInitialCards();
+    // const myCards = await props.loadMyCards();
+    // setPreloaderState(false);
     
-  //   function compare(dbfilms, myCards) { /////Передаём 2 массива
-  //       let cardsMyIds = {};
-  //       myCards.forEach(cardMyselect => {
-  //         cardsMyIds[cardMyselect.externalId] = cardMyselect;
-  //       });
-  //       return dbfilms.map((obj) => {
-  //         const matched = Object.keys(cardsMyIds).includes(String(obj.externalId));
-  //         return matched ? cardsMyIds[obj.externalId] : obj;
-  //     });
-  //   }
+    function compare(dbfilms, myCards) { /////Передаём 2 массива
+        let cardsMyIds = {};
+        myCards.forEach(cardMyselect => {
+          cardsMyIds[cardMyselect.externalId] = cardMyselect;
+        });
+        return dbfilms.map((obj) => {
+          const matched = Object.keys(cardsMyIds).includes(String(obj.externalId));
+          return matched ? cardsMyIds[obj.externalId] : obj;
+      });
+    }
 
-  //   let findInput = searchString.toLowerCase()
-  //   let result = initialCards.filter(film => film.nameRU.toLowerCase().includes(findInput));
-  //   if (shortFilmsChecked) {
-  //       result = result.filter(film => film.duration < 41);
-  //   }
-  //   result = compare(result, myCards);
+    let findInput = searchString.toLowerCase()
+    let result = cards['allCards'].filter(film => film.nameRU.toLowerCase().includes(findInput));
+    if (shortFilmsChecked) {
+        result = result.filter(film => film.duration < 41);
+    }
+    result = compare(result, cards['myCards']);
 
-  //   //tmp preloader emulator >>>>>>>>>>-----------------------------
-  //         setPreloaderState(true)
-  //         console.log('preloaderState before= ', preloaderState)
-  //         setCards([])
-  //         function sleep(ms) {
-  //           return new Promise(resolve => setTimeout(resolve, ms));
-  //         }
-  //         sleep(500).then(() => { 
-  //           setPreloaderState(false);
-
-  //         /////// Button [LOAD MORE] ///////
-          
-  //         //////////////////////////////////
-
-  //           setCards(result); 
-  //           setMyCards(myCards);
-  //         });
-  // }
+    setFilteredCards(result);
+  }
 
   return (
     <main>
@@ -147,7 +138,7 @@ function Movies(props) {
 
         <div className="movies__wrapper">
           <MoviesCardList
-            cards={props.cards}
+            cards={filteredCards}
             //  cards={cardsForShow}
             onCardLike={props.onCardLike}
           />
@@ -158,7 +149,7 @@ function Movies(props) {
             preloaderState={props.preloaderState}
             showMore={showMore}
             allCards={filteredCardsForShow}
-            cards={props.cards}
+            cardsNumber={filteredCards.length}
             backendError={props.backendError}
           />  
         </div>

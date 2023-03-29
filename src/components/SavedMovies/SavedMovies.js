@@ -6,24 +6,27 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 function SavedMovies(props) {
 
   const [allCards, setAllCards] = useState(props.cards);
-  const [filteredCards, setFilteredCards] = useState([]);
+  const [filteredCards, setFilteredCards] = useState(JSON.parse(localStorage.getItem("filteredCards")) || []);
   const [searchString, setSearchString] = useState(localStorage.getItem("savedSearchString") || "");
   const [shortFilmsChecked, setShortFilmsChecked] = useState(localStorage.getItem("savedShortFilmsChecked")?.toLowerCase() === 'true' || false);
+  // console.log("--- page refreshed: ",JSON.parse(localStorage.getItem("filteredCards")));
+  // console.log("--- page refreshed props: ",props);
+  useEffect(() => {
+    setAllCards(props.cards);
+  }, [props.cards]);
 
   useEffect(() => {
     filterCards();
-  }, []);
+  }, [allCards]);
 
   function onSearchStringChanged(newSearchString) {
     setSearchString(newSearchString);
     localStorage.setItem("savedSearchString", newSearchString);
-    props.setFind(newSearchString);//REMOVE IT
   }
 
   function onShortFilmsChanged(value) {
     setShortFilmsChecked(value);
     localStorage.setItem("savedShortFilmsChecked", JSON.stringify(value));
-    props.setOnShortFilms(value);//REMOVE IT
   }
 
   function filterCards() {
@@ -37,6 +40,9 @@ function SavedMovies(props) {
       result = result.filter(film => film.duration < 41);
     }
     setFilteredCards(result);
+    localStorage.setItem("filteredCards", JSON.stringify(result));
+    // console.log("--after filter res: ",result);
+    // console.log("--after filter: ",JSON.parse(localStorage.getItem("filteredCards")));
   }
 
   return (
@@ -50,14 +56,6 @@ function SavedMovies(props) {
             onShortFilmsChanged={onShortFilmsChanged}
             searchString={searchString}
             shortFilmsChecked={shortFilmsChecked}
-
-          //  isChecked={props.isChecked}
-          //  setSeachResult={props.setSeachResult}
-           // searchResult={props.searchResult}
-           // searchResultFromLocalStorage={props.searchResultFromLocalStorage}
-           // setSearchResultFromLocalStorage={props.setSearchResultFromLocalStorage}
-           // setChecked={props.setChecked}
-           // checked={props.checked}
           />   
           <div className="under_grey"></div>
         </div>

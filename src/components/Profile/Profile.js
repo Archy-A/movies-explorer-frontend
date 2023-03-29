@@ -38,7 +38,8 @@ function Profile({
 
   function handleLogOut() {
     setLoggedIn(false);
-    localStorage.removeItem("token");
+    // localStorage.removeItem("token");
+    localStorage.clear();
     history.push("/");
   }
 

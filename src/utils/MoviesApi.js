@@ -107,34 +107,6 @@ class Api {
     }
   }
 
-
-//   likeCard(cardNew, likeStateToBeSet) {
-//     // likeStateToBeSet - is a new state to be set on server
-//     let method = "";
-//     console.log(' likeStateToBeSet = ', likeStateToBeSet)
-//     if (likeStateToBeSet) {
-//       method = "POST";
-//     } else {
-//       method = "DELETE";
-//     }
-//       return fetch(`http://localhost:3000/movies/`, {
-//       method: method,
-//       headers: {
-//         authorization: `Bearer ${localStorage.getItem('token')}`,
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(cardNew),
-//     }
-//     )
-//       .then((res) => {
-//         return this._checkResponse(res);
-//       })
-//       .then((res) => {
-//         return res;
-//       });
-//   }
-// }
-
 // Api instance creation
 const api = new Api({
   baseUrl: ["cards", "users/me"],

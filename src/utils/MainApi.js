@@ -1,5 +1,4 @@
 const link = "http://localhost:3000/";
-const BadRequestError = require('../errors/user-id-err');
 
 class Api {
   constructor(options) {

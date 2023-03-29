@@ -7,15 +7,15 @@ function Preloader(props) {
      messageError = props.backendError;
   }
 
-  // console.log(' props.allCards.length = ',props.allCards.length)
-  // console.log(' props.cards.length = ', props.cards.length)
+  console.log(' props.cards.length = ', props.cardsNumber)
+  console.log(' props.preloaderState = ', props.preloaderState)
 
   return (
     <section className="preloader">
         <div className={`preloader__spinner ${props.preloaderState === false ? "preloader__spinner-hidden" : ""} } `}></div>
         <button 
            className={
-            `preloader__button ${props.cards.length >= props.allCards.length  ? "preloader__button-hidden" : ""} } `
+            `preloader__button ${props.cardsNumber >= props.allCards.length  ? "preloader__button-hidden" : ""} } `
             //  "preloader__button preloader__button-hidden"
             }
            onClick={props.showMore}
@@ -24,7 +24,7 @@ function Preloader(props) {
         </button>
 
         <div 
-          className={`preloader_notfound ${props.preloaderState === true || props.cards.length > 0 ? "" : "preloader_notfound-show"} } `}
+          className={`preloader_notfound ${props.preloaderState === true || props.cardsNumber > 0 ? "" : "preloader_notfound-show"} } `}
           // className="preloader_notfound preloader_notfound-show "
           >
             {messageError}

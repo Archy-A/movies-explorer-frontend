@@ -17,6 +17,14 @@ function Preloader(props) {
            >
             Ещё
         </button>
+
+        <div 
+          className={`preloader_notfound ${props.preloaderState === true || props.cards.length > 0 ? "" : "preloader_notfound-show"} } `}
+          // className="preloader_notfound preloader_notfound-show "
+          >
+            Ничего не найдено
+        </div>
+
     </section>
   );
 }

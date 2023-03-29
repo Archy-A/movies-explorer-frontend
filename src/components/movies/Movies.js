@@ -10,7 +10,9 @@ function Movies(props) {
   const [cards, setCards] = useState(props.cards);
   const [searchString, setSearchString] = useState(localStorage.getItem("searchString") || "");
   const [shortFilmsChecked, setShortFilmsChecked] = useState(localStorage.getItem("shortFilmsChecked")?.toLowerCase() === 'true' || false);
-  const [preloaderState, setPreloaderState] = useState(false);
+//  const [preloaderState, setPreloaderState] = useState(false);
+
+
 
 //---------------------------------------------------------------------------------------
 //////////////////////////// BUTTON LOAD [MORE] FILMS ///////////////////////////////////
@@ -23,7 +25,7 @@ function Movies(props) {
 
   // const [cardsForShow, setCardsForShow] = useState(JSON.parse(localStorage.getItem("cardsForShow") || filteredCardsForShow.slice(0, number)));
   const [cardsForShow, setCardsForShow] = useState(filteredCardsForShow.slice(0, number));
-  console.log('JSONcardsForShow = ', JSON.parse(localStorage.getItem("cardsForShow")))
+  //console.log('JSONcardsForShow = ', JSON.parse(localStorage.getItem("cardsForShow")))
 
   let resizeTimeout;
 
@@ -65,7 +67,6 @@ function Movies(props) {
   function onSearchStringChanged(newSearchString) {
     setSearchString(newSearchString);
     localStorage.setItem("searchString", newSearchString);
-
     
     props.setFind(newSearchString);//REMOVE IT
   }
@@ -73,8 +74,6 @@ function Movies(props) {
   function onShortFilmsChanged(value) {
     setShortFilmsChecked(value);
     localStorage.setItem("shortFilmsChecked", JSON.stringify(value));
-
-
     props.setOnShortFilms(value);//REMOVE IT
   }
 
@@ -148,7 +147,7 @@ function Movies(props) {
 
         <div className="movies__wrapper">
           <MoviesCardList
-             cards={props.cards}
+            cards={props.cards}
             //  cards={cardsForShow}
             onCardLike={props.onCardLike}
           />
@@ -159,7 +158,7 @@ function Movies(props) {
             preloaderState={props.preloaderState}
             showMore={showMore}
             allCards={filteredCardsForShow}
-            cards={cardsForShow}
+            cards={props.cards}
           />  
         </div>
       

@@ -165,7 +165,7 @@ function App(props) {
     try {
       const arrayFilms = await api.getInitialCards();
       const externalDB = arrayFilms.map((card) => createCardFromExternal(card));
-      console.log('externalDB = ', externalDB) 
+      // console.log('externalDB = ', externalDB) 
       //setExternalDBfilms(externalDB)
 
       //localStorage.setItem("externalDBfilms", JSON.stringify(externalDB));
@@ -355,8 +355,11 @@ function App(props) {
   //////////////////////-------------------------------////////////////////////////
   async function findCardInMain(e) {
 
+    setPreloaderState(true)
+    setCards([])
     const initialCards = await loadInitialCards();
     const myCards = await loadMyCards();
+    setPreloaderState(false);
     
     function compare(dbfilms, myCards) { /////Передаём 2 массива
         let cardsMyIds = {};
@@ -375,36 +378,16 @@ function App(props) {
         result = result.filter(film => film.duration < 41);
     }
     result = compare(result, myCards);
+    setCards(result); 
+    setMyCards(myCards);
 
-       //tmp preloader emulator >>>>>>>>>>-----------------------------
-              setPreloaderState(true)
-              console.log('preloaderState before= ', preloaderState)
-              setCards([])
-              function sleep(ms) {
-                return new Promise(resolve => setTimeout(resolve, ms));
-              }
-              sleep(500).then(() => { 
-                setPreloaderState(false);
-
-              /////// Button [LOAD MORE] ///////
-              
-              //////////////////////////////////
-
-                setCards(result); 
-                setMyCards(myCards);
-              });
-       //<<<<<<<<<<<<<<<<<<<<<<<<---------------------------------------
-
-    // uncomment this setCards(result) after you moved preloader
-    //  setCards(result);
-
-      localStorage.setItem("find", find);
-      localStorage.setItem("onShortFilms", onShortFilms);
-      // my new changes:
-      localStorage.setItem("cards", JSON.stringify(result));
-      localStorage.setItem("myCards", JSON.stringify(myCards));
-      //localStorage.setItem("searchResult", searchResult);
-      //localStorage.setItem("searchResultFromLocalStorage", searchResultFromLocalStorage);   
+    localStorage.setItem("find", find);
+    localStorage.setItem("onShortFilms", onShortFilms);
+    // my new changes:
+    localStorage.setItem("cards", JSON.stringify(result));
+    localStorage.setItem("myCards", JSON.stringify(myCards));
+    //localStorage.setItem("searchResult", searchResult);
+    //localStorage.setItem("searchResultFromLocalStorage", searchResultFromLocalStorage);   
   }
 
   
@@ -442,33 +425,26 @@ function App(props) {
       .then((newCard) => {
         let oldId = newCard._id;
         newCard = createCardFromDB(newCard, newLike);
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>> newCard = ', newCard)
-
         //cards.filter(card => card.externalId !== newCard.externalId);
-
         let newCards = cards.map((c) => (c.externalId === card.externalId ? newCard : c));
         setCards(newCards);
-
-        //console.log('>>>>>>>>>>>>>>>>>>>>>>>> newCards = ', newCards)
-
         if (newLike) {
           setMyCards((oldCards) => ([...oldCards, newCard]));
         } else {
           let filteredCardsMy = myCards.filter(card => card._id !== oldId)
           setMyCards(filteredCardsMy);
         }
-
         localStorage.setItem("cards", JSON.stringify(newCards));
-
       })
       .catch((err) => {
         console.log(err);;
-      });
-    
+      });    
     e.stopPropagation();
   }
-
   /////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
   function tokenCheck() {
     const jwt = localStorage.getItem("token");
     if (jwt) {
@@ -542,7 +518,7 @@ function App(props) {
                     //checked={checked}
                    // setChecked={setChecked}
                     onCardLike={handleCardLike}
-                    //preloaderState={preloaderState}
+                    preloaderState={preloaderState}
                     firstIter={firstIter}
                     setFirstIter={setFirstIter}
                     currentIndex={currentIndex}

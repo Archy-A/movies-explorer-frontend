@@ -63,6 +63,7 @@ function App(props) {
   const [backendError, setBackendError] = useState("");
   const [editProfileMessage, setEditProfileMessage] = useState("");
   const [messageReg, setMessageReg] = useState("");
+  const [registered, setRegistered] = useState(false);
 
   tokenCheck();
 
@@ -72,8 +73,10 @@ function App(props) {
         .getUserInfo()
         .then((data) => {
           setCurrentUser(data);
+          console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> getUserInfo');
         })
         .catch((err) => {
+          console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> getUserInfo');
           console.log(err);
         });
   }, [loggedIn]);
@@ -141,17 +144,16 @@ function App(props) {
   }
 
   // -------------------- LOGIN --------------------------------------
-  function handleLogin(e) {
-    e.preventDefault();
+  function loginAction(email, pass) {
     auth
       .sigin(
-        emailAndPassSetterLogin.values[emailLogin],
-        emailAndPassSetterLogin.values[passwordLogin]
+        email,
+        pass
       )
       .then((res) => {
         if (res) {
           setLoggedIn(true);
-          setEmail(emailAndPassSetterLogin.values[emailLogin]);
+          setEmail(email);
           history.push("/movies");
           setLoginError(false);
           localStorage.setItem("token", res.token);
@@ -173,6 +175,11 @@ function App(props) {
         history.push("/signin");
       });
   }
+
+  function handleLogin(e) {
+    e.preventDefault();    
+    loginAction(emailAndPassSetterLogin.values[emailLogin], emailAndPassSetterLogin.values[passwordLogin]);
+  }
   
   // ------------------------------------------------------------------
 
@@ -189,13 +196,12 @@ function App(props) {
       .then((res) => {
         if (res) {
           setLoggedIn(false);
-         // localStorage.removeItem("token");
           setRegisterError(false);
           setRegisterError("")
           setCheckPass(false);
           setCheckName(false);
           setCheckEmail(false);
-          history.push("/signin");
+          loginAction(emailAndPassSetterReg.values[emailReg], emailAndPassSetterReg.values[passwordReg]);
         }
       })
       .catch((err) => {
@@ -212,6 +218,95 @@ function App(props) {
         }
       });
   }
+
+  // function registration () {
+  //   return auth
+  //     .register(
+  //       emailAndPassSetterReg.values[nameReg],
+  //       emailAndPassSetterReg.values[emailReg],
+  //       emailAndPassSetterReg.values[passwordReg]
+  //     )
+  //     .then((res) => {
+  //       if (res) {
+  //         setLoggedIn(false);
+  //         setRegisterError(false);
+  //         setRegisterError("")
+  //         setCheckPass(false);
+  //         setCheckName(false);
+  //         setCheckEmail(false);
+  //         history.push("/movies");
+
+  //         console.log('register is done, res = ', res)
+  //         setRegistered(true);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       setLoggedIn(false);
+  //       setRegistered(false);
+  //       setRegisterError(true);
+  //       setEmail(emailAndPassSetterReg.values[emailReg]);
+  //       if (err === 'Ошибка: 400') {
+  //         setRegisterError(`Введены некорреткные данные в поля Имя/E-mail/Пароль`)
+  //       } else if (err === 'Ошибка: 409') {        
+  //         setRegisterError(`Такой пользователь уже существует!`)
+  //       } else {        
+  //         setRegisterError(`Извините, случилась проблема при регистрации: ${err}`)
+  //       }
+  //     });
+  // }
+
+  // function loggingIn () {
+  //   console.log('registered in loggingIn = ', registered)
+  //   auth
+  //   .sigin(
+  //     emailAndPassSetterLogin.values[emailLogin],
+  //     emailAndPassSetterLogin.values[passwordLogin]
+  //   )
+  //   .then((res) => {
+  //     if (res) {
+  //       setLoggedIn(true);
+  //       setEmail(emailAndPassSetterLogin.values[emailLogin]);
+  //       history.push("/movies");
+  //       setLoginError(false);
+  //       localStorage.setItem("token", res.token);
+  //     }
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //     setLoggedIn(false);
+  //     setLoginError(true);
+
+  //     if (err === 'Ошибка: 400') {
+  //       setLoginError(`Введены некорреткные данные в поля E-mail/Пароль`)
+  //     } else if (err === 'Ошибка: 401') {        
+  //       setLoginError(`Неверные E-mail/Пароль, попробуйте исправить`)
+  //     } else {        
+  //       setLoginError(`Извините, случилась проблема при входе, попробуйте чуть позже...`)
+  //     }
+  //     history.push("/signin");
+  //   });
+  // }
+
+  
+  // function handleRegister(e) {
+  //   e.preventDefault();
+
+    // const registration1 = await auth.register(
+    //   emailAndPassSetterReg.values[nameReg],
+    //   emailAndPassSetterReg.values[emailReg],
+    //   emailAndPassSetterReg.values[passwordReg]
+    // )
+    // console.log('>>> registration1 = ' , registration1)
+
+    // setRegistered(false);
+    // console.log('---- before registration --------------------------------------------')
+    // const ololol = await registration();
+    // console.log('---- before loggingIn --------------------------------------------')
+    // console.log('>>> ololol = ' , ololol)
+    // await loggingIn(registration1);
+
+  // }
   //------------------------------------------------------------------
 
   // >>>>>>>>>>>>>> CHECK REGISTER <<<<<<<<<<<<<<<<<<<
@@ -300,9 +395,9 @@ function App(props) {
     localStorage.setItem("cards", JSON.stringify(updatedCards));
   }
 
-  ////////////////////////////-------------------------------///////////////////////////////////
-  ////////////////////////////   L I K E   / D I S L I K E   ///////////////////////////////////
-  ////////////////////////////-------------------------------///////////////////////////////////
+  ////////////////////////////------------------------------------///////////////////////////////////
+  //////////////////////////// <3  L I K E   / D I S L I K E </3  ///////////////////////////////////
+  ////////////////////////////------------------------------------///////////////////////////////////
   function handleCardLike(card, e) {
     const newLike = !card.like;
     api
@@ -330,6 +425,7 @@ function App(props) {
 
   function tokenCheck() {
     const jwt = localStorage.getItem("token");
+    // console.log('jwt = ', jwt)
     if (jwt) {
       auth
         .getContent(jwt)

@@ -31,6 +31,7 @@ export const sigin = (email, password) => {
 };
 
 export const getContent = (token) => {
+    // console.log('getContent token = ', token)
   // return fetch(`https://api.dipp.nomoredomains.work/users/me`, {
     return fetch(`http://localhost:3000/users/me`, {
     method: "GET",

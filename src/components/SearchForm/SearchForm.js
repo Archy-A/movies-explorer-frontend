@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 function SearchForm(props) {
@@ -18,11 +18,22 @@ function SearchForm(props) {
     props.setFind(inputFindRef.current.value);
   }, [location, inputFindRef]);
 
+
+  const [inputMessage, setInputMessage] = useState("");
+
   function handleSubmitForm(e) {
-    e.preventDefault();
+    e? e.preventDefault() : console.log("");
+    // validation of search field if not empty
+    if (inputFindRef.current.value === "") {
+      setInputMessage("Нужно ввести ключевое слово");
+      return inputMessage
+    }
+    setInputMessage("");
     props.onSearchBtnClicked();
   }
  
+  useEffect(() => {
+  }, [inputMessage]);
 
   return (
     <section className="search">
@@ -41,12 +52,15 @@ function SearchForm(props) {
             type="text"
             value={props.searchString}
             onChange={handleChangeName}
-            minLength="1"
-            maxLength="99"
-            required
+            // minLength="1"
+            // maxLength="99"
+            // required
           ></input>
           <button type="submit" className="search__button">Найти</button>
         </form>
+
+        <span className="search__input-error">{inputMessage}</span>
+
         <div className="search__switcher">
 
           <label

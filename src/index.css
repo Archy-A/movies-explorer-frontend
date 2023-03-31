@@ -103,6 +103,7 @@
 @import url(../src/blocks/search/__slider/search__slider.css);
 @import url(../src/blocks/search/__switcher/search__switcher.css);
 @import url(../src/blocks/search/__short/search__short.css);
+@import url(../src/blocks/search/__input-error/search__input-error.css);
 
 @import url(../src/blocks/elements/elements.css);
 @import url(../src/blocks/element/element.css);

@@ -72,7 +72,7 @@ function Movies(props) {
     if (searchString.length === 0) {
       return;
     }
-    function compare(dbfilms, myCards) { /////Передаём 2 массива
+    function compare(dbfilms, myCards) {
         let cardsMyIds = {};
         myCards.forEach(cardMyselect => {
           cardsMyIds[cardMyselect.externalId] = cardMyselect;
@@ -89,7 +89,6 @@ function Movies(props) {
         result = result.filter(film => film.duration < 41);
     }
     result = compare(result, cards['myCards']);
-
     setFilteredCards(result);
   }
 

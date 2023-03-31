@@ -52,7 +52,7 @@ function Movies(props) {
 
   useEffect(() => {
     filterCards(props.cards);
-  }, [props.cards]);
+  }, [props.cards, shortFilmsChecked]);
 
   useEffect(() => {
     setCardsForShow(filteredCards.slice(0, number));

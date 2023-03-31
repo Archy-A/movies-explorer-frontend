@@ -22,6 +22,8 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function App(props) {
 
+  console.log("---------------- APPPPPPP REFRESHED -------------------" );
+
   let history = useHistory();
   const emailLogin = "emailLogin";
   const passwordLogin = "passwordLogin";
@@ -64,6 +66,9 @@ function App(props) {
   const [editProfileMessage, setEditProfileMessage] = useState("");
   const [messageReg, setMessageReg] = useState("");
   const [registered, setRegistered] = useState(false);
+
+  let firstSearch  = true;
+  let initialCards = [];
 
   tokenCheck();
 
@@ -132,10 +137,10 @@ function App(props) {
 
   async function loadMyCards() {
     try {
-      let myCards = await apiMy.getInitialCardsMy();
-      myCards = myCards.map(c => createCardFromDB(c, true));
+      let myDBCards = await apiMy.getInitialCardsMy();
+      myDBCards = myDBCards.map(c => createCardFromDB(c, true));
       setBackendError("")
-      return myCards;
+      return myDBCards;
     }
     catch(err) {
       console.log(err);
@@ -150,13 +155,18 @@ function App(props) {
         email,
         pass
       )
-      .then((res) => {
+      .then(async (res) => {
         if (res) {
           setLoggedIn(true);
           setEmail(email);
           history.push("/movies");
           setLoginError(false);
           localStorage.setItem("token", res.token);
+
+          const myDBCards = await loadMyCards();
+          const updatedCards = {'allCards': [], 'myCards': myDBCards};
+          setCards(updatedCards);
+          localStorage.setItem("cards", JSON.stringify(updatedCards));
         }
       })
       .catch((err) => {
@@ -384,13 +394,16 @@ function App(props) {
   //////////////////////-------------------------------////////////////////////////
   async function findCardInMain() {
 
-    setPreloaderState(true)
-    setCards({'allCards':[], 'myCards':[]})
-    const initialCards = await loadInitialCards();
-    const myCards = await loadMyCards();
-    setPreloaderState(false);
-
-    const updatedCards = {'allCards': initialCards, 'myCards': myCards};
+    if (firstSearch) {
+      setPreloaderState(true)
+      //block NOT THERE
+      initialCards = await loadInitialCards();
+      firstSearch = false;
+      //unblock
+      setPreloaderState(false);
+    }
+  
+    const updatedCards = {'allCards': initialCards, 'myCards': cards['myCards']};
     setCards(updatedCards);
     localStorage.setItem("cards", JSON.stringify(updatedCards));
   }

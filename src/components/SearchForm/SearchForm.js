@@ -52,9 +52,6 @@ function SearchForm(props) {
             type="text"
             value={props.searchString}
             onChange={handleChangeName}
-            // minLength="1"
-            // maxLength="99"
-            // required
           ></input>
           <button type="submit" className="search__button">Найти</button>
         </form>

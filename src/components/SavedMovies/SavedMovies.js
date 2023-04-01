@@ -28,7 +28,7 @@ function SavedMovies(props) {
   }
 
   function filterCards() {
-    //block
+    
     let findInput = searchString.toLowerCase()
     let result = findInput.length === 0
       ? allCards

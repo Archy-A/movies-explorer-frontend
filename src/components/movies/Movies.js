@@ -5,7 +5,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader.js";
 
 function Movies(props) {
-
+  
   const SHORT_FILM_DURATION = 41;
   const NUMBER_OF_FILMS_FOR_MOBILE = 5;
   const NUMBER_OF_FILMS_FOR_TABLET = 8;
@@ -29,10 +29,13 @@ function Movies(props) {
   const [cardsForShow, setCardsForShow] = useState(filteredCards.slice(0, number));
 
   let resizeTimeout;
-
+  
   useEffect(() => {
     window.addEventListener('resize', resizeLimiter);
-  });
+    return () => {
+      window.removeEventListener('resize', resizeLimiter)
+    }
+  }, []);
   
   const resizeLimiter = () => {
     if (!resizeTimeout) {
@@ -42,7 +45,6 @@ function Movies(props) {
       }, 1000);
     }
   }
-  
 
   function getInitNumber() {
     if (window.innerWidth >= RESOLUTION_FOR_DESKTOP) {

@@ -29,7 +29,6 @@ function Register(props) {
     }
   }
 
-
   return (
     <>
       <section className="register">

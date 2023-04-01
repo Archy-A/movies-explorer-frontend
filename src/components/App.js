@@ -63,7 +63,7 @@ function App(props) {
   const ERROR_401 = "Ошибка: 401";
   const ERROR_409 = "Ошибка: 409";
 
-  const [cards, setCards] = useState(JSON.parse(localStorage.getItem("cards")) || {'allCards':[], 'myCards':[]});
+  const [cards, setCards] = useState(JSON.parse(localStorage.getItem("cards") || JSON.stringify({'allCards':[], 'myCard':[]})));
   const [preloaderState, setPreloaderState] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
@@ -75,9 +75,6 @@ function App(props) {
   const [backendError, setBackendError] = useState("");
   const [editProfileMessage, setEditProfileMessage] = useState("");
   const [messageReg, setMessageReg] = useState("");
-
-  let firstSearch  = true;
-  let initialCards = [];
 
   tokenCheck();
 
@@ -310,17 +307,12 @@ function App(props) {
   //////////////////////-------------------------------////////////////////////////
   //////////////////////<<<  S E A R C H   M A I N  >>>////////////////////////////
   //////////////////////-------------------------------////////////////////////////
-  async function findCardInMain() {
+  async function firstSearchCardInMain() {
 
-    if (firstSearch) {
-      setPreloaderState(true)
-      //block NOT THERE
-      initialCards = await loadInitialCards();
-      firstSearch = false;
-      //unblock
-      setPreloaderState(false);
-    }
-  
+    setPreloaderState(true)
+    let initialCards = await loadInitialCards();
+    setPreloaderState(false);
+
     const updatedCards = {'allCards': initialCards, 'myCards': cards['myCards']};
     setCards(updatedCards);
     localStorage.setItem("cards", JSON.stringify(updatedCards));
@@ -351,8 +343,6 @@ function App(props) {
     e.stopPropagation();
   }
   /////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
   function tokenCheck() {
     const jwt = localStorage.getItem("token");
@@ -416,7 +406,7 @@ function App(props) {
                     loggedIn={loggedIn}
                     component={Movies}
                     cards={cards}
-                    onSearchMovieClicked={findCardInMain}
+                    onFirstSearchMovie={firstSearchCardInMain}
                     onCardLike={handleCardLike}
                     preloaderState={preloaderState}
                     backendError={backendError}

@@ -52,8 +52,15 @@ function SearchForm(props) {
             type="text"
             value={props.searchString}
             onChange={handleChangeName}
+            disabled={props.searchStringDisabled}
           ></input>
-          <button type="submit" className="search__button">Найти</button>
+          <button 
+            type="submit" 
+            className="search__button"
+            disabled={props.searchButtonDisabled}
+            >
+              Найти
+            </button>
         </form>
 
         <span className="search__input-error">{inputMessage}</span>
@@ -68,6 +75,7 @@ function SearchForm(props) {
               className="search__checkbox"
               type="checkbox"
               checked={props.shortFilmsChecked}
+              disabled={props.shortFilmsCheckDisabled}
               readOnly
               >
             </input>

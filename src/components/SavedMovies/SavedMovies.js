@@ -8,6 +8,9 @@ function SavedMovies(props) {
   const [filteredCards, setFilteredCards] = useState(JSON.parse(localStorage.getItem("filteredCards")) || []);
   const [searchString, setSearchString] = useState(localStorage.getItem("savedSearchString") || "");
   const [shortFilmsChecked, setShortFilmsChecked] = useState(localStorage.getItem("savedShortFilmsChecked")?.toLowerCase() === 'true' || false);
+  const [searchButtonDisabled, setSearchButtonDisabled] = useState(false)
+  const [searchStringDisabled, setSearchStringDisabled] = useState(false)
+  const [shortFilmsCheckDisabled, setShortFilmsCheckDisabled] = useState(false)
 
   useEffect(() => {
     setAllCards(props.cards);
@@ -27,8 +30,14 @@ function SavedMovies(props) {
     localStorage.setItem("savedShortFilmsChecked", JSON.stringify(value));
   }
 
+  function blockFields(toBlock) {
+    setSearchButtonDisabled(toBlock);
+    setSearchStringDisabled(toBlock);
+    setShortFilmsCheckDisabled(toBlock);
+  }
+
   function filterCards() {
-    
+    blockFields(true);
     let findInput = searchString.toLowerCase()
     let result = findInput.length === 0
       ? allCards
@@ -39,7 +48,7 @@ function SavedMovies(props) {
     }
     setFilteredCards(result);
     localStorage.setItem("filteredCards", JSON.stringify(result));
-    //unblock
+    blockFields(false);
   }
 
   return (
@@ -53,6 +62,9 @@ function SavedMovies(props) {
             onShortFilmsChanged={onShortFilmsChanged}
             searchString={searchString}
             shortFilmsChecked={shortFilmsChecked}
+            searchButtonDisabled={searchButtonDisabled}
+            searchStringDisabled={searchStringDisabled}
+            shortFilmsCheckDisabled={shortFilmsCheckDisabled}
           />   
           <div className="under_grey"></div>
         </div>

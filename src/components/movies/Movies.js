@@ -21,6 +21,11 @@ function Movies(props) {
   const [filteredCards, setFilteredCards] = useState([]);
   const [searchString, setSearchString] = useState(localStorage.getItem("searchString") || "");
   const [shortFilmsChecked, setShortFilmsChecked] = useState(localStorage.getItem("shortFilmsChecked")?.toLowerCase() === 'true' || false);
+  const [searchButtonDisabled, setSearchButtonDisabled] = useState(false)
+  const [searchStringDisabled, setSearchStringDisabled] = useState(false)
+  const [shortFilmsCheckDisabled, setShortFilmsCheckDisabled] = useState(false)
+
+  let firstSearch = JSON.parse(localStorage.getItem("firstSearch") || true);
 
 //---------------------------------------------------------------------------------------
 //////////////////////////// BUTTON LOAD [MORE] FILMS ///////////////////////////////////
@@ -76,6 +81,16 @@ function Movies(props) {
     setCardsForShow(filteredCards.slice(0, number));
   }, [filteredCards, number]);
 
+  useEffect(() => {
+    blockFields(props.preloaderState);
+  }, [props.preloaderState]);
+
+  function blockFields(toBlock) {
+    setSearchButtonDisabled(toBlock);
+    setSearchStringDisabled(toBlock);
+    setShortFilmsCheckDisabled(toBlock);
+  }
+
   function onSearchStringChanged(newSearchString) {
     setSearchString(newSearchString);
     localStorage.setItem("searchString", newSearchString);
@@ -84,6 +99,16 @@ function Movies(props) {
   function onShortFilmsChanged(value) {
     setShortFilmsChecked(value);
     localStorage.setItem("shortFilmsChecked", JSON.stringify(value));
+  }
+
+  function onSearchMovieClicked() {
+    if (firstSearch) {
+      firstSearch = false;
+      localStorage.setItem("firstSearch", JSON.stringify(firstSearch));
+      props.onFirstSearchMovie();
+    } else {
+      filterCards(props.cards);
+    }
   }
 
   function filterCards(cards) {
@@ -101,6 +126,7 @@ function Movies(props) {
       });
     }
 
+    blockFields(true);
     let findInput = searchString.toLowerCase()
     let result = cards['allCards'].filter(film => film.nameRU.toLowerCase().includes(findInput));
     if (shortFilmsChecked) {
@@ -108,6 +134,7 @@ function Movies(props) {
     }
     result = compare(result, cards['myCards']);
     setFilteredCards(result);
+    blockFields(false);
   }
 
   return (
@@ -120,7 +147,10 @@ function Movies(props) {
             searchString={searchString}
             onShortFilmsChanged={onShortFilmsChanged}
             shortFilmsChecked={shortFilmsChecked}
-            onSearchBtnClicked={props.onSearchMovieClicked}
+            onSearchBtnClicked={onSearchMovieClicked}
+            searchButtonDisabled={searchButtonDisabled}
+            searchStringDisabled={searchStringDisabled}
+            shortFilmsCheckDisabled={shortFilmsCheckDisabled}
           />   
           <div className="under_grey"></div>
         </div>

@@ -1,5 +1,5 @@
-const link = "https://api.dipp.nomoredomains.work/";
-// const link = "http://localhost:3000/";
+// const BASE_URL = "https://api.dipp.nomoredomains.work";
+const BASE_URL = "http://localhost:3000";
 
 class Api {
   constructor(options) {
@@ -17,29 +17,12 @@ class Api {
   }
 
   getInitialCardsMy() {
-    return fetch(`https://api.dipp.nomoredomains.work/${this.endPoint[0]}`, {
-      // return fetch(`http://localhost:3000/${this.endPoint[0]}`, {
+      return fetch(`${BASE_URL}/${this.endPoint[0]}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     })
       .then((res) => {
-        return this._checkResponse(res);
-      })
-      .then((res) => {
-        return res;
-      });
-  }
-
-  getUserInfo() {
-    return fetch(`https://api.dipp.nomoredomains.work/${this.endPoint[1]}`, {
-      // return fetch(`http://localhost:3000/${this.endPoint[1]}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    })
-      .then((res) => {
-        console.log(' getUserInfo = ', res)
         return this._checkResponse(res);
       })
       .then((res) => {
@@ -48,8 +31,7 @@ class Api {
   }
 
   setUserInfo(name, email, next) {
-    return fetch(`https://api.dipp.nomoredomains.work/${this.endPoint[1]}`, {
-      // return fetch(`http://localhost:3000/${this.endPoint[1]}`, {
+      return fetch(`${BASE_URL}/${this.endPoint[1]}`, {
       method: "PATCH",
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -66,29 +48,6 @@ class Api {
       .then((res) => {
         return res;
       })
-  }
-
-  likeCard(cardId, likeStateToBeSet) {
-    // likeStateToBeSet - is a new state to be set on server
-    let method = "";
-    if (likeStateToBeSet) {
-      method = "PUT";
-    } else {
-      method = "DELETE";
-    }
-      return fetch(`https://api.nomoreparties.co/beatfilm-movies/cards/${cardId}/likes`, {
-      method: method,
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        return this._checkResponse(res);
-      })
-      .then((res) => {
-        return res;
-      });
   }
 }
 

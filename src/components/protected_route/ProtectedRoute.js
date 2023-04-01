@@ -12,7 +12,6 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
          && 
         (props.loggedIn === true)
        ) {
-        console.log("-- here 1 ");
         return true;
     } else if (
       ((path === "movies") || 
@@ -21,10 +20,8 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
       && 
       (props.loggedIn === false)
     ) {
-      console.log("-- here 2 ");
         return true;
     } else {
-      console.log("-- here 3 ");
         return false;
     }
   }

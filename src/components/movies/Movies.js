@@ -21,6 +21,7 @@ function Movies(props) {
   useEffect(() => {
     window.addEventListener('resize', resizeLimiter);
   });
+  
 
   const resizeLimiter = () => {
     if (!resizeTimeout) {
@@ -42,7 +43,10 @@ function Movies(props) {
   }
 
   function showMore() {
-    if (window.innerWidth <769) {
+    if (window.innerWidth <400) {
+      setNumber(number + 1);
+    }
+    else if (window.innerWidth <769) {
       setNumber(number + 2);
     } else {
       setNumber(number + 3);

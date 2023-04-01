@@ -1,5 +1,4 @@
 ////////////////////////////////
-const link = "http://localhost:3000/";
 
 class Api {
   constructor(options) {
@@ -31,26 +30,10 @@ class Api {
   }
 
   getUserInfo() {
-    return fetch(`http://localhost:3000/${this.endPoint[1]}`, {
+    return fetch(`https://api.dipp.nomoredomains.work/${this.endPoint[1]}`, {
+    // return fetch(`http://localhost:3000/${this.endPoint[1]}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    })
-      .then((res) => {
-        return this._checkResponse(res);
-      })
-      .then((res) => {
-        return res;
-      });
-  }
-
-
-  deleteCard(id) {
-    return fetch(`http://localhost:3000/movies/${id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        "Content-Type": "application/json",
       },
     })
       .then((res) => {
@@ -71,7 +54,8 @@ class Api {
       };
       //  console.log('cardNew = ', newCard)
       method = "POST";
-      return fetch(`http://localhost:3000/movies/`, {
+      // return fetch(`http://localhost:3000/movies/`, {
+      return fetch(`https://api.dipp.nomoredomains.work/movies`, {
         method: method,
         headers: {
           authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -90,7 +74,8 @@ class Api {
     } else {
       // console.log('DELETE cardNew = ', card)
       method = "DELETE";
-      return fetch(`http://localhost:3000/movies/${card._id}`, {
+      // return fetch(`http://localhost:3000/movies/${card._id}`, {
+        return fetch(`https://api.dipp.nomoredomains.work/movies/${card._id}`, {
         method: "DELETE",
         headers: {
           authorization: `Bearer ${localStorage.getItem('token')}`,

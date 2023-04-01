@@ -1,4 +1,4 @@
-.register__register {
+.register__register-disable {
     min-width: 396px;
     min-height: 45px;
     margin: 0;
@@ -22,20 +22,13 @@
     /* text-align: center; */
   }
 
-  .register__register:hover {
+  .register__register-disable:hover {
     opacity: 0.8;
     cursor: pointer;
   }
 
-  .register__register:disabled,
-  .register__register[disabled]{
-    border: 1px solid #999999;
-    background-color: #cccccc;
-    color: #666666;
-}
-
   @media screen and (max-width: 768px) {
-    .register__register {
+    .register__register-disable {
         margin-left: auto;
         margin-right: auto;
         min-width: 100%;
@@ -46,7 +39,7 @@
     }
 
   @media screen and (max-width: 590px) {
-    .register__register {
+    .register__register-disable {
         margin-top: 241px;
 
           /* border: 1px rgb(235, 14, 14) solid; */

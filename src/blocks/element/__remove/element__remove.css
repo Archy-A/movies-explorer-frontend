@@ -16,6 +16,7 @@
   margin-top: 5px;
   margin-right: 28px;
   display: none;
+
 }
 
 
@@ -23,5 +24,8 @@
 @media screen and (max-width: 590px) {
   .element__remove {
     margin-right: 15px;
+    display: block;
+
+    /* border: 1px rgb(235, 14, 14) solid; */
   }
 }

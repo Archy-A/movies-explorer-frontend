@@ -1,12 +1,8 @@
-import React, { useContext } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-import SearchForm from "../SearchForm/SearchForm";
-
-function Register({
-  onEditProfile,
-}) {
+function Register(props) {
   
   let history = useHistory()
 
@@ -17,6 +13,20 @@ function Register({
 
   function handleGoMain() {
     history.push("/");
+  }
+
+  const inputNameRegRef = useRef();
+  const inputEmailRegRef = useRef();
+  const inputPassRegRef = useRef();
+
+  let buttonDisable = true;
+  function setbuttonDisable() {
+
+    if (props.checkPass === true && props.checkName === true && props.checkEmail === true ) {
+      return buttonDisable = false;
+    } else {
+      return buttonDisable = true;
+    }
   }
 
   return (
@@ -30,7 +40,7 @@ function Register({
         </div>
 
         <form
-              onSubmit={mySubmitFunction}
+              onSubmit={props.onRegister}
               className="register_form"
               method="post"
               name="login"
@@ -39,11 +49,18 @@ function Register({
 
               <div className="register__box">
                 <input
-                  id="register__email"
+                  ref={inputNameRegRef}
+                  id="register__name"
                   type="text"
-                  //value="Виталий"
-                  // onChange={props.handleOnChange}
-                  name="emailReg"
+                  value={
+                    inputNameRegRef.current
+                      ? props.emailAndPassSetterRegValues[
+                        inputNameRegRef.current.name
+                        ] || ""
+                      : ""
+                  }
+                  onChange={props.handleRegOnChange}
+                  name="nameReg"
                   placeholder=""
                   className="register__name"
                   minLength="2"
@@ -57,13 +74,21 @@ function Register({
 
               <div className="register__box">
                 <input
+                  ref={inputEmailRegRef}
                   id="register__email"
-                  type="text"
-                  //value="pochta@yandex.ru"
-                  // onChange={props.handleOnChange}
+                  value={
+                    inputEmailRegRef.current
+                      ? props.emailAndPassSetterRegValues[
+                          inputEmailRegRef.current.name
+                        ] || ""
+                      : ""
+                  }
+                  onChange={props.handleRegOnChange}
                   name="emailReg"
                   placeholder=""
                   className="register__email"
+                  type="text"
+                  pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
                   minLength="2"
                   maxLength="40"
                   required
@@ -75,10 +100,16 @@ function Register({
 
               <div className="register__box">
                 <input
+                  ref={inputPassRegRef}
                   id="login__password"
                   type="password"
-                  //value= "pochta@yandex.ru"
-                  onChange="event.preventDefault()"
+                  value={
+                    inputPassRegRef.current
+                      ? props.emailAndPassSetterRegValues[inputPassRegRef.current.name] ||
+                        ""
+                      : ""
+                  }
+                  onChange={props.handleRegOnChange}
                   name="passwordReg"
                   placeholder=""
                   className="register__password"
@@ -88,11 +119,17 @@ function Register({
                 ></input>
                 <div className="register__line" />
               </div>
+
+              <p className="profile__error">{props.registerError}</p>
               
-              <button type="submit" className="register__register">
-                <p className="register__label">
-                  Зарегистрироваться
-                </p>
+              <button 
+                   type="submit"
+                   className="register__register"
+                   disabled={setbuttonDisable()}
+                   >
+                      <p className="register__label">
+                        Зарегистрироваться
+                      </p>
               </button>
 
               <div className="register__framer">

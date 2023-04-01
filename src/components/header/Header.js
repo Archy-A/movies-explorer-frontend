@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, Route, Switch, Link, useHistory } from "react-router-dom";
+import { useLocation, Route, Switch, Link, useHistory, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function Header({ loggedIn, email, setLoggedIn }) {
@@ -63,44 +63,121 @@ function Header({ loggedIn, email, setLoggedIn }) {
               <div className="header__logo" onClick={handleLogoGoMain}>
               </div> 
 
-              <div className="header__container">
+              {/* <Link className={`header__films ${loggedIn ? "" : "header__login-hidden"} `} to="/movies">
+                  Фильмы
+              </Link> */}
+
+              <NavLink className={`header__films ${loggedIn ? "" : "header__login-hidden"} `} to="/movies">
+                  Фильмы
+              </NavLink>
+
+              <Link className={`header__films_saved ${loggedIn ? "" : "header__login-hidden"} `} to="/saved-movies">
+                  Сохранённые фильмы
+              </Link>
+
+              <div className={`header__container ${loggedIn ? "" : "header__login-hidden"} `}>
+                <Link className="header__profile" to="/profile">
+                  Аккаунт
+                  <div className="header__frame" >
+                    <div className="header__icon" ></div>
+                  </div>
+                </Link>
+              </div> 
+
+              <div className={`header__container ${loggedIn ? "header__login-hidden" : ""} `}>
                 <Link className="header__signup" to="/signup">
                   Регистрация
                 </Link>
                 <button
-                  className={`header__login ${loggedIn ? "" : "element-hidden"} `}
+                  className={`header__login ${loggedIn ? "header__login-hidden" : ""} `}
                   onClick={handleHeaderGoLogin}
                 >
                   Войти
                 </button>
               </div>
+
+              <section className={`header__nav_layered ${isActive ? "" : "header__open"}`}>
+                <div className={`header__nav ${isActive ? "" : "header__nav-opened"}`}>
+
+                    <div className="burger__container">
+
+                      <div className="burger__frame">
+                        <button className={`burger__main ${currentPath === '/' ? "burger__main_active" : ""} `} onClick={handleBurgerGoMain}>Главная</button>
+                        <button className={`burger__films ${currentPath === '/movies' ? "burger__films_active" : ""} `} onClick={handleBurgerGoFilms}>Фильмы</button>
+                        <button className={`burger__saved ${currentPath === '/saved-movies' ? "burger__saved_active" : ""} `} onClick={handleBurgerGoSaved}>Сохранённые фильмы</button>
+                      </div>
+
+                      <div className="burger__account">
+                        <button className={`burger__profile ${currentPath === '/profile' ? "burger__profile_active" : ""} `} onClick={handleBurgerGoProfile}>Аккаунт</button>
+                        <div className="burger__frame2" >
+                          <div className="burger__icon" onClick={handleBurgerGoProfile}></div>
+                        </div>
+                      </div> 
+
+                    </div>
+
+                  </div>
+                </section>
+
+                <div
+                  className={`burger ${isActive ? "" : "active"} ${loggedIn ? "" : "burger-hidden"}`}
+                  onClick={handleToggle}
+                  >
+                   <span>
+                   </span>
+                </div>
+
             </Route>
+
+{/* ////////////////////////////////////////////////////////////////////////////////////////////////// */}
 
             <Route exact path={["/profile", "/movies", "/saved-movies"]}>
 
               <div className="header__logo" onClick={handleLogoGoMain}>
               </div>
 
-
-                <Link className="header__films" to="/movies">
+              <NavLink
+                className="header__films"
+                activeStyle={{
+                  textDecoration: "underline",
+                  textUnderlineOffset: "6px"
+                }}
+                to="/movies"
+                >
                   Фильмы
-                </Link>
+              </NavLink>
 
-                <Link className="header__films_saved" to="/saved-movies">
+              <NavLink
+                className="header__films_saved"
+                activeStyle={{
+                  textDecoration: "underline",
+                  textUnderlineOffset: "6px"
+                }}
+                to="/saved-movies"
+                >
                   Сохранённые фильмы
-                </Link>
+              </NavLink>
 
-                <div className="header__container">
-                  <Link className="header__profile" to="/profile">
-                    Аккаунт
-                    <div className="header__frame" >
-                      <div className="header__icon" ></div>
-                    </div>
-                  </Link>
-                </div> 
+              <div className="header__container">
 
-                <section className={`header__nav_layered ${isActive ? "" : "header__open"}`}>
-                  <div className={`header__nav ${isActive ? "" : "header__nav-opened"}`}>
+                <NavLink
+                className="header__profile"
+                activeStyle={{
+                  textDecoration: "underline",
+                  textUnderlineOffset: "6px"
+                }}
+                to="/profile"
+                >
+                  Аккаунт
+                  <div className="header__frame" >
+                    <div className="header__icon" ></div>
+                  </div>
+              </NavLink>
+
+              </div> 
+
+              <section className={`header__nav_layered ${isActive ? "" : "header__open"}`}>
+                <div className={`header__nav ${isActive ? "" : "header__nav-opened"}`}>
 
                 {/* <div className="header__nav_layered header__open"> */}
                   {/* <div className="header__nav header__nav-opened"> */}

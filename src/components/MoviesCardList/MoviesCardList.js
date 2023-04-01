@@ -1,14 +1,30 @@
-import React from "react";
-import { useHistory, Route, Switch, Link } from "react-router-dom";
-
+import React, { useEffect } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-function MoviesCardList(props) {
- 
+function MoviesCardList({
+  cards,
+  onCardLike
+}) {
+
+useEffect(() => {
+}, [cards]);
+
   return (
     <section className="elements">
-        <MoviesCard
-        />
+        {cards.map((card) => (
+          <MoviesCard
+            key={card.externalId}
+            link={card.link}
+            name={card.name}
+            card={card}
+            likes={
+              card.likes?.length
+              ? card.likes.length
+              : 0
+            }
+            onCardLike={onCardLike}
+          />
+        ))}
    </section>
   );
 }

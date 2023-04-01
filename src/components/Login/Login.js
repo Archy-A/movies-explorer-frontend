@@ -1,22 +1,30 @@
-import React, { useContext } from "react";
+import React, { useRef, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import { withRouter } from "react-router-dom";
 
-import SearchForm from "../SearchForm/SearchForm";
+function Login(props) {
 
-function Login({
-  onEditProfile,
-}) {
-
+  const inputEmailRef = useRef();
+  const inputPassRef = useRef();
   let history = useHistory()
-
-  function mySubmitFunction(e) {
-    e.preventDefault();
-    return false;
-  }
 
   function handleGoMain() {
     history.push("/");
+  }
+
+  props.setRegisterError("")
+
+  // useEffect(() => {
+  //   console.log(' useEffect props.checkPassLog = ', props.checkPassLog)
+  // }, [props.checkPassLog]);
+
+  let buttonDisable1 = true;
+
+  function setbuttonDisable1() {
+    if (props.checkPassLog === true && props.checkEmailLog === true ) {
+      return buttonDisable1 = false;
+    } else {
+      return buttonDisable1 = true;
+    }
   }
 
   return (
@@ -30,7 +38,7 @@ function Login({
         </div>
 
         <form
-              onSubmit={mySubmitFunction}
+              onSubmit={props.handleLogin}
               className="login_form"
               method="post"
               name="login"
@@ -40,11 +48,17 @@ function Login({
 
               <div className="login__box">
                 <input
+                  ref={inputEmailRef}
                   id="login__email"
                   type="text"
-                  //value="pochta@yandex.ru"
-                  // onChange={props.handleOnChange}
-                  name="emailReg"
+                  value={
+                    inputEmailRef.current
+                      ? props.emailAndPassSetterLoginValues[inputEmailRef.current.name] ||
+                        ""
+                      : ""
+                  }
+                  onChange={props.handleOnChange}
+                  name="emailLogin"
                   placeholder=""
                   className="register__email"
                   minLength="2"
@@ -58,11 +72,17 @@ function Login({
 
               <div className="login__box">
                 <input
+                  ref={inputPassRef}
                   id="login__password"
                   type="password"
-                  //value= "pochta@yandex.ru"
-                  // onChange={onSubmit}
-                  name="passwordReg"
+                  value={
+                    inputPassRef.current
+                      ? props.emailAndPassSetterLoginValues[inputPassRef.current.name] ||
+                        ""
+                      : ""
+                  }
+                  onChange={props.handleOnChange}
+                  name="passwordLogin"
                   placeholder=""
                   className="register__password"
                   minLength="2"
@@ -71,11 +91,17 @@ function Login({
                 ></input>
                 <div className="login__line" />
               </div>
+
+              <p className="profile__error">{props.loginError}</p>
               
-              <button type="submit" className="login__register">
-                <p className="login__label">
-                  Войти
-                </p>
+              <button
+                type="submit"
+                className="login__register"
+                disabled={setbuttonDisable1()}
+                >
+                  <p className="login__label">
+                    Войти
+                  </p>
               </button>
 
               <div className="login__framer">

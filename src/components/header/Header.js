@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, Route, Switch, Link, useHistory } from "react-router-dom";
+import { useLocation, Route, Switch, Link, useHistory, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function Header({ loggedIn, email, setLoggedIn }) {
@@ -63,9 +63,13 @@ function Header({ loggedIn, email, setLoggedIn }) {
               <div className="header__logo" onClick={handleLogoGoMain}>
               </div> 
 
-              <Link className={`header__films ${loggedIn ? "" : "header__login-hidden"} `} to="/movies">
+              {/* <Link className={`header__films ${loggedIn ? "" : "header__login-hidden"} `} to="/movies">
                   Фильмы
-              </Link>
+              </Link> */}
+
+              <NavLink className={`header__films ${loggedIn ? "" : "header__login-hidden"} `} to="/movies">
+                  Фильмы
+              </NavLink>
 
               <Link className={`header__films_saved ${loggedIn ? "" : "header__login-hidden"} `} to="/saved-movies">
                   Сохранённые фильмы
@@ -132,21 +136,44 @@ function Header({ loggedIn, email, setLoggedIn }) {
               <div className="header__logo" onClick={handleLogoGoMain}>
               </div>
 
-              <Link className="header__films" to="/movies">
-                Фильмы
-              </Link>
+              <NavLink
+                className="header__films"
+                activeStyle={{
+                  textDecoration: "underline",
+                  textUnderlineOffset: "6px"
+                }}
+                to="/movies"
+                >
+                  Фильмы
+              </NavLink>
 
-              <Link className="header__films_saved" to="/saved-movies">
-                Сохранённые фильмы
-              </Link>
+              <NavLink
+                className="header__films_saved"
+                activeStyle={{
+                  textDecoration: "underline",
+                  textUnderlineOffset: "6px"
+                }}
+                to="/saved-movies"
+                >
+                  Сохранённые фильмы
+              </NavLink>
 
               <div className="header__container">
-                <Link className="header__profile" to="/profile">
+
+                <NavLink
+                className="header__profile"
+                activeStyle={{
+                  textDecoration: "underline",
+                  textUnderlineOffset: "6px"
+                }}
+                to="/profile"
+                >
                   Аккаунт
                   <div className="header__frame" >
                     <div className="header__icon" ></div>
                   </div>
-                </Link>
+              </NavLink>
+
               </div> 
 
               <section className={`header__nav_layered ${isActive ? "" : "header__open"}`}>

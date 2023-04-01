@@ -22,8 +22,6 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function App(props) {
 
-  // console.log("---------------- APPPPPPP REFRESHED -------------------" );
-
   let history = useHistory();
   const emailLogin = "emailLogin";
   const passwordLogin = "passwordLogin";
@@ -51,7 +49,19 @@ function App(props) {
     emailReg: "", 
     passwordReg: ""
   }, fieldsUpdatedCallback);
+
   const BACKERROR = "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз";
+  const INCORRECT_DATA_EMAIL_PASSWORD = "Введены некорреткные данные в поля E-mail/Пароль";
+  const WRONG_DATA_EMAIL_PASSWORD = "Неверные E-mail/Пароль, попробуйте исправить";
+  const LOGIN_PROBLEM_BY_SERVER = "Извините, случилась проблема при входе, попробуйте чуть позже...";
+  const PROFILE_EDIT_PROBLEM_BY_SERVER = "Извините, случилась проблема обновления профиля";
+  const WRONG_DATA_NAME_EMAIL_PASSWORD = "Введены некорреткные данные в поля Имя/E-mail/Пароль";
+  const USER_EXIST = "Такой пользователь уже существует!";
+  const REGISTRATION_PROBLEM = "Извините, случилась проблема при регистрации";
+  const PROFILE_EDITED_CORRECTLY = "Редактирование профиля выполнено успешно!";
+  const ERROR_400 = "Ошибка: 400";
+  const ERROR_401 = "Ошибка: 401";
+  const ERROR_409 = "Ошибка: 409";
 
   const [cards, setCards] = useState(JSON.parse(localStorage.getItem("cards")) || {'allCards':[], 'myCards':[]});
   const [preloaderState, setPreloaderState] = useState(false);
@@ -171,12 +181,12 @@ function App(props) {
         setLoggedIn(false);
         setLoginError(true);
 
-        if (err === 'Ошибка: 400') {
-          setLoginError(`Введены некорреткные данные в поля E-mail/Пароль`)
-        } else if (err === 'Ошибка: 401') {        
-          setLoginError(`Неверные E-mail/Пароль, попробуйте исправить`)
+        if (err === ERROR_400) {
+          setLoginError(INCORRECT_DATA_EMAIL_PASSWORD);
+        } else if (err === ERROR_401) {        
+          setLoginError(WRONG_DATA_EMAIL_PASSWORD);
         } else {        
-          setLoginError(`Извините, случилась проблема при входе, попробуйте чуть позже...`)
+          setLoginError(LOGIN_PROBLEM_BY_SERVER);
         }
 
         history.push("/signin");
@@ -216,104 +226,15 @@ function App(props) {
         setLoggedIn(false);
         setRegisterError(true);
         setEmail(emailAndPassSetterReg.values[emailReg]);
-        if (err === 'Ошибка: 400') {
-          setRegisterError(`Введены некорреткные данные в поля Имя/E-mail/Пароль`)
-        } else if (err === 'Ошибка: 409') {        
-          setRegisterError(`Такой пользователь уже существует!`)
+        if (err === ERROR_400) {
+          setRegisterError(WRONG_DATA_NAME_EMAIL_PASSWORD);
+        } else if (err === ERROR_409) {        
+          setRegisterError(USER_EXIST);
         } else {        
-          setRegisterError(`Извините, случилась проблема при регистрации: ${err}`)
+          setRegisterError(`${REGISTRATION_PROBLEM}: ${err}`);
         }
       });
   }
-
-  // function registration () {
-  //   return auth
-  //     .register(
-  //       emailAndPassSetterReg.values[nameReg],
-  //       emailAndPassSetterReg.values[emailReg],
-  //       emailAndPassSetterReg.values[passwordReg]
-  //     )
-  //     .then((res) => {
-  //       if (res) {
-  //         setLoggedIn(false);
-  //         setRegisterError(false);
-  //         setRegisterError("")
-  //         setCheckPass(false);
-  //         setCheckName(false);
-  //         setCheckEmail(false);
-  //         history.push("/movies");
-
-  //         console.log('register is done, res = ', res)
-  //         setRegistered(true);
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       setLoggedIn(false);
-  //       setRegistered(false);
-  //       setRegisterError(true);
-  //       setEmail(emailAndPassSetterReg.values[emailReg]);
-  //       if (err === 'Ошибка: 400') {
-  //         setRegisterError(`Введены некорреткные данные в поля Имя/E-mail/Пароль`)
-  //       } else if (err === 'Ошибка: 409') {        
-  //         setRegisterError(`Такой пользователь уже существует!`)
-  //       } else {        
-  //         setRegisterError(`Извините, случилась проблема при регистрации: ${err}`)
-  //       }
-  //     });
-  // }
-
-  // function loggingIn () {
-  //   console.log('registered in loggingIn = ', registered)
-  //   auth
-  //   .sigin(
-  //     emailAndPassSetterLogin.values[emailLogin],
-  //     emailAndPassSetterLogin.values[passwordLogin]
-  //   )
-  //   .then((res) => {
-  //     if (res) {
-  //       setLoggedIn(true);
-  //       setEmail(emailAndPassSetterLogin.values[emailLogin]);
-  //       history.push("/movies");
-  //       setLoginError(false);
-  //       localStorage.setItem("token", res.token);
-  //     }
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //     setLoggedIn(false);
-  //     setLoginError(true);
-
-  //     if (err === 'Ошибка: 400') {
-  //       setLoginError(`Введены некорреткные данные в поля E-mail/Пароль`)
-  //     } else if (err === 'Ошибка: 401') {        
-  //       setLoginError(`Неверные E-mail/Пароль, попробуйте исправить`)
-  //     } else {        
-  //       setLoginError(`Извините, случилась проблема при входе, попробуйте чуть позже...`)
-  //     }
-  //     history.push("/signin");
-  //   });
-  // }
-
-  
-  // function handleRegister(e) {
-  //   e.preventDefault();
-
-    // const registration1 = await auth.register(
-    //   emailAndPassSetterReg.values[nameReg],
-    //   emailAndPassSetterReg.values[emailReg],
-    //   emailAndPassSetterReg.values[passwordReg]
-    // )
-    // console.log('>>> registration1 = ' , registration1)
-
-    // setRegistered(false);
-    // console.log('---- before registration --------------------------------------------')
-    // const ololol = await registration();
-    // console.log('---- before loggingIn --------------------------------------------')
-    // console.log('>>> ololol = ' , ololol)
-    // await loggingIn(registration1);
-
-  // }
   //------------------------------------------------------------------
 
   // >>>>>>>>>>>>>> CHECK REGISTER <<<<<<<<<<<<<<<<<<<
@@ -435,7 +356,6 @@ function App(props) {
 
   function tokenCheck() {
     const jwt = localStorage.getItem("token");
-    // console.log('jwt = ', jwt)
     if (jwt) {
       auth
         .getContent(jwt)
@@ -466,14 +386,14 @@ function App(props) {
       .then((data) => {
         setCurrentUser(data);
         setProfileError("")
-        setEditProfileMessage("Редактирование профиля выполнено успешно!")
+        setEditProfileMessage(PROFILE_EDITED_CORRECTLY)
       })
       .catch((err) => {
         console.log(err);
-          if (err === 'Ошибка: 400') {
-            setProfileError(`Введены некорреткные данные в поля Имя/E-mail`)
+          if (err === ERROR_400) {
+            setProfileError(WRONG_DATA_NAME_EMAIL_PASSWORD)
           } else {        
-            setProfileError(`Извините, случилась проблема обновления профиля: ${err}`)
+            setProfileError(`${PROFILE_EDIT_PROBLEM_BY_SERVER}: ${err}`)
           }
       });
   }

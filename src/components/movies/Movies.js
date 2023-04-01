@@ -6,6 +6,18 @@ import Preloader from "../Preloader/Preloader.js";
 
 function Movies(props) {
 
+  const SHORT_FILM_DURATION = 41;
+  const NUMBER_OF_FILMS_FOR_MOBILE = 5;
+  const NUMBER_OF_FILMS_FOR_TABLET = 8;
+  const NUMBER_OF_FILMS_FOR_DESKTOP = 12;
+  const RESOLUTION_FOR_DESKTOP = 1201;
+  const RESOLUTION_FOR_TABLET = 768;
+  const RESOLUTION_FOR_TABLET_FOR_CONDITION = 769;
+  const RESOLUTION_FOR_TABLET_FOR_MOBILE = 400;
+  const NUMBER_OF_MORE_FILMS_FOR_MOBILE = 1;
+  const NUMBER_OF_MORE_FILMS_FOR_TABLET = 2;
+  const NUMBER_OF_MORE_FILMS_FOR_DESKTOP = 3;
+
   const [filteredCards, setFilteredCards] = useState([]);
   const [searchString, setSearchString] = useState(localStorage.getItem("searchString") || "");
   const [shortFilmsChecked, setShortFilmsChecked] = useState(localStorage.getItem("shortFilmsChecked")?.toLowerCase() === 'true' || false);
@@ -22,7 +34,6 @@ function Movies(props) {
     window.addEventListener('resize', resizeLimiter);
   });
   
-
   const resizeLimiter = () => {
     if (!resizeTimeout) {
       resizeTimeout = setTimeout(function () {
@@ -31,25 +42,26 @@ function Movies(props) {
       }, 1000);
     }
   }
+  
 
   function getInitNumber() {
-    if (window.innerWidth >= 1201) {
-      return 12;
-    } else if (window.innerWidth >= 768) {
-      return 8;
+    if (window.innerWidth >= RESOLUTION_FOR_DESKTOP) {
+      return NUMBER_OF_FILMS_FOR_DESKTOP;
+    } else if (window.innerWidth >= RESOLUTION_FOR_TABLET) {
+      return NUMBER_OF_FILMS_FOR_TABLET;
     } else {
-      return 5;
+      return NUMBER_OF_FILMS_FOR_MOBILE;
     }
   }
 
   function showMore() {
-    if (window.innerWidth <400) {
-      setNumber(number + 1);
+    if (window.innerWidth < RESOLUTION_FOR_TABLET_FOR_MOBILE) {
+      setNumber(number + NUMBER_OF_MORE_FILMS_FOR_MOBILE);
     }
-    else if (window.innerWidth <769) {
-      setNumber(number + 2);
+    else if (window.innerWidth < RESOLUTION_FOR_TABLET_FOR_CONDITION) {
+      setNumber(number + NUMBER_OF_MORE_FILMS_FOR_TABLET);
     } else {
-      setNumber(number + 3);
+      setNumber(number + NUMBER_OF_MORE_FILMS_FOR_DESKTOP);
     }
   }
 //---------------------------------------------------------------------------------------
@@ -90,7 +102,7 @@ function Movies(props) {
     let findInput = searchString.toLowerCase()
     let result = cards['allCards'].filter(film => film.nameRU.toLowerCase().includes(findInput));
     if (shortFilmsChecked) {
-        result = result.filter(film => film.duration < 41);
+        result = result.filter(film => film.duration < SHORT_FILM_DURATION);
     }
     result = compare(result, cards['myCards']);
     setFilteredCards(result);

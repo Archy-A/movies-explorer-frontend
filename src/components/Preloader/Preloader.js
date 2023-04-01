@@ -2,11 +2,12 @@ import React, {useState, useEffect} from "react";
 
 function Preloader(props) {
 
-  const [inited, setInited] = useState(false);
+  const [inited, setInited] = useState(JSON.parse(localStorage.getItem("inited") || false));
 
   useEffect(() => {
     if (props.preloaderState) {
       setInited(true);
+      localStorage.setItem("inited", JSON.stringify(true));
     }
   }, [props.preloaderState]);
 

@@ -22,7 +22,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function App(props) {
 
-  console.log("---------------- APPPPPPP REFRESHED -------------------" );
+  // console.log("---------------- APPPPPPP REFRESHED -------------------" );
 
   let history = useHistory();
   const emailLogin = "emailLogin";
@@ -65,7 +65,6 @@ function App(props) {
   const [backendError, setBackendError] = useState("");
   const [editProfileMessage, setEditProfileMessage] = useState("");
   const [messageReg, setMessageReg] = useState("");
-  const [registered, setRegistered] = useState(false);
 
   let firstSearch  = true;
   let initialCards = [];
@@ -78,10 +77,8 @@ function App(props) {
         .getUserInfo()
         .then((data) => {
           setCurrentUser(data);
-          console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> getUserInfo');
         })
         .catch((err) => {
-          console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> getUserInfo');
           console.log(err);
         });
   }, [loggedIn]);
@@ -494,7 +491,7 @@ function App(props) {
                   <Route exact path="/" component={Landing}
                   />
 
-                <ProtectedRoute
+                  <ProtectedRoute
                     exact path="/movies"
                     loggedIn={loggedIn}
                     component={Movies}
@@ -525,7 +522,35 @@ function App(props) {
                     setMessageReg={setMessageReg}
                   />
 
-                  <Route exact path="/signup">
+                  <ProtectedRoute
+                    exact path="/signup"
+                    component={Register}
+                    handleRegOnChange={handleRegOnChange}
+                    onRegister={handleRegister}
+                    setEmail={setEmail}
+                    setLoggedIn={setLoggedIn}
+                    emailAndPassSetterRegValues={emailAndPassSetterReg.values}
+                    registerError={registerError}
+                    checkPass={checkPass}
+                    checkName={checkName}
+                    checkEmail={checkEmail}
+                    loggedIn={loggedIn}
+                  />
+
+                  <ProtectedRoute
+                    exact path="/signin"
+                    component={Login}
+                    handleLogin={handleLogin}
+                    handleOnChange={handleLoginOnChange}
+                    emailAndPassSetterLoginValues={emailAndPassSetterLogin.values}
+                    loginError={loginError}
+                    checkPassLog={checkPassLog}
+                    checkEmailLog={checkEmailLog}
+                    loggedIn={loggedIn}
+                    setRegisterError={setRegisterError}
+                  />
+
+                  {/* <Route exact path="/signup">
                     <Register
                       handleRegOnChange={handleRegOnChange}
                       onRegister={handleRegister}
@@ -549,7 +574,7 @@ function App(props) {
                       checkEmailLog={checkEmailLog}
                       setRegisterError={setRegisterError}
                     />
-                  </Route>
+                  </Route> */}
 
                   <Route path='*' component={NotFound}/>
 

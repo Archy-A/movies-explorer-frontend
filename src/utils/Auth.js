@@ -1,5 +1,5 @@
-const BASE_URL = "https://api.dipp.nomoredomains.work";
-// const BASE_URL = "http://localhost:3000";
+// const BASE_URL = "https://api.dipp.nomoredomains.work";
+const BASE_URL = "http://localhost:3000";
 
 export function getResponseData(res) {
   if (!res.ok) {

@@ -3,32 +3,35 @@ import { Route, Redirect } from "react-router-dom";
 
 const ProtectedRoute = ({ component: Component, ...props }) => {
 
-  let redirectToMain = true;
+  const path = props.location.pathname.substring(1);
 
   function checkRoute () {
     if (
-       ((Component.name === "Login") ||
-        (Component.name === "Register"))
+       ((path === "signin") ||
+        (path === "signup"))
          && 
         (props.loggedIn === true)
        ) {
-        return redirectToMain = true;
+        console.log("-- here 1 ");
+        return true;
     } else if (
-      ((Component.name === "Movies") || 
-       (Component.name === "SavedMovies") ||
-       (Component.name === "Profile"))
+      ((path === "movies") || 
+       (path === "saved-movies") ||
+       (path === "profile"))
       && 
       (props.loggedIn === false)
     ) {
-        return redirectToMain = true;
+      console.log("-- here 2 ");
+        return true;
     } else {
-        return redirectToMain = false;
+      console.log("-- here 3 ");
+        return false;
     }
   }
 
   return (
     <Route>
-      {checkRoute() ? <Redirect to="./" /> : <Component {...props} />}
+      {checkRoute() ? <Redirect to="/" /> : <Component {...props} />}
     </Route>
   );
 };

@@ -9,7 +9,6 @@ export function getResponseData(res) {
 }
 
 export const register = (name, email, password) => {
-  // return fetch(`https://api.dipp.nomoredomains.work/signup`, {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
@@ -20,7 +19,6 @@ export const register = (name, email, password) => {
 };
 
 export const sigin = (email, password) => {
-  // return fetch(`https://api.dipp.nomoredomains.work/signin`, {
     return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     headers: {
@@ -31,7 +29,6 @@ export const sigin = (email, password) => {
 };
 
 export const getContent = (token) => {
-  // return fetch(`https://api.dipp.nomoredomains.work/users/me`, {
     return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {

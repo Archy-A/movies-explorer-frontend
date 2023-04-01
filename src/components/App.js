@@ -460,32 +460,6 @@ function App(props) {
                     setRegisterError={setRegisterError}
                   />
 
-                  {/* <Route exact path="/signup">
-                    <Register
-                      handleRegOnChange={handleRegOnChange}
-                      onRegister={handleRegister}
-                      setEmail={setEmail}
-                      setLoggedIn={setLoggedIn}
-                      emailAndPassSetterRegValues={emailAndPassSetterReg.values}
-                      registerError={registerError}
-                      checkPass={checkPass}
-                      checkName={checkName}
-                      checkEmail={checkEmail}
-                    />
-                    </Route> 
-
-                  <Route exact path="/signin">
-                    <Login 
-                      handleLogin={handleLogin}
-                      handleOnChange={handleLoginOnChange}
-                      emailAndPassSetterLoginValues={emailAndPassSetterLogin.values}
-                      loginError={loginError}
-                      checkPassLog={checkPassLog}
-                      checkEmailLog={checkEmailLog}
-                      setRegisterError={setRegisterError}
-                    />
-                  </Route> */}
-
                   <Route path='*' component={NotFound}/>
 
                 </Switch>
